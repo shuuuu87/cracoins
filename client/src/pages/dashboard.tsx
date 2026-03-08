@@ -21,7 +21,12 @@ export default function Dashboard() {
   const [credits, setCredits] = useState("");
   const [file, setFile] = useState<File | null>(null);
 
+  const challengeStart = new Date("2026-04-24T00:00:00Z");
   const challengeEnd = new Date("2026-08-24T00:00:00Z");
+  const now = new Date();
+  const protocolStarted = now >= challengeStart;
+  const countdownTarget = protocolStarted ? challengeEnd : challengeStart;
+  const countdownLabel = protocolStarted ? "Protocol Ends In" : "Protocol Starts In";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,7 +94,11 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Stats Column */}
         <div className="space-y-6">
-          <CountdownTimer targetDate={challengeEnd} label="Protocol Ends In" />
+          <CountdownTimer 
+            targetDate={countdownTarget} 
+            label={countdownLabel}
+            passedLabel={protocolStarted ? "Protocol End" : "Protocol Start"}
+          />
           
           <Card className="glass-panel border-primary/20">
             <CardHeader className="pb-2">

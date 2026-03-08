@@ -5,9 +5,10 @@ import { Card, CardContent } from "@/components/ui/card";
 interface CountdownProps {
   targetDate: Date;
   label: string;
+  passedLabel?: string;
 }
 
-export function CountdownTimer({ targetDate, label }: CountdownProps) {
+export function CountdownTimer({ targetDate, label, passedLabel }: CountdownProps) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isPassed, setIsPassed] = useState(false);
 
@@ -38,7 +39,7 @@ export function CountdownTimer({ targetDate, label }: CountdownProps) {
     return (
       <Card className="border-primary/50 bg-primary/5">
         <CardContent className="p-6 text-center">
-          <h3 className="text-xl font-display text-primary uppercase">{label} REACHED</h3>
+          <h3 className="text-xl font-display text-primary uppercase">{passedLabel || label} REACHED</h3>
         </CardContent>
       </Card>
     );
