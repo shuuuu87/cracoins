@@ -109,10 +109,21 @@ export async function registerRoutes(
         screenshotUrl: `/uploads/${req.file.filename}`
       });
 
-      // Update log with calculated values
-      const fullLog = await storage.updateLogStatus(log.id, 'pending', undefined);
-      // Manually adjust the DB directly if we wanted to store the changes, but let's just log an activity
+      // Update log with calculated changes and credit spent tracking
+      const { db } = await import('./db');
+      const { dailyLogs } = await import('@shared/schema');
+      const { eq } = await import('drizzle-orm');
       
+      const [fullLog] = await db.update(dailyLogs)
+        .set({ 
+          aCoinChange, 
+          creditsChange, 
+          creditsSpent: Math.abs(Math.min(creditsChange, 0)),
+          status: 'pending'
+        })
+        .where(eq(dailyLogs.id, log.id))
+        .returning();
+
       await storage.createActivity({
         type: 'submission',
         message: `${user.username} submitted daily resources.`
