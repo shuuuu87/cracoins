@@ -8,8 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ShieldAlert, Users, TrendingUp, Check, X, Gavel } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog";
+import { ShieldAlert, Users, TrendingUp, Check, X, Gavel, Activity } from "lucide-react";
 import { useLocation } from "wouter";
 
 export default function Admin() {
@@ -221,6 +221,3 @@ export default function Admin() {
     </div>
   );
 }
-
-// Need to import Activity since I used it above
-import { Activity } from "lucide-react";
