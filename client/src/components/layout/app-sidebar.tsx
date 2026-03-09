@@ -15,11 +15,12 @@ import { useAuth } from "@/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function AppSidebar() {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const { user, logout } = useAuth();
 
   const handleLogout = async () => {
     await logout();
+    setLocation("/");
   };
 
   const menuItems = [
