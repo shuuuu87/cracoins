@@ -76,16 +76,16 @@ export default function Admin() {
             <div className="text-3xl font-display font-bold text-foreground">{stats?.activeToday || 0}</div>
           </CardContent>
         </Card>
-        <Card className="glass-panel border-primary/20">
+        <Card className="glass-panel border-accent/20">
           <CardContent className="p-6">
             <div className="text-sm text-muted-foreground mb-1 uppercase tracking-wider">Global A-Coins</div>
-            <div className="text-3xl font-display font-bold text-primary">+{stats?.totalACoinsGained?.toLocaleString() || 0}</div>
+            <div className="text-3xl font-display font-bold text-accent">+{stats?.totalACoinsGained?.toLocaleString() || 0}</div>
           </CardContent>
         </Card>
-        <Card className="glass-panel border-purple-500/20">
+        <Card className="glass-panel border-primary/20">
           <CardContent className="p-6">
             <div className="text-sm text-muted-foreground mb-1 uppercase tracking-wider">Global Credits</div>
-            <div className="text-3xl font-display font-bold text-purple-400">+{stats?.totalCreditsGained?.toLocaleString() || 0}</div>
+            <div className="text-3xl font-display font-bold text-primary">+{stats?.totalCreditsGained?.toLocaleString() || 0}</div>
           </CardContent>
         </Card>
       </div>
@@ -117,11 +117,11 @@ export default function Admin() {
                     <div className="grid grid-cols-2 gap-4 max-w-sm mt-2">
                       <div>
                         <div className="text-xs text-muted-foreground uppercase">Reported A-Coins</div>
-                        <div className="font-display text-primary font-bold text-xl">{log.aCoins}</div>
+                        <div className="font-display text-accent font-bold text-xl">{log.aCoins}</div>
                       </div>
                       <div>
                         <div className="text-xs text-muted-foreground uppercase">Reported Credits</div>
-                        <div className="font-display text-purple-400 font-bold text-xl">{log.credits}</div>
+                        <div className="font-display text-primary font-bold text-xl">{log.credits}</div>
                       </div>
                     </div>
                   </div>

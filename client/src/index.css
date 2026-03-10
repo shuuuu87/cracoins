@@ -49,8 +49,8 @@
     --sidebar-border: 230 25% 15%;
     --sidebar-ring: 190 90% 50%;
 
-    --chart-1: 190 90% 50%; /* Cyan for A-Coins */
-    --chart-2: 280 80% 60%; /* Purple for Credits */
+    --chart-1: 280 80% 60%; /* Purple for A-Coins */
+    --chart-2: 190 90% 50%; /* Cyan for Credits */
     
     --radius: 0.5rem;
   }

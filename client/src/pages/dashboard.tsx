@@ -57,13 +57,48 @@ export default function Dashboard() {
   const totalGainedACoins = logs?.filter(l => l.status === 'approved').reduce((sum, l) => sum + l.aCoinChange, 0) || 0;
   const totalGainedCredits = logs?.filter(l => l.status === 'approved').reduce((sum, l) => sum + l.creditsChange, 0) || 0;
 
-  // Chart data prep
-  const chartData = [...(logs || [])].reverse().map((log, i) => ({
+  // Chart data prep: Group by date and extend through challenge end
+  const logsByDate = new Map<string, { aCoins: number; credits: number }>();
+  
+  // Group submitted logs by date
+  logs?.forEach(log => {
+    const date = log.date;
+    if (!logsByDate.has(date)) {
+      logsByDate.set(date, { aCoins: 0, credits: 0 });
+    }
+    const entry = logsByDate.get(date)!;
+    entry.aCoins = log.aCoins; // Take latest submission value
+    entry.credits = log.credits;
+  });
+  
+  // Convert to array, sort by date, and extend through challenge end
+  const sortedDates = Array.from(logsByDate.keys()).sort();
+  let chartData = sortedDates.map((date, i) => ({
+    date,
     day: `Day ${i + 1}`,
-    aCoins: log.aCoins,
-    credits: log.credits,
-    status: log.status
+    aCoins: logsByDate.get(date)?.aCoins || 0,
+    credits: logsByDate.get(date)?.credits || 0
   }));
+  
+  // Extend chart with projected empty days through Aug 24, 2026
+  if (chartData.length > 0) {
+    const lastDate = new Date(chartData[chartData.length - 1].date);
+    let currentDate = new Date(lastDate);
+    let dayCount = chartData.length;
+    
+    while (currentDate < challengeEnd) {
+      currentDate.setDate(currentDate.getDate() + 1);
+      if (currentDate <= challengeEnd) {
+        const dateStr = currentDate.toISOString().split('T')[0];
+        chartData.push({
+          date: dateStr,
+          day: `Day ${++dayCount}`,
+          aCoins: chartData[chartData.length - 1].aCoins,
+          credits: chartData[chartData.length - 1].credits
+        });
+      }
+    }
+  }
 
   // Prediction calculation based on actual dates
   const approvedLogs = logs?.filter(l => l.status === 'approved') || [];
@@ -108,18 +143,18 @@ export default function Dashboard() {
             passedLabel={protocolStarted ? "Protocol End" : "Protocol Start"}
           />
           
-          <Card className="glass-panel border-primary/20">
+          <Card className="glass-panel border-accent/20">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm text-muted-foreground uppercase tracking-widest">Net Approved Gains</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex justify-between items-end border-b border-border/50 pb-4 mb-4">
-                <span className="text-lg font-semibold text-primary">A-Coins</span>
-                <span className="text-3xl font-display font-bold text-primary">+{totalGainedACoins}</span>
+                <span className="text-lg font-semibold text-accent">A-Coins</span>
+                <span className="text-3xl font-display font-bold text-accent">+{totalGainedACoins}</span>
               </div>
               <div className="flex justify-between items-end">
-                <span className="text-lg font-semibold text-accent">Credits</span>
-                <span className="text-3xl font-display font-bold text-accent">+{totalGainedCredits}</span>
+                <span className="text-lg font-semibold text-primary">Credits</span>
+                <span className="text-3xl font-display font-bold text-primary">+{totalGainedCredits}</span>
               </div>
             </CardContent>
           </Card>
@@ -131,13 +166,13 @@ export default function Dashboard() {
             <CardContent className="space-y-4">
               <div>
                 <p className="text-xs text-muted-foreground mb-1">A-Coins Projected</p>
-                <div className="text-3xl font-display font-bold text-primary">
+                <div className="text-3xl font-display font-bold text-accent">
                   {Math.round(Math.max(user.startACoins, predictedACoins)).toLocaleString()}
                 </div>
               </div>
               <div>
                 <p className="text-xs text-muted-foreground mb-1">Credits Projected</p>
-                <div className="text-3xl font-display font-bold text-accent">
+                <div className="text-3xl font-display font-bold text-primary">
                   {Math.round(Math.max(user.startCredits, predictedCredits)).toLocaleString()}
                 </div>
               </div>
@@ -167,8 +202,8 @@ export default function Dashboard() {
                       itemStyle={{ fontFamily: 'var(--font-display)', textTransform: 'uppercase' }}
                     />
                     <Legend iconType="circle" wrapperStyle={{ paddingTop: '20px', fontSize: '12px' }} />
-                    <Line yAxisId="left" type="monotone" dataKey="aCoins" name="A-Coins" stroke="hsl(var(--primary))" strokeWidth={3} dot={{ r: 4, fill: 'hsl(var(--background))', strokeWidth: 2 }} activeDot={{ r: 6, fill: 'hsl(var(--primary))' }} />
-                    <Line yAxisId="right" type="monotone" dataKey="credits" name="Credits" stroke="hsl(var(--accent))" strokeWidth={3} dot={{ r: 4, fill: 'hsl(var(--background))', strokeWidth: 2 }} activeDot={{ r: 6, fill: 'hsl(var(--accent))' }} />
+                    <Line yAxisId="left" type="monotone" dataKey="aCoins" name="A-Coins" stroke="hsl(var(--accent))" strokeWidth={3} dot={{ r: 4, fill: 'hsl(var(--background))', strokeWidth: 2 }} activeDot={{ r: 6, fill: 'hsl(var(--accent))' }} />
+                    <Line yAxisId="right" type="monotone" dataKey="credits" name="Credits" stroke="hsl(var(--primary))" strokeWidth={3} dot={{ r: 4, fill: 'hsl(var(--background))', strokeWidth: 2 }} activeDot={{ r: 6, fill: 'hsl(var(--primary))' }} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>

@@ -43,7 +43,7 @@ export default function Leaderboard() {
             </div>
 
             <div className="text-right">
-              <div className={`text-2xl font-display font-bold ${resourceType === 'A-Coins' ? 'text-primary' : 'text-purple-400'}`}>
+              <div className={`text-2xl font-display font-bold ${resourceType === 'A-Coins' ? 'text-accent' : 'text-primary'}`}>
                 +{item.totalApprovedChange.toLocaleString()}
               </div>
               <div className="text-xs text-muted-foreground uppercase tracking-widest">{resourceType} Gained</div>
@@ -66,10 +66,10 @@ export default function Leaderboard() {
 
       <Tabs defaultValue="acoins" className="w-full">
         <TabsList className="grid w-full max-w-md grid-cols-2 bg-card border border-border">
-          <TabsTrigger value="acoins" className="uppercase font-display tracking-wider data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
+          <TabsTrigger value="acoins" className="uppercase font-display tracking-wider data-[state=active]:bg-accent/20 data-[state=active]:text-accent">
             A-Coins Board
           </TabsTrigger>
-          <TabsTrigger value="credits" className="uppercase font-display tracking-wider data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-400">
+          <TabsTrigger value="credits" className="uppercase font-display tracking-wider data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
             Credits Board
           </TabsTrigger>
         </TabsList>

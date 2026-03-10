@@ -61,22 +61,22 @@ export default function Landing() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mt-24">
           <div className="glass-panel p-8 rounded-2xl flex flex-col items-center text-center">
-            <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-              <Shield className="h-8 w-8 text-primary" />
+            <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
+              <Shield className="h-8 w-8 text-accent" />
             </div>
             <h3 className="text-xl font-display mb-3">Zero A-Coins</h3>
             <p className="text-muted-foreground">Strict zero A-Coin spending policy. Any A-Coin expenditure results in immediate disqualification.</p>
           </div>
           <div className="glass-panel p-8 rounded-2xl flex flex-col items-center text-center">
-            <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
-              <Target className="h-8 w-8 text-accent" />
+            <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+              <Target className="h-8 w-8 text-primary" />
             </div>
             <h3 className="text-xl font-display mb-3">Credit Limit</h3>
             <p className="text-muted-foreground">Maximum of 4,000 credits can be spent daily. Exceeding this limit will trigger an official warning.</p>
           </div>
           <div className="glass-panel p-8 rounded-2xl flex flex-col items-center text-center">
-            <div className="h-16 w-16 rounded-full bg-chart-1/10 flex items-center justify-center mb-6">
-              <TrendingUp className="h-8 w-8 text-chart-1" />
+            <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
+              <TrendingUp className="h-8 w-8 text-accent" />
             </div>
             <h3 className="text-xl font-display mb-3">Daily Proof</h3>
             <p className="text-muted-foreground">Submit your resource screenshots daily. Admins verify submissions to ensure absolute integrity.</p>
