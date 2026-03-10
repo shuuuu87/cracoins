@@ -65,12 +65,20 @@ export default function Dashboard() {
     status: log.status
   }));
 
-  // Prediction calculation (simple average based on approved days)
+  // Prediction calculation based on actual dates
   const approvedLogs = logs?.filter(l => l.status === 'approved') || [];
-  const daysPassed = approvedLogs.length;
-  const avgACoinsPerDay = daysPassed > 0 ? totalGainedACoins / daysPassed : 0;
-  const totalChallengeDays = 122; // approx 4 months
-  const predictedACoins = (user.startACoins + totalGainedACoins) + (avgACoinsPerDay * (totalChallengeDays - daysPassed));
+  
+  // Calculate days passed and remaining using already-defined variables
+  const daysPassed = Math.max(1, Math.floor((now.getTime() - challengeStart.getTime()) / (1000 * 60 * 60 * 24)));
+  const daysRemaining = Math.max(0, Math.floor((challengeEnd.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)));
+  
+  // Average gain per day based on approved logs
+  const avgACoinsPerDay = approvedLogs.length > 0 ? totalGainedACoins / approvedLogs.length : 0;
+  const avgCreditsPerDay = approvedLogs.length > 0 ? totalGainedCredits / approvedLogs.length : 0;
+  
+  // Predict final values based on trajectory until August 24, 2026
+  const predictedACoins = user.startACoins + totalGainedACoins + (avgACoinsPerDay * daysRemaining);
+  const predictedCredits = user.startCredits + totalGainedCredits + (avgCreditsPerDay * daysRemaining);
 
   return (
     <div className="space-y-6">
@@ -118,12 +126,23 @@ export default function Dashboard() {
 
           <Card className="glass-panel border-muted">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-muted-foreground uppercase tracking-widest">End Prediction</CardTitle>
+              <CardTitle className="text-sm text-muted-foreground uppercase tracking-widest">End Prediction (Aug 24)</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground mb-2">Based on current trajectory, your final A-Coin balance is projected to be:</p>
-              <div className="text-4xl font-display font-bold text-white/80">
-                {Math.round(predictedACoins).toLocaleString()}
+            <CardContent className="space-y-4">
+              <div>
+                <p className="text-xs text-muted-foreground mb-1">A-Coins Projected</p>
+                <div className="text-3xl font-display font-bold text-primary">
+                  {Math.round(Math.max(user.startACoins, predictedACoins)).toLocaleString()}
+                </div>
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground mb-1">Credits Projected</p>
+                <div className="text-3xl font-display font-bold text-accent">
+                  {Math.round(Math.max(user.startCredits, predictedCredits)).toLocaleString()}
+                </div>
+              </div>
+              <div className="text-xs text-muted-foreground pt-2 border-t border-border/30">
+                {daysRemaining} days remaining • Avg {Math.round(avgACoinsPerDay)}/day
               </div>
             </CardContent>
           </Card>
