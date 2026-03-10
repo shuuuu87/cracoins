@@ -9,8 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { AvatarSelector } from "@/components/avatar-selector";
 import { insertUserSchema } from "@shared/schema";
 
 const loginSchema = z.object({
@@ -19,8 +19,6 @@ const loginSchema = z.object({
 });
 
 const registerSchema = insertUserSchema;
-
-const avatars = ["bot1", "bot2", "bot3", "bot4", "bot5", "bot6", "ninja", "samurai", "pilot"];
 
 export default function Auth() {
   const [_, setLocation] = useLocation();
@@ -39,7 +37,7 @@ export default function Auth() {
       password: "",
       country: "US",
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      avatar: "bot1",
+      avatar: "avatar1",
       startACoins: 0,
       startCredits: 0,
     },
@@ -168,19 +166,7 @@ export default function Auth() {
                     name="avatar"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Select Avatar</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger className="bg-background/50">
-                              <SelectValue placeholder="Select avatar" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            {avatars.map((av) => (
-                              <SelectItem key={av} value={av} className="uppercase">{av}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <AvatarSelector value={field.value} onChange={field.onChange} label="Select Your Pilot Avatar" />
                         <FormMessage />
                       </FormItem>
                     )}

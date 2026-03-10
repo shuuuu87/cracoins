@@ -6,9 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { AvatarSelector } from "@/components/avatar-selector";
+import { getAvatarImage } from "@/lib/avatars";
 import { UserCog } from "lucide-react";
 
 const updateSchema = z.object({
@@ -16,8 +17,6 @@ const updateSchema = z.object({
   country: z.string().optional(),
   avatar: z.string().optional(),
 });
-
-const avatars = ["bot1", "bot2", "bot3", "bot4", "bot5", "bot6", "ninja", "samurai", "pilot"];
 
 export default function Profile() {
   const { user, updateProfile, isUpdatingProfile } = useAuth();
@@ -60,7 +59,7 @@ export default function Profile() {
         <CardContent>
           <div className="flex items-center gap-6 mb-8 p-6 bg-muted/20 rounded-xl border border-border/50">
             <Avatar className="h-24 w-24 border-2 border-primary/50 shadow-[0_0_15px_hsl(var(--primary)/0.2)]">
-              <AvatarImage src={`https://api.dicebear.com/7.x/bottts/svg?seed=${form.watch('avatar')}`} />
+              <AvatarImage src={getAvatarImage(form.watch('avatar') || user.avatar) || undefined} alt={user.username} />
               <AvatarFallback>{user.username.charAt(0)}</AvatarFallback>
             </Avatar>
             <div>
@@ -106,19 +105,7 @@ export default function Profile() {
                   name="avatar"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Avatar Model</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger className="bg-background/50">
-                            <SelectValue placeholder="Select avatar" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          {avatars.map((av) => (
-                            <SelectItem key={av} value={av} className="uppercase">{av}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <AvatarSelector value={field.value || user.avatar} onChange={field.onChange} label="Pilot Avatar" />
                       <FormMessage />
                     </FormItem>
                   )}
