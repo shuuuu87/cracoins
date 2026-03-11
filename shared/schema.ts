@@ -14,6 +14,7 @@ export const users = pgTable("users", {
   startCredits: integer("start_credits").notNull(),
   role: text("role").notNull().default("user"), // 'user', 'admin'
   isDisqualified: boolean("is_disqualified").notNull().default(false),
+  seenWelcome: boolean("seen_welcome").notNull().default(false),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

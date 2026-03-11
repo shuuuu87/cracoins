@@ -210,6 +210,16 @@ export async function registerRoutes(
     res.status(200).json(data.map(d => ({ ...d, user: { ...d.user, password: '' } })));
   });
 
+  // --- USERS ---
+  app.post('/api/users/mark-welcome-seen', isAuthenticated, async (req, res) => {
+    try {
+      const user = await storage.markWelcomeAsSeen(req.user.id);
+      res.status(200).json({ ...user, password: '' });
+    } catch (err) {
+      res.status(500).json({ message: 'Failed to update welcome status' });
+    }
+  });
+
   // --- STATS ---
   app.get(api.stats.global.path, async (req, res) => {
     const stats = await storage.getGlobalStats();

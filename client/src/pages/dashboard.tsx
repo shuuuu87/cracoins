@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { AlertCircle, Upload, CheckCircle2, XCircle, Clock, Lock } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { getTimezoneForCountry } from "@/lib/timezones";
+import { WelcomeModal } from "@/components/welcome-modal";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -21,6 +22,14 @@ export default function Dashboard() {
   const [aCoins, setACoins] = useState("");
   const [credits, setCredits] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  // Show welcome modal if user hasn't seen it yet
+  useEffect(() => {
+    if (user && !user.seenWelcome) {
+      setShowWelcome(true);
+    }
+  }, [user]);
 
   const challengeStart = new Date("2026-04-24T00:00:00Z");
   const challengeEnd = new Date("2026-08-24T00:00:00Z");
@@ -200,8 +209,23 @@ export default function Dashboard() {
   const predictedACoins = user.startACoins + totalGainedACoins + (avgACoinsPerDay * daysRemaining);
   const predictedCredits = user.startCredits + totalGainedCredits + (avgCreditsPerDay * daysRemaining);
 
+  const handleWelcomeClose = async () => {
+    setShowWelcome(false);
+    // Call API to mark welcome as seen
+    try {
+      await fetch('/api/users/mark-welcome-seen', {
+        method: 'POST',
+        credentials: 'include',
+      });
+    } catch (err) {
+      console.error('Failed to mark welcome as seen:', err);
+    }
+  };
+
   return (
     <div className="space-y-6">
+      <WelcomeModal open={showWelcome} onClose={handleWelcomeClose} />
+
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-display font-bold uppercase tracking-widest text-primary text-shadow-glow">Command Center</h1>

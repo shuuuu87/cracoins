@@ -57,6 +57,11 @@ export class DatabaseStorage implements IStorage {
     return user;
   }
 
+  async markWelcomeAsSeen(id: number): Promise<User> {
+    const [user] = await db.update(users).set({ seenWelcome: true }).where(eq(users.id, id)).returning();
+    return user;
+  }
+
   async getAllUsers(): Promise<User[]> {
     return await db.select().from(users);
   }
