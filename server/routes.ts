@@ -64,9 +64,11 @@ export async function registerRoutes(
       const user = req.user!;
       
       // Calculate changes
-      // In a real app we would find the last approved log and diff from there.
-      // For MVP, diffing from start resources if no previous logs.
+      // Check if user already submitted today and fetch logs
       const userLogs = await storage.getUserLogs(user.id);
+      if (userLogs.some(log => log.date === date)) {
+        return res.status(400).json({ message: 'You have already submitted for this date' });
+      }
       let prevACoins = user.startACoins;
       let prevCredits = user.startCredits;
       

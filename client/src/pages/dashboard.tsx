@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,7 @@ import { useMyLogs, useSubmitLog } from "@/hooks/use-logs";
 import { CountdownTimer } from "@/components/countdown-timer";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { useToast } from "@/hooks/use-toast";
-import { AlertCircle, Upload, CheckCircle2, XCircle, Clock } from "lucide-react";
+import { AlertCircle, Upload, CheckCircle2, XCircle, Clock, Lock } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function Dashboard() {
@@ -27,6 +27,43 @@ export default function Dashboard() {
   const protocolStarted = now >= challengeStart;
   const countdownTarget = protocolStarted ? challengeEnd : challengeStart;
   const countdownLabel = protocolStarted ? "Protocol Ends In" : "Protocol Starts In";
+
+  // Helper: Get today's date in user's timezone
+  const getTodayInUserTimezone = useMemo(() => {
+    if (!user?.timezone) return new Date().toISOString().split('T')[0];
+    
+    const formatter = new Intl.DateTimeFormat('en-CA', {
+      timeZone: user.timezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+    return formatter.format(now);
+  }, [user?.timezone, now]);
+
+  // Check if user submitted today (in their timezone)
+  const submittedToday = useMemo(() => {
+    return logs?.some(log => log.date === getTodayInUserTimezone) || false;
+  }, [logs, getTodayInUserTimezone]);
+
+  // Calculate next reset time (midnight in user's timezone)
+  const nextResetTime = useMemo(() => {
+    if (!user?.timezone) return new Date();
+    
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    
+    const formatter = new Intl.DateTimeFormat('en-CA', {
+      timeZone: user.timezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+    const tomorrowInTz = formatter.format(tomorrow);
+    const [year, month, day] = tomorrowInTz.split('-');
+    
+    return new Date(`${year}-${month}-${day}T00:00:00Z`);
+  }, [user?.timezone, now]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,7 +94,7 @@ export default function Dashboard() {
   const totalGainedACoins = logs?.filter(l => l.status === 'approved').reduce((sum, l) => sum + l.aCoinChange, 0) || 0;
   const totalGainedCredits = logs?.filter(l => l.status === 'approved').reduce((sum, l) => sum + l.creditsChange, 0) || 0;
 
-  // Chart data prep: Show submission history with weekly format
+  // Chart data prep: Show 7-day weekly cycle
   const logsByDate = new Map<string, { aCoins: number; credits: number }>();
   
   // Group submitted logs by date
@@ -71,34 +108,33 @@ export default function Dashboard() {
     entry.credits = log.credits;
   });
   
-  // Build chart data from earliest to latest submission
+  // Build chart data showing weekly progression
   const sortedDates = Array.from(logsByDate.keys()).sort();
-  const chartData: Array<{date: string; day: string; aCoins: number; credits: number; week: number; dayOfWeek: number}> = [];
+  const chartData: Array<{date: string; day: string; aCoins: number; credits: number}> = [];
   
   if (sortedDates.length > 0) {
     const startDate = new Date(sortedDates[0]);
     const endDate = new Date(sortedDates[sortedDates.length - 1]);
     let currentDate = new Date(startDate);
-    let dayCount = 0;
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let weekCounter = 0;
     
-    while (currentDate <= endDate && dayCount < 50) {
+    while (currentDate <= endDate) {
       const dateStr = currentDate.toISOString().split('T')[0];
-      const daysSinceStart = Math.floor((currentDate.getTime() - challengeStart.getTime()) / (1000 * 60 * 60 * 24));
-      const week = Math.floor(daysSinceStart / 7) + 1;
-      const dayOfWeek = daysSinceStart % 7 + 1;
+      const dayOfWeek = currentDate.getDay();
+      const dayName = dayNames[dayOfWeek];
+      const dayOfMonth = currentDate.getDate();
       
       const entry = logsByDate.get(dateStr) || { aCoins: 0, credits: 0 };
       chartData.push({
         date: dateStr,
-        day: `W${week}D${dayOfWeek}`,
+        day: `${dayName} ${dayOfMonth}`,
         aCoins: entry.aCoins,
         credits: entry.credits,
-        week,
-        dayOfWeek
       });
       
+      if (dayOfWeek === 6) weekCounter++; // Reset counter on Sunday
       currentDate.setDate(currentDate.getDate() + 1);
-      dayCount++;
     }
   }
 
@@ -218,8 +254,19 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card className="glass-panel border-primary/30 relative overflow-hidden">
+          <Card className={`glass-panel border-primary/30 relative overflow-hidden transition-all ${submittedToday ? 'opacity-60' : ''}`}>
             <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
+            {submittedToday && (
+              <div className="absolute inset-0 bg-background/40 backdrop-blur-sm flex flex-col items-center justify-center rounded-lg z-10">
+                <Lock className="h-8 w-8 text-muted-foreground mb-2" />
+                <p className="text-muted-foreground text-sm font-semibold text-center px-4">
+                  Daily submission limit reached
+                </p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Available at 12:00 AM {user?.timezone}
+                </p>
+              </div>
+            )}
             <CardHeader>
               <CardTitle className="font-display tracking-widest uppercase text-primary">Daily Submission</CardTitle>
               <CardDescription>Upload screenshot proof of your current resources.</CardDescription>
@@ -236,7 +283,7 @@ export default function Dashboard() {
                       onChange={(e) => setACoins(e.target.value)} 
                       className="bg-background/50 border-primary/20 focus-visible:ring-primary"
                       placeholder="e.g. 5000"
-                      disabled={user.isDisqualified}
+                      disabled={user.isDisqualified || submittedToday}
                     />
                   </div>
                   <div className="space-y-2">
@@ -248,25 +295,25 @@ export default function Dashboard() {
                       onChange={(e) => setCredits(e.target.value)} 
                       className="bg-background/50 border-accent/20 focus-visible:ring-accent"
                       placeholder="e.g. 150000"
-                      disabled={user.isDisqualified}
+                      disabled={user.isDisqualified || submittedToday}
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
                   <Label>Screenshot Proof</Label>
-                  <div className="border-2 border-dashed border-muted-foreground/30 rounded-lg p-6 text-center hover:bg-muted/20 transition-colors">
+                  <div className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${submittedToday ? 'border-muted-foreground/10 bg-muted/5' : 'border-muted-foreground/30 hover:bg-muted/20'}`}>
                     <Input 
                       type="file" 
                       accept="image/*" 
                       onChange={(e) => setFile(e.target.files?.[0] || null)}
                       className="hidden" 
                       id="file-upload"
-                      disabled={user.isDisqualified}
+                      disabled={user.isDisqualified || submittedToday}
                     />
-                    <Label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center justify-center gap-2">
-                      <Upload className="h-8 w-8 text-muted-foreground" />
-                      <span className="text-sm font-medium text-muted-foreground">
+                    <Label htmlFor="file-upload" className={`flex flex-col items-center justify-center gap-2 ${submittedToday ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+                      <Upload className={`h-8 w-8 ${submittedToday ? 'text-muted-foreground/40' : 'text-muted-foreground'}`} />
+                      <span className={`text-sm font-medium ${submittedToday ? 'text-muted-foreground/40' : 'text-muted-foreground'}`}>
                         {file ? file.name : "Click to select or drag and drop image"}
                       </span>
                     </Label>
@@ -276,9 +323,9 @@ export default function Dashboard() {
                 <Button 
                   type="submit" 
                   className="w-full h-12 font-display tracking-widest text-base shadow-[0_0_15px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_25px_hsl(var(--primary)/0.5)] transition-all mt-4" 
-                  disabled={submitLog.isPending || user.isDisqualified}
+                  disabled={submitLog.isPending || user.isDisqualified || submittedToday}
                 >
-                  {submitLog.isPending ? "TRANSMITTING..." : "SUBMIT RESOURCES"}
+                  {submittedToday ? "SUBMISSION COMPLETE TODAY" : submitLog.isPending ? "TRANSMITTING..." : "SUBMIT RESOURCES"}
                 </Button>
               </form>
             </CardContent>
