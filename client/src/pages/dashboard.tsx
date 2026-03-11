@@ -41,9 +41,12 @@ export default function Dashboard() {
     return formatter.format(now);
   }, [user?.timezone, now]);
 
-  // Check submission status for today (in their timezone)
+  // Check submission status for today (in their timezone) - get the LATEST submission if multiple exist
   const todaySubmission = useMemo(() => {
-    return logs?.find(log => log.date === getTodayInUserTimezone);
+    if (!logs) return undefined;
+    // Filter all submissions for today, then get the last one
+    const todayLogs = logs.filter(log => log.date === getTodayInUserTimezone);
+    return todayLogs.length > 0 ? todayLogs[todayLogs.length - 1] : undefined;
   }, [logs, getTodayInUserTimezone]);
 
   // Block submission only if there's a pending or approved submission today
