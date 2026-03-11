@@ -33,6 +33,10 @@ import newAvatar14 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.52_PM_1773215
 import newAvatar15 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.51_PM_(1)_1773215158335.jpeg";
 import newAvatar16 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.51_PM_1773215158336.jpeg";
 import newAvatar17 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.50_PM_(1)_1773215158337.jpeg";
+import avatar36 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.50_PM_1773217612974.jpeg";
+import avatar37 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.49_PM_1773217612977.jpeg";
+import avatar38 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.48_PM_(1)_1773217612978.jpeg";
+import avatar39 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.48_PM_1773217612980.jpeg";
 
 export const AVATAR_LIST = [
   { id: "avatar1", image: avatar1 },
@@ -70,6 +74,10 @@ export const AVATAR_LIST = [
   { id: "avatar33", image: newAvatar15 },
   { id: "avatar34", image: newAvatar16 },
   { id: "avatar35", image: newAvatar17 },
+  { id: "avatar36", image: avatar36 },
+  { id: "avatar37", image: avatar37 },
+  { id: "avatar38", image: avatar38 },
+  { id: "avatar39", image: avatar39 },
 ];
 
 export const getAvatarImage = (avatarId: string): string | undefined => {
