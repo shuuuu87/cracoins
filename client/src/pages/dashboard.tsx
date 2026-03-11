@@ -10,6 +10,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { useToast } from "@/hooks/use-toast";
 import { AlertCircle, Upload, CheckCircle2, XCircle, Clock, Lock } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { getTimezoneForCountry } from "@/lib/timezones";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -30,20 +31,20 @@ export default function Dashboard() {
 
   // Helper: Get today's date in user's timezone
   const getTodayInUserTimezone = useMemo(() => {
-    if (!user?.timezone) return new Date().toISOString().split('T')[0];
+    const timezone = getTimezoneForCountry(user?.country);
     
     const formatter = new Intl.DateTimeFormat('en-CA', {
-      timeZone: user.timezone,
+      timeZone: timezone,
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
     });
     return formatter.format(now);
-  }, [user?.timezone, now]);
+  }, [user?.country, now]);
 
   // Helper: Get protocol start time in user's local timezone
   const getProtocolStartTimeInUserTimezone = useMemo(() => {
-    if (!user?.timezone) return "April 24, 2026 at 12:00 AM UTC";
+    const timezone = getTimezoneForCountry(user?.country);
     
     const utcFormatter = new Intl.DateTimeFormat('en-US', {
       timeZone: 'UTC',
@@ -57,7 +58,7 @@ export default function Dashboard() {
     });
     
     const localFormatter = new Intl.DateTimeFormat('en-US', {
-      timeZone: user.timezone,
+      timeZone: timezone,
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -71,7 +72,7 @@ export default function Dashboard() {
     const localTime = localFormatter.format(challengeStart);
     
     return `${utcTime} UTC (Your time: ${localTime})`;
-  }, [user?.timezone, challengeStart]);
+  }, [user?.country, challengeStart]);
 
   // Check submission status for today (in their timezone) - get the LATEST submission if multiple exist
   const todaySubmission = useMemo(() => {
