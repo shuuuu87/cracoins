@@ -57,7 +57,7 @@ export default function Dashboard() {
   const totalGainedACoins = logs?.filter(l => l.status === 'approved').reduce((sum, l) => sum + l.aCoinChange, 0) || 0;
   const totalGainedCredits = logs?.filter(l => l.status === 'approved').reduce((sum, l) => sum + l.creditsChange, 0) || 0;
 
-  // Chart data prep: Weekly growth with resets (7-day cycles)
+  // Chart data prep: Show submission history with weekly format
   const logsByDate = new Map<string, { aCoins: number; credits: number }>();
   
   // Group submitted logs by date
@@ -71,33 +71,35 @@ export default function Dashboard() {
     entry.credits = log.credits;
   });
   
-  // Build weekly data from challenge start
+  // Build chart data from earliest to latest submission
   const sortedDates = Array.from(logsByDate.keys()).sort();
   const chartData: Array<{date: string; day: string; aCoins: number; credits: number; week: number; dayOfWeek: number}> = [];
   
-  // Generate chart data through the last submitted date or past 7 days
-  const maxDate = sortedDates.length > 0 ? new Date(sortedDates[sortedDates.length - 1]) : new Date();
-  let currentDate = new Date(challengeStart);
-  let dayCount = 0;
-  
-  while (currentDate <= maxDate && dayCount < 50) { // Limit to 50 days for chart visibility
-    const dateStr = currentDate.toISOString().split('T')[0];
-    const daysSinceStart = Math.floor((currentDate.getTime() - challengeStart.getTime()) / (1000 * 60 * 60 * 24));
-    const week = Math.floor(daysSinceStart / 7) + 1;
-    const dayOfWeek = daysSinceStart % 7 + 1;
+  if (sortedDates.length > 0) {
+    const startDate = new Date(sortedDates[0]);
+    const endDate = new Date(sortedDates[sortedDates.length - 1]);
+    let currentDate = new Date(startDate);
+    let dayCount = 0;
     
-    const entry = logsByDate.get(dateStr) || { aCoins: 0, credits: 0 };
-    chartData.push({
-      date: dateStr,
-      day: `W${week}D${dayOfWeek}`,
-      aCoins: entry.aCoins,
-      credits: entry.credits,
-      week,
-      dayOfWeek
-    });
-    
-    currentDate.setDate(currentDate.getDate() + 1);
-    dayCount++;
+    while (currentDate <= endDate && dayCount < 50) {
+      const dateStr = currentDate.toISOString().split('T')[0];
+      const daysSinceStart = Math.floor((currentDate.getTime() - challengeStart.getTime()) / (1000 * 60 * 60 * 24));
+      const week = Math.floor(daysSinceStart / 7) + 1;
+      const dayOfWeek = daysSinceStart % 7 + 1;
+      
+      const entry = logsByDate.get(dateStr) || { aCoins: 0, credits: 0 };
+      chartData.push({
+        date: dateStr,
+        day: `W${week}D${dayOfWeek}`,
+        aCoins: entry.aCoins,
+        credits: entry.credits,
+        week,
+        dayOfWeek
+      });
+      
+      currentDate.setDate(currentDate.getDate() + 1);
+      dayCount++;
+    }
   }
 
   // Prediction calculation based on actual dates
