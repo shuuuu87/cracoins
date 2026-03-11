@@ -186,7 +186,17 @@ export default function Dashboard() {
         </Alert>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {!protocolStarted && (
+        <Alert variant="destructive" className="border-2 glass-panel border-destructive mb-6">
+          <AlertCircle className="h-5 w-5" />
+          <AlertTitle className="font-display uppercase tracking-widest">PROTOCOL LOCKED</AlertTitle>
+          <AlertDescription>
+            All dashboard sections are locked until the protocol starts on April 24, 2026 at 12:00 AM UTC.
+          </AlertDescription>
+        </Alert>
+      )}
+
+      <div className={`grid grid-cols-1 lg:grid-cols-3 gap-6 transition-all ${!protocolStarted ? 'opacity-40 pointer-events-none' : ''}`}>
         {/* Stats Column */}
         <div className="space-y-6">
           <CountdownTimer 
@@ -195,7 +205,7 @@ export default function Dashboard() {
             passedLabel={protocolStarted ? "Protocol End" : "Protocol Start"}
           />
           
-          <Card className="glass-panel border-accent/20">
+          <Card className={`glass-panel border-accent/20 ${!protocolStarted ? 'blur-sm' : ''}`}>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm text-muted-foreground uppercase tracking-widest">Net Approved Gains</CardTitle>
             </CardHeader>
@@ -211,7 +221,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card className="glass-panel border-muted">
+          <Card className={`glass-panel border-muted ${!protocolStarted ? 'blur-sm' : ''}`}>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm text-muted-foreground uppercase tracking-widest">End Prediction (Aug 24)</CardTitle>
             </CardHeader>
@@ -237,7 +247,7 @@ export default function Dashboard() {
 
         {/* Graph & Form Column */}
         <div className="lg:col-span-2 space-y-6">
-          <Card className="glass-panel overflow-hidden border-border/50">
+          <Card className={`glass-panel overflow-hidden border-border/50 ${!protocolStarted ? 'blur-sm' : ''}`}>
             <CardHeader>
               <CardTitle className="font-display tracking-widest uppercase">Resource Trajectory</CardTitle>
             </CardHeader>
@@ -355,8 +365,9 @@ export default function Dashboard() {
       </div>
 
       {/* Recent Submissions Log */}
-      <h2 className="text-xl font-display uppercase tracking-widest text-primary mt-12 mb-4">Submission History</h2>
-      <div className="space-y-3">
+      <div className={`${!protocolStarted ? 'blur-sm opacity-40 pointer-events-none' : ''}`}>
+        <h2 className="text-xl font-display uppercase tracking-widest text-primary mt-12 mb-4">Submission History</h2>
+        <div className="space-y-3">
         {loadingLogs ? (
           <div className="text-center p-8 text-muted-foreground">Loading logs...</div>
         ) : logs?.length === 0 ? (
@@ -388,6 +399,7 @@ export default function Dashboard() {
             </div>
           ))
         )}
+        </div>
       </div>
     </div>
   );
