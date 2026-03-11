@@ -66,7 +66,11 @@ export async function registerRoutes(
       // Calculate changes
       // Check if user already submitted today and fetch logs
       const userLogs = await storage.getUserLogs(user.id);
-      if (userLogs.some(log => log.date === date)) {
+      
+      // Only block if there's a pending or approved submission for today
+      // Allow resubmission if the only submission for today was rejected
+      const todaySubmission = userLogs.find(log => log.date === date);
+      if (todaySubmission && todaySubmission.status !== 'rejected') {
         return res.status(400).json({ message: 'You have already submitted for this date' });
       }
       let prevACoins = user.startACoins;

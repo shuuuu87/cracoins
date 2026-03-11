@@ -41,10 +41,20 @@ export default function Dashboard() {
     return formatter.format(now);
   }, [user?.timezone, now]);
 
-  // Check if user submitted today (in their timezone)
-  const submittedToday = useMemo(() => {
-    return logs?.some(log => log.date === getTodayInUserTimezone) || false;
+  // Check submission status for today (in their timezone)
+  const todaySubmission = useMemo(() => {
+    return logs?.find(log => log.date === getTodayInUserTimezone);
   }, [logs, getTodayInUserTimezone]);
+
+  // Block submission only if there's a pending or approved submission today
+  // Allow resubmission if the only submission today was rejected
+  const submittedToday = useMemo(() => {
+    return todaySubmission && todaySubmission.status !== 'rejected';
+  }, [todaySubmission]);
+
+  const rejectedToday = useMemo(() => {
+    return todaySubmission?.status === 'rejected';
+  }, [todaySubmission]);
 
   // Calculate next reset time (midnight in user's timezone)
   const nextResetTime = useMemo(() => {
@@ -270,6 +280,13 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle className="font-display tracking-widest uppercase text-primary">Daily Submission</CardTitle>
               <CardDescription>Upload screenshot proof of your current resources.</CardDescription>
+              {rejectedToday && (
+                <Alert className="mt-4 border-destructive/50 bg-destructive/10">
+                  <AlertCircle className="h-4 w-4 text-destructive" />
+                  <AlertTitle className="text-destructive">Submission Rejected - Last Chance</AlertTitle>
+                  <AlertDescription>Your previous submission was rejected. You have one more attempt to submit for today.</AlertDescription>
+                </Alert>
+              )}
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
