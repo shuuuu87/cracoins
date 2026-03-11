@@ -51,7 +51,16 @@ export const dailyLogsRelations = relations(dailyLogs, ({ one }) => ({
 }));
 
 // Base Schemas
-export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true, isDisqualified: true, role: true });
+export const insertUserSchema = createInsertSchema(users)
+  .omit({ id: true, createdAt: true, isDisqualified: true, role: true })
+  .extend({
+    username: z.string().min(1, "Username is required").min(3, "Username must be at least 3 characters"),
+    password: z.string().min(1, "Password is required").min(6, "Password must be at least 6 characters"),
+    country: z.string().min(1, "Country is required"),
+    avatar: z.string().min(1, "Avatar is required"),
+    startACoins: z.number().int().min(0, "A-Coins must be 0 or higher"),
+    startCredits: z.number().int().min(0, "Credits must be 0 or higher"),
+  });
 export const insertDailyLogSchema = createInsertSchema(dailyLogs).omit({ id: true, createdAt: true, aCoinChange: true, creditsChange: true, creditsSpent: true, status: true, adminNotes: true });
 export const insertActivitySchema = createInsertSchema(activities).omit({ id: true, createdAt: true });
 
