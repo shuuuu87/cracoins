@@ -41,6 +41,38 @@ export default function Dashboard() {
     return formatter.format(now);
   }, [user?.timezone, now]);
 
+  // Helper: Get protocol start time in user's local timezone
+  const getProtocolStartTimeInUserTimezone = useMemo(() => {
+    if (!user?.timezone) return "April 24, 2026 at 12:00 AM UTC";
+    
+    const utcFormatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'UTC',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+    });
+    
+    const localFormatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: user.timezone,
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+    });
+    
+    const utcTime = utcFormatter.format(challengeStart);
+    const localTime = localFormatter.format(challengeStart);
+    
+    return `${utcTime} UTC (Your time: ${localTime})`;
+  }, [user?.timezone, challengeStart]);
+
   // Check submission status for today (in their timezone) - get the LATEST submission if multiple exist
   const todaySubmission = useMemo(() => {
     if (!logs) return undefined;
@@ -191,7 +223,7 @@ export default function Dashboard() {
           <AlertCircle className="h-5 w-5" />
           <AlertTitle className="font-display uppercase tracking-widest">PROTOCOL LOCKED</AlertTitle>
           <AlertDescription>
-            All dashboard sections are locked until the protocol starts on April 24, 2026 at 12:00 AM UTC.
+            All dashboard sections are locked until the protocol starts on {getProtocolStartTimeInUserTimezone}
           </AlertDescription>
         </Alert>
       )}
