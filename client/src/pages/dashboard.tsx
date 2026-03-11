@@ -90,10 +90,11 @@ export default function Dashboard() {
 
     try {
       await submitLog.mutateAsync(formData);
-      toast({ title: "Submission Received", description: "Awaiting admin verification." });
+      // Clear form immediately for visual feedback
       setACoins("");
       setCredits("");
       setFile(null);
+      toast({ title: "Submission Received", description: "Awaiting admin verification. Form locked until 12:00 AM." });
     } catch (err: any) {
       toast({ title: "Submission Failed", description: err.message, variant: "destructive" });
     }
