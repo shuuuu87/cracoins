@@ -196,7 +196,7 @@ export default function Dashboard() {
         </Alert>
       )}
 
-      <div className={`grid grid-cols-1 lg:grid-cols-3 gap-6 transition-all ${!protocolStarted ? 'opacity-40 pointer-events-none' : ''}`}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 transition-all">
         {/* Stats Column */}
         <div className="space-y-6">
           <CountdownTimer 
@@ -205,7 +205,7 @@ export default function Dashboard() {
             passedLabel={protocolStarted ? "Protocol End" : "Protocol Start"}
           />
           
-          <Card className={`glass-panel border-accent/20 ${!protocolStarted ? 'blur-sm' : ''}`}>
+          <Card className={`glass-panel border-accent/20 transition-all ${!protocolStarted ? 'blur-sm opacity-40 pointer-events-none' : ''}`}>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm text-muted-foreground uppercase tracking-widest">Net Approved Gains</CardTitle>
             </CardHeader>
@@ -247,7 +247,7 @@ export default function Dashboard() {
 
         {/* Graph & Form Column */}
         <div className="lg:col-span-2 space-y-6">
-          <Card className={`glass-panel overflow-hidden border-border/50 ${!protocolStarted ? 'blur-sm' : ''}`}>
+          <Card className={`glass-panel overflow-hidden border-border/50 transition-all ${!protocolStarted ? 'blur-sm opacity-40 pointer-events-none' : ''}`}>
             <CardHeader>
               <CardTitle className="font-display tracking-widest uppercase">Resource Trajectory</CardTitle>
             </CardHeader>
@@ -278,7 +278,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card className={`glass-panel border-primary/30 relative overflow-hidden transition-all ${submittedToday ? 'opacity-60' : ''}`}>
+          <Card className={`glass-panel border-primary/30 relative overflow-hidden transition-all ${submittedToday ? 'opacity-60' : ''} ${!protocolStarted ? 'blur-sm opacity-40 pointer-events-none' : ''}`}>
             <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
             {submittedToday && (
               <div className="absolute inset-0 bg-background/40 backdrop-blur-sm flex flex-col items-center justify-center rounded-lg z-10">
@@ -365,7 +365,7 @@ export default function Dashboard() {
       </div>
 
       {/* Recent Submissions Log */}
-      <div className={`${!protocolStarted ? 'blur-sm opacity-40 pointer-events-none' : ''}`}>
+      <div className={`transition-all ${!protocolStarted ? 'blur-sm opacity-40 pointer-events-none' : ''}`}>
         <h2 className="text-xl font-display uppercase tracking-widest text-primary mt-12 mb-4">Submission History</h2>
         <div className="space-y-3">
         {loadingLogs ? (
