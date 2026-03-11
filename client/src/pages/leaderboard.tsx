@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useACoinsLeaderboard, useCreditsLeaderboard } from "@/hooks/use-leaderboard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getAvatarImage } from "@/lib/avatars";
 import { Trophy, Medal, Award } from "lucide-react";
 
 export default function Leaderboard() {
@@ -30,7 +31,7 @@ export default function Leaderboard() {
             </div>
 
             <Avatar className="h-12 w-12 border-2 border-primary/20 group-hover:border-primary/60 transition-colors">
-              <AvatarImage src={`https://api.dicebear.com/7.x/bottts/svg?seed=${item.user.avatar}`} />
+              <AvatarImage src={getAvatarImage(item.user.avatar) || undefined} alt={item.user.username} />
               <AvatarFallback>{item.user.username.charAt(0)}</AvatarFallback>
             </Avatar>
 

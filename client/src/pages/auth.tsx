@@ -178,9 +178,9 @@ export default function Auth() {
                       name="startACoins"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-primary">Current A-Coins</FormLabel>
+                          <FormLabel className="text-accent">Current A-Coins</FormLabel>
                           <FormControl>
-                            <Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} className="bg-background/50 border-primary/30" />
+                            <Input type="number" {...field} onChange={e => field.onChange(e.target.value ? parseInt(e.target.value) : 0)} className="bg-background/50 border-accent/30" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -191,9 +191,9 @@ export default function Auth() {
                       name="startCredits"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-accent">Current Credits</FormLabel>
+                          <FormLabel className="text-primary">Current Credits</FormLabel>
                           <FormControl>
-                            <Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value))} className="bg-background/50 border-accent/30" />
+                            <Input type="number" {...field} onChange={e => field.onChange(e.target.value ? parseInt(e.target.value) : 0)} className="bg-background/50 border-primary/30" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

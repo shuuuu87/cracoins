@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sidebar";
 import { useAuth } from "@/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getAvatarImage } from "@/lib/avatars";
 
 export function AppSidebar() {
   const [location, setLocation] = useLocation();
@@ -41,8 +42,8 @@ export function AppSidebar() {
 
         {user && (
           <div className="px-6 py-4 flex items-center gap-3 border-b border-border/50">
-            <Avatar className="h-10 w-10 border border-primary/50">
-              <AvatarImage src={`https://api.dicebear.com/7.x/bottts/svg?seed=${user.avatar}`} />
+            <Avatar className="h-12 w-12 border border-primary/50">
+              <AvatarImage src={getAvatarImage(user.avatar) || undefined} alt={user.username} />
               <AvatarFallback>{user.username.charAt(0)}</AvatarFallback>
             </Avatar>
             <div className="flex flex-col overflow-hidden">
