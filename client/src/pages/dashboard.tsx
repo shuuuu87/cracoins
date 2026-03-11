@@ -57,7 +57,7 @@ export default function Dashboard() {
   const totalGainedACoins = logs?.filter(l => l.status === 'approved').reduce((sum, l) => sum + l.aCoinChange, 0) || 0;
   const totalGainedCredits = logs?.filter(l => l.status === 'approved').reduce((sum, l) => sum + l.creditsChange, 0) || 0;
 
-  // Chart data prep: Group by date and extend through challenge end
+  // Chart data prep: Weekly growth with resets (7-day cycles)
   const logsByDate = new Map<string, { aCoins: number; credits: number }>();
   
   // Group submitted logs by date
@@ -67,37 +67,37 @@ export default function Dashboard() {
       logsByDate.set(date, { aCoins: 0, credits: 0 });
     }
     const entry = logsByDate.get(date)!;
-    entry.aCoins = log.aCoins; // Take latest submission value
+    entry.aCoins = log.aCoins;
     entry.credits = log.credits;
   });
   
-  // Convert to array, sort by date, and extend through challenge end
+  // Build weekly data from challenge start
   const sortedDates = Array.from(logsByDate.keys()).sort();
-  let chartData = sortedDates.map((date, i) => ({
-    date,
-    day: `Day ${i + 1}`,
-    aCoins: logsByDate.get(date)?.aCoins || 0,
-    credits: logsByDate.get(date)?.credits || 0
-  }));
+  const chartData: Array<{date: string; day: string; aCoins: number; credits: number; week: number; dayOfWeek: number}> = [];
   
-  // Extend chart with projected empty days through Aug 24, 2026
-  if (chartData.length > 0) {
-    const lastDate = new Date(chartData[chartData.length - 1].date);
-    let currentDate = new Date(lastDate);
-    let dayCount = chartData.length;
+  // Generate chart data through the last submitted date or past 7 days
+  const maxDate = sortedDates.length > 0 ? new Date(sortedDates[sortedDates.length - 1]) : new Date();
+  let currentDate = new Date(challengeStart);
+  let dayCount = 0;
+  
+  while (currentDate <= maxDate && dayCount < 50) { // Limit to 50 days for chart visibility
+    const dateStr = currentDate.toISOString().split('T')[0];
+    const daysSinceStart = Math.floor((currentDate.getTime() - challengeStart.getTime()) / (1000 * 60 * 60 * 24));
+    const week = Math.floor(daysSinceStart / 7) + 1;
+    const dayOfWeek = daysSinceStart % 7 + 1;
     
-    while (currentDate < challengeEnd) {
-      currentDate.setDate(currentDate.getDate() + 1);
-      if (currentDate <= challengeEnd) {
-        const dateStr = currentDate.toISOString().split('T')[0];
-        chartData.push({
-          date: dateStr,
-          day: `Day ${++dayCount}`,
-          aCoins: chartData[chartData.length - 1].aCoins,
-          credits: chartData[chartData.length - 1].credits
-        });
-      }
-    }
+    const entry = logsByDate.get(dateStr) || { aCoins: 0, credits: 0 };
+    chartData.push({
+      date: dateStr,
+      day: `W${week}D${dayOfWeek}`,
+      aCoins: entry.aCoins,
+      credits: entry.credits,
+      week,
+      dayOfWeek
+    });
+    
+    currentDate.setDate(currentDate.getDate() + 1);
+    dayCount++;
   }
 
   // Prediction calculation based on actual dates
@@ -286,7 +286,7 @@ export default function Dashboard() {
         ) : logs?.length === 0 ? (
           <div className="text-center p-8 border border-dashed border-border/50 rounded-lg text-muted-foreground">No submissions yet.</div>
         ) : (
-          logs?.slice(0, 5).map((log) => (
+          logs?.slice(0, 20).map((log) => (
             <div key={log.id} className="flex items-center justify-between p-4 glass-panel rounded-lg hover-elevate border-l-4" style={{
               borderLeftColor: log.status === 'approved' ? 'hsl(var(--primary))' : log.status === 'rejected' ? 'hsl(var(--destructive))' : 'hsl(var(--muted-foreground))'
             }}>

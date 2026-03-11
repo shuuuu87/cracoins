@@ -8,10 +8,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { AvatarSelector } from "@/components/avatar-selector";
 import { insertUserSchema } from "@shared/schema";
+import { Eye, EyeOff } from "lucide-react";
+
+const COUNTRIES = [
+  "United States", "United Kingdom", "Canada", "Australia", "India", "Germany", "France", "Spain",
+  "Italy", "Japan", "South Korea", "China", "Brazil", "Mexico", "Russia", "South Africa",
+  "Singapore", "Malaysia", "Philippines", "Thailand", "Indonesia", "Vietnam", "Pakistan",
+  "Bangladesh", "Egypt", "Nigeria", "Kenya", "Argentina", "Chile", "Colombia", "Peru",
+  "Other"
+];
 
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -24,6 +34,8 @@ export default function Auth() {
   const [_, setLocation] = useLocation();
   const { login, register, isLoggingIn, isRegistering } = useAuth();
   const { toast } = useToast();
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
   
   const loginForm = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -102,7 +114,17 @@ export default function Auth() {
                       <FormItem>
                         <FormLabel>Password</FormLabel>
                         <FormControl>
-                          <Input type="password" placeholder="Enter password" {...field} className="bg-background/50 focus-visible:ring-primary" />
+                          <div className="relative">
+                            <Input type={showLoginPassword ? "text" : "password"} placeholder="Enter password" {...field} className="bg-background/50 focus-visible:ring-primary pr-10" />
+                            <button
+                              type="button"
+                              onClick={() => setShowLoginPassword(!showLoginPassword)}
+                              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                              data-testid="toggle-login-password"
+                            >
+                              {showLoginPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                            </button>
+                          </div>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -140,7 +162,17 @@ export default function Auth() {
                         <FormItem>
                           <FormLabel>Password</FormLabel>
                           <FormControl>
-                            <Input type="password" placeholder="Password" {...field} className="bg-background/50" />
+                            <div className="relative">
+                              <Input type={showRegisterPassword ? "text" : "password"} placeholder="Password" {...field} className="bg-background/50 pr-10" />
+                              <button
+                                type="button"
+                                onClick={() => setShowRegisterPassword(!showRegisterPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                                data-testid="toggle-register-password"
+                              >
+                                {showRegisterPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                              </button>
+                            </div>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -152,9 +184,20 @@ export default function Auth() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Country</FormLabel>
-                          <FormControl>
-                            <Input placeholder="e.g. US, UK, IN" {...field} className="bg-background/50" />
-                          </FormControl>
+                          <Select value={field.value} onValueChange={field.onChange}>
+                            <FormControl>
+                              <SelectTrigger className="bg-background/50">
+                                <SelectValue placeholder="Select country" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {COUNTRIES.map((country) => (
+                                <SelectItem key={country} value={country}>
+                                  {country}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}

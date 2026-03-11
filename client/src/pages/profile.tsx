@@ -6,11 +6,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AvatarSelector } from "@/components/avatar-selector";
 import { getAvatarImage } from "@/lib/avatars";
 import { UserCog } from "lucide-react";
+
+const COUNTRIES = [
+  "United States", "United Kingdom", "Canada", "Australia", "India", "Germany", "France", "Spain",
+  "Italy", "Japan", "South Korea", "China", "Brazil", "Mexico", "Russia", "South Africa",
+  "Singapore", "Malaysia", "Philippines", "Thailand", "Indonesia", "Vietnam", "Pakistan",
+  "Bangladesh", "Egypt", "Nigeria", "Kenya", "Argentina", "Chile", "Colombia", "Peru",
+  "Other"
+];
 
 const updateSchema = z.object({
   username: z.string().min(1, "Username is required").optional(),
@@ -92,9 +101,20 @@ export default function Profile() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Region / Country</FormLabel>
-                      <FormControl>
-                        <Input {...field} className="bg-background/50" />
-                      </FormControl>
+                      <Select value={field.value || user?.country || ""} onValueChange={field.onChange}>
+                        <FormControl>
+                          <SelectTrigger className="bg-background/50">
+                            <SelectValue placeholder="Select country" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {COUNTRIES.map((country) => (
+                            <SelectItem key={country} value={country}>
+                              {country}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
