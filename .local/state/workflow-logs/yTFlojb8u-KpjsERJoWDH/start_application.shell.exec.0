@@ -1,0 +1,66 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K8:07:41 AM [express] serving on port 5000
+8:07:52 AM [express] GET /api/auth/me 304 in 6ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+8:07:53 AM [express] GET /api/logs/me 304 in 8ms :: [{"id":13,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216306605-885390010.jpeg","status":"rejected","adminNotes":null,"createdAt":"2026-03-11T08:05:06.611Z"}]
+8:08:09 AM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+8:08:32 AM [express] POST /api/logs 201 in 1888ms :: {"id":14,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216511030-519033080.jpg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T08:08:32.477Z"}
+8:08:33 AM [express] GET /api/logs/me 200 in 7ms :: [{"id":13,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216306605-885390010.jpeg","status":"rejected","adminNotes":null,"createdAt":"2026-03-11T08:05:06.611Z"},{"id":14,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216511030-519033080.jpg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T08:08:32.477Z"}]
+8:08:35 AM [express] GET /api/stats/global 304 in 9ms :: {"totalPlayers":2,"activeToday":1,"totalACoinsGained":0,"totalCreditsGained":0}
+8:08:35 AM [express] GET /api/admin/logs/pending 200 in 9ms :: [{"id":14,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216511030-519033080.jpg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T08:08:32.477Z","user":{"id":2,"username":"don_re","password":"881007b8ca5df8ba2c7e4a6750e686c056bdb137a888f708a4d761c278235fdc47814176b9509b5aea4d84e41d21557ffbf86f6932ab44b8595b77b4a77f3f29.6b0f3118154772d098b3ea7df741715a","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}}]
+8:08:35 AM [express] GET /api/users 304 in 17ms :: [{"id":4,"username":"we@gamerz","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar9","startACoins":1,"startCredits":1,"role":"user","isDisqualified":false,"createdAt":"2026-03-08T11:27:48.324Z"},{"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}]
+8:08:37 AM [express] PATCH /api/admin/logs/14/status 200 in 11ms :: {"id":14,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216511030-519033080.jpg","status":"approved","adminNotes":null,"createdAt":"2026-03-11T08:08:32.477Z"}
+8:08:38 AM [express] GET /api/admin/logs/pending 200 in 8ms :: []
+8:08:38 AM [express] GET /api/stats/global 200 in 12ms :: {"totalPlayers":2,"activeToday":1,"totalACoinsGained":1,"totalCreditsGained":1}
+8:08:51 AM [express] GET /api/auth/me 304 in 5ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+8:08:52 AM [express] GET /api/logs/me 200 in 5ms :: [{"id":13,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216306605-885390010.jpeg","status":"rejected","adminNotes":null,"createdAt":"2026-03-11T08:05:06.611Z"},{"id":14,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216511030-519033080.jpg","status":"approved","adminNotes":null,"createdAt":"2026-03-11T08:08:32.477Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:09:56 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m

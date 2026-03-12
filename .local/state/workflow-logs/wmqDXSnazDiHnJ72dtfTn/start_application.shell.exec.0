@@ -1,0 +1,108 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K7:47:43 AM [express] serving on port 5000
+7:47:51 AM [express] GET /api/auth/me 401 in 2ms :: {"message":"Not authenticated"}
+7:48:03 AM [express] GET /api/auth/me 304 in 6ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":100090,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+7:48:03 AM [express] GET /api/logs/me 304 in 7ms :: [{"id":10,"userId":2,"date":"2026-03-11","aCoins":2340,"credits":150000,"aCoinChange":2106,"creditsChange":49910,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773213879315-497822673.png","status":"approved","adminNotes":null,"createdAt":"2026-03-11T07:24:40.426Z"}]
+7:48:07 AM [express] GET /api/auth/me 401 in 0ms :: {"message":"Not authenticated"}
+7:48:50 AM [express] GET /api/auth/me 304 in 4ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":100090,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+7:48:51 AM [express] GET /api/logs/me 304 in 7ms :: [{"id":10,"userId":2,"date":"2026-03-11","aCoins":2340,"credits":150000,"aCoinChange":2106,"creditsChange":49910,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773213879315-497822673.png","status":"approved","adminNotes":null,"createdAt":"2026-03-11T07:24:40.426Z"}]
+7:49:40 AM [express] POST /api/logs 201 in 346ms :: {"id":11,"userId":2,"date":"2026-03-11","aCoins":200000,"credits":2000000,"aCoinChange":197660,"creditsChange":1850000,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215380219-221921489.jpeg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T07:49:40.223Z"}
+7:49:40 AM [express] GET /api/logs/me 200 in 6ms :: [{"id":10,"userId":2,"date":"2026-03-11","aCoins":2340,"credits":150000,"aCoinChange":2106,"creditsChange":49910,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773213879315-497822673.png","status":"approved","adminNotes":null,"createdAt":"2026-03-11T07:24:40.426Z"},{"id":11,"userId":2,"date":"2026-03-11","aCoins":200000,"credits":2000000,"aCoinChange":197660,"creditsChange":1850000,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215380219-221921489.jpeg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T07:49:40.223Z"}]
+7:49:45 AM [express] GET /api/stats/global 200 in 8ms :: {"totalPlayers":2,"activeToday":1,"totalACoinsGained":2106,"totalCreditsGained":49910}
+7:49:45 AM [express] GET /api/admin/logs/pending 200 in 8ms :: [{"id":11,"userId":2,"date":"2026-03-11","aCoins":200000,"credits":2000000,"aCoinChange":197660,"creditsChange":1850000,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215380219-221921489.jpeg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T07:49:40.223Z","user":{"id":2,"username":"don_re","password":"881007b8ca5df8ba2c7e4a6750e686c056bdb137a888f708a4d761c278235fdc47814176b9509b5aea4d84e41d21557ffbf86f6932ab44b8595b77b4a77f3f29.6b0f3118154772d098b3ea7df741715a","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":100090,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}}]
+7:49:45 AM [express] GET /api/users 200 in 15ms :: [{"id":4,"username":"we@gamerz","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar9","startACoins":1,"startCredits":1,"role":"user","isDisqualified":false,"createdAt":"2026-03-08T11:27:48.324Z"},{"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":100090,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}]
+7:49:47 AM [express] PATCH /api/admin/logs/11/status 200 in 11ms :: {"id":11,"userId":2,"date":"2026-03-11","aCoins":200000,"credits":2000000,"aCoinChange":197660,"creditsChange":1850000,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215380219-221921489.jpeg","status":"approved","adminNotes":null,"createdAt":"2026-03-11T07:49:40.223Z"}
+7:49:48 AM [express] GET /api/admin/logs/pending 200 in 6ms :: []
+7:49:48 AM [express] GET /api/stats/global 200 in 9ms :: {"totalPlayers":2,"activeToday":1,"totalACoinsGained":199766,"totalCreditsGained":1899910}
+7:50:02 AM [express] GET /api/auth/me 304 in 6ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":100090,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+7:50:03 AM [express] GET /api/stats/global 304 in 8ms :: {"totalPlayers":2,"activeToday":1,"totalACoinsGained":199766,"totalCreditsGained":1899910}
+7:50:03 AM [express] GET /api/admin/logs/pending 304 in 6ms :: []
+7:50:03 AM [express] GET /api/users 304 in 5ms :: [{"id":4,"username":"we@gamerz","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar9","startACoins":1,"startCredits":1,"role":"user","isDisqualified":false,"createdAt":"2026-03-08T11:27:48.324Z"},{"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":100090,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}]
+7:50:08 AM [express] GET /api/leaderboard/a-coins 200 in 7ms :: [{"user":{"id":2,"username":"don_re","password":"","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":100090,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"},"totalApprovedChange":199766},{"user":{"id":4,"username":"we@gamerz","password":"","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar9","startACoins":1,"startCredits":1,"role":"user","isDisqualified":false,"createdAt":"2026-03-08T11:27:48.324Z"},"totalApprovedChange":0}]
+7:50:08 AM [express] GET /api/leaderboard/credits 200 in 5ms :: [{"user":{"id":2,"username":"don_re","password":"","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":100090,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"},"totalApprovedChange":1899910},{"user":{"id":4,"username":"we@gamerz","password":"","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar9","startACoins":1,"startCredits":1,"role":"user","isDisqualified":false,"createdAt":"2026-03-08T11:27:48.324Z"},"totalApprovedChange":0}]
+7:50:13 AM [express] GET /api/logs/me 200 in 7ms :: [{"id":10,"userId":2,"date":"2026-03-11","aCoins":2340,"credits":150000,"aCoinChange":2106,"creditsChange":49910,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773213879315-497822673.png","status":"approved","adminNotes":null,"createdAt":"2026-03-11T07:24:40.426Z"},{"id":11,"userId":2,"date":"2026-03-11","aCoins":200000,"credits":2000000,"aCoinChange":197660,"creditsChange":1850000,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215380219-221921489.jpeg","status":"approved","adminNotes":null,"createdAt":"2026-03-11T07:49:40.223Z"}]
+7:51:30 AM [express] GET /api/auth/me 200 in 4ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+7:51:31 AM [express] GET /api/logs/me 200 in 8ms :: []
+7:53:22 AM [express] POST /api/logs 201 in 116ms :: {"id":12,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215602150-672187236.jpeg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T07:53:22.152Z"}
+7:53:22 AM [express] GET /api/logs/me 200 in 6ms :: [{"id":12,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215602150-672187236.jpeg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T07:53:22.152Z"}]
+7:53:29 AM [express] GET /api/admin/logs/pending 200 in 15ms :: [{"id":12,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215602150-672187236.jpeg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T07:53:22.152Z","user":{"id":2,"username":"don_re","password":"881007b8ca5df8ba2c7e4a6750e686c056bdb137a888f708a4d761c278235fdc47814176b9509b5aea4d84e41d21557ffbf86f6932ab44b8595b77b4a77f3f29.6b0f3118154772d098b3ea7df741715a","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}}]
+7:53:29 AM [express] GET /api/stats/global 200 in 30ms :: {"totalPlayers":2,"activeToday":1,"totalACoinsGained":0,"totalCreditsGained":0}
+7:53:29 AM [express] GET /api/users 200 in 7ms :: [{"id":4,"username":"we@gamerz","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar9","startACoins":1,"startCredits":1,"role":"user","isDisqualified":false,"createdAt":"2026-03-08T11:27:48.324Z"},{"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}]
+7:53:38 AM [express] PATCH /api/admin/logs/12/status 200 in 9ms :: {"id":12,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215602150-672187236.jpeg","status":"approved","adminNotes":null,"createdAt":"2026-03-11T07:53:22.152Z"}
+7:53:39 AM [express] GET /api/admin/logs/pending 200 in 8ms :: []
+7:53:39 AM [express] GET /api/stats/global 200 in 8ms :: {"totalPlayers":2,"activeToday":1,"totalACoinsGained":1,"totalCreditsGained":1}
+7:53:59 AM [express] GET /api/auth/me 304 in 5ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+7:54:00 AM [express] GET /api/logs/me 200 in 10ms :: [{"id":12,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215602150-672187236.jpeg","status":"approved","adminNotes":null,"createdAt":"2026-03-11T07:53:22.152Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m7:55:21 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m

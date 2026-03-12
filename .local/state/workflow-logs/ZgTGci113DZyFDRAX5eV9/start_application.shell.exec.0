@@ -1,0 +1,78 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K8:30:54 AM [express] serving on port 5000
+8:31:01 AM [express] GET /api/auth/me 401 in 3ms :: {"message":"Not authenticated"}
+8:31:34 AM [express] GET /api/auth/me 304 in 5ms :: {"id":2,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+8:31:35 AM [express] GET /api/logs/me 304 in 8ms :: []
+8:31:55 AM [express] PATCH /api/users/me 200 in 9ms :: {"id":2,"username":"don_re","password":"881007b8ca5df8ba2c7e4a6750e686c056bdb137a888f708a4d761c278235fdc47814176b9509b5aea4d84e41d21557ffbf86f6932ab44b8595b77b4a77f3f29.6b0f3118154772d098b3ea7df741715a","country":"Brazil","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+8:32:19 AM [express] GET /api/auth/me 200 in 6ms :: {"id":2,"username":"don_re","country":"Brazil","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+8:32:20 AM [express] GET /api/logs/me 304 in 5ms :: []
+8:32:42 AM [express] PATCH /api/users/me 200 in 20ms :: {"id":2,"username":"don_re","password":"881007b8ca5df8ba2c7e4a6750e686c056bdb137a888f708a4d761c278235fdc47814176b9509b5aea4d84e41d21557ffbf86f6932ab44b8595b77b4a77f3f29.6b0f3118154772d098b3ea7df741715a","country":"United States","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+8:32:59 AM [express] GET /api/auth/me 200 in 5ms :: {"id":2,"username":"don_re","country":"United States","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+8:33:00 AM [express] GET /api/logs/me 304 in 5ms :: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:34:48 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:34:53 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m [33m(x2)[39m

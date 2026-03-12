@@ -1,0 +1,66 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K7:55:30 AM [express] serving on port 5000
+7:55:40 AM [express] GET /api/auth/me 304 in 6ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+7:55:41 AM [express] GET /api/logs/me 304 in 7ms :: [{"id":12,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773215602150-672187236.jpeg","status":"approved","adminNotes":null,"createdAt":"2026-03-11T07:53:22.152Z"}]
+7:55:48 AM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:01:34 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:01:38 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:01:43 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:01:54 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m [33m(x4)[39m

@@ -1,0 +1,17 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K8:41:46 AM [express] serving on port 5000
+8:42:08 AM [express] GET /api/auth/me 401 in 2ms :: {"message":"Not authenticated"}
+8:42:50 AM [express] GET /api/auth/me 401 in 5ms :: {"message":"Not authenticated"}
+8:49:32 AM [express] POST /api/auth/register 201 in 109ms :: {"id":9,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":false,"createdAt":"2026-03-11T08:49:32.288Z"}
+8:49:33 AM [express] GET /api/auth/me 200 in 9ms :: {"id":9,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":false,"createdAt":"2026-03-11T08:49:32.288Z"}
+8:49:33 AM [express] GET /api/logs/me 304 in 6ms :: []
+8:52:27 AM [express] POST /api/users/mark-welcome-seen 200 in 55ms :: {"id":9,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-11T08:49:32.288Z"}
+8:52:32 AM [express] GET /api/leaderboard/a-coins 200 in 7ms :: [{"user":{"id":9,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-11T08:49:32.288Z"},"totalApprovedChange":0}]
+8:52:32 AM [express] GET /api/leaderboard/credits 200 in 8ms :: [{"user":{"id":9,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-11T08:49:32.288Z"},"totalApprovedChange":0}]
+8:52:33 AM [express] GET /api/activities 200 in 7ms :: []
+8:52:56 AM [express] POST /api/users/mark-welcome-seen 200 in 18ms :: {"id":9,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-11T08:49:32.288Z"}
+8:53:03 AM [express] POST /api/users/mark-welcome-seen 200 in 10ms :: {"id":9,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-11T08:49:32.288Z"}
+8:53:13 AM [express] POST /api/users/mark-welcome-seen 200 in 11ms :: {"id":9,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-11T08:49:32.288Z"}

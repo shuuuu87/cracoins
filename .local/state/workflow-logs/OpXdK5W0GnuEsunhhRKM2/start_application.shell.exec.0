@@ -1,0 +1,125 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K8:13:03 AM [express] serving on port 5000
+8:13:03 AM [express] GET /api/auth/me 200 in 40ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+8:13:03 AM [express] GET /api/logs/me 200 in 44ms :: [{"id":13,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216306605-885390010.jpeg","status":"rejected","adminNotes":null,"createdAt":"2026-03-11T08:05:06.611Z"},{"id":14,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216511030-519033080.jpg","status":"approved","adminNotes":null,"createdAt":"2026-03-11T08:08:32.477Z"},{"id":15,"userId":2,"date":"2026-03-11","aCoins":3,"credits":3,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216672704-141208413.jpeg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T08:11:12.709Z"}]
+8:13:15 AM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+8:13:29 AM [express] GET /api/auth/me 304 in 5ms :: {"id":2,"username":"don_re","country":"IN","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":1,"startCredits":1,"role":"admin","isDisqualified":false,"createdAt":"2026-03-08T11:07:59.276Z"}
+8:13:31 AM [express] GET /api/logs/me 304 in 15ms :: [{"id":13,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216306605-885390010.jpeg","status":"rejected","adminNotes":null,"createdAt":"2026-03-11T08:05:06.611Z"},{"id":14,"userId":2,"date":"2026-03-11","aCoins":2,"credits":2,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216511030-519033080.jpg","status":"approved","adminNotes":null,"createdAt":"2026-03-11T08:08:32.477Z"},{"id":15,"userId":2,"date":"2026-03-11","aCoins":3,"credits":3,"aCoinChange":1,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773216672704-141208413.jpeg","status":"pending","adminNotes":null,"createdAt":"2026-03-11T08:11:12.709Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:19:49 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:20:04 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:20:06 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m8:20:06 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/dashboard.tsx, /src/index.css[22m [33m(x4)[39m
