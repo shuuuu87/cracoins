@@ -1,0 +1,18 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K8:58:20 AM [express] serving on port 5000
+[2m8:58:26 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@assets/WhatsApp_Image_2026-03-10_at_2.22.33_PM_(1)_1773132902868.jpeg" from "client/src/lib/avatars.ts". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/client/src/lib/avatars.ts[39m:1:20
+[33m  1  |  import avatar1 from "@assets/WhatsApp_Image_2026-03-10_at_2.22.33_PM_(1)_1773132902868.jpeg";
+     |                       ^
+  2  |  import avatar2 from "@assets/WhatsApp_Image_2026-03-10_at_2.22.33_PM_1773132902870.jpeg";
+  3  |  import avatar3 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.49_PM_1773132902871.jpeg";[39m
+[1G[0K⠙[1G[0K[1mnpm[22m [96mnotice[39m
+[1mnpm[22m [96mnotice[39m New [31mmajor[39m version of npm available! [31m10.8.2[39m -> [34m11.11.1[39m
+[1mnpm[22m [96mnotice[39m Changelog: [34mhttps://github.com/npm/cli/releases/tag/v11.11.1[39m
+[1mnpm[22m [96mnotice[39m To update run: [4mnpm install -g npm@11.11.1[24m
+[1mnpm[22m [96mnotice[39m
+[1G[0K⠙[1G[0K

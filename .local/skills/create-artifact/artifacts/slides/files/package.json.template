@@ -10,12 +10,6 @@
     "validate-slides": "pnpm exec tsx scripts/validate-slides.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
-  "dependencies": {
-    "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-router-dom": "^7.9.5",
-    "zod": "catalog:"
-  },
   "devDependencies": {
     "@replit/vite-plugin-cartographer": "catalog:",
     "@replit/vite-plugin-dev-banner": "catalog:",
@@ -25,8 +19,12 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-router-dom": "^7.9.5",
     "tailwindcss": "catalog:",
     "tsx": "catalog:",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "zod": "catalog:"
   }
 }

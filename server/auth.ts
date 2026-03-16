@@ -96,6 +96,11 @@ export function setupAuth(app: Express) {
         role: req.body.username === "don_re" ? "admin" : "user",
       });
 
+      await storage.createActivity({
+        type: 'join',
+        message: `${user.username} joined the No-Spend Challenge! Welcome, Pilot!`,
+      });
+
       req.login(user, (err) => {
         if (err) return next(err);
         const { password, ...safeUser } = user;

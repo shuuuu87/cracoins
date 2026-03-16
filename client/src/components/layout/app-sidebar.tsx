@@ -1,11 +1,10 @@
-import { Home, LayoutDashboard, Trophy, Activity, User, ShieldAlert, LogOut } from "lucide-react";
+import { LayoutDashboard, Trophy, Activity, User, ShieldAlert, LogOut, Coins } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -32,54 +31,79 @@ export function AppSidebar() {
   ];
 
   return (
-    <Sidebar variant="sidebar" className="border-r border-border/50">
+    <Sidebar variant="sidebar" className="border-r border-border/60 bg-white">
       <SidebarContent>
-        <div className="p-6">
-          <h1 className="text-2xl font-display font-bold text-primary text-shadow-glow tracking-tight uppercase">
-            Mech Tracker
-          </h1>
+        {/* Brand Header */}
+        <div className="p-5 pb-4 border-b border-border/50">
+          <div className="flex items-center gap-2.5">
+            <div className="h-9 w-9 rounded-xl gradient-primary flex items-center justify-center shadow-sm">
+              <Coins className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <h1 className="text-lg font-display font-bold text-foreground leading-tight">
+                CraCoins
+              </h1>
+              <p className="text-xs text-muted-foreground font-medium">No-Spend Challenge</p>
+            </div>
+          </div>
         </div>
 
+        {/* User Profile */}
         {user && (
-          <div className="px-6 py-4 flex items-center gap-3 border-b border-border/50">
-            <Avatar className="h-12 w-12 border border-primary/50">
+          <div className="px-4 py-3 mx-3 mt-4 mb-2 bg-background rounded-xl flex items-center gap-3">
+            <Avatar className="h-10 w-10 border-2 border-primary/20">
               <AvatarImage src={getAvatarImage(user.avatar) || undefined} alt={user.username} />
-              <AvatarFallback>{user.username.charAt(0)}</AvatarFallback>
+              <AvatarFallback className="bg-primary/10 text-primary font-semibold text-sm">
+                {user.username.charAt(0).toUpperCase()}
+              </AvatarFallback>
             </Avatar>
-            <div className="flex flex-col overflow-hidden">
-              <span className="font-semibold text-sm truncate">{user.username}</span>
-              <span className="text-xs text-muted-foreground uppercase">{user.role}</span>
+            <div className="flex flex-col overflow-hidden min-w-0">
+              <span className="font-semibold text-sm truncate text-foreground">{user.username}</span>
+              <span className="text-xs text-muted-foreground capitalize">{user.role}</span>
             </div>
           </div>
         )}
 
-        <SidebarGroup>
-          <SidebarGroupLabel className="uppercase text-xs tracking-wider">Navigation</SidebarGroupLabel>
+        <SidebarGroup className="px-3 pt-2">
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-3 mb-2">Menu</p>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton 
-                    asChild 
-                    isActive={location === item.url}
-                    tooltip={item.title}
-                  >
-                    <Link href={item.url} className="hover-elevate">
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-              
+            <SidebarMenu className="gap-0.5">
+              {menuItems.map((item) => {
+                const isActive = location === item.url;
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isActive}
+                      tooltip={item.title}
+                      className={`rounded-xl h-10 font-medium transition-all ${
+                        isActive
+                          ? 'bg-primary text-white shadow-sm hover:bg-primary/90'
+                          : 'text-muted-foreground hover:bg-background hover:text-foreground'
+                      }`}
+                    >
+                      <Link href={item.url}>
+                        <item.icon className="h-4 w-4" />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+
               {user?.role === "admin" && (
                 <SidebarMenuItem>
-                  <SidebarMenuButton 
-                    asChild 
+                  <SidebarMenuButton
+                    asChild
                     isActive={location === "/admin"}
-                    className="text-accent hover:text-accent-foreground"
+                    tooltip="Admin Panel"
+                    className={`rounded-xl h-10 font-medium transition-all ${
+                      location === "/admin"
+                        ? 'bg-destructive text-white shadow-sm'
+                        : 'text-destructive/80 hover:bg-destructive/10 hover:text-destructive'
+                    }`}
                   >
-                    <Link href="/admin" className="hover-elevate">
+                    <Link href="/admin">
                       <ShieldAlert className="h-4 w-4" />
                       <span>Admin Panel</span>
                     </Link>
@@ -90,13 +114,16 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      
-      <SidebarFooter className="p-4 border-t border-border/50">
+
+      <SidebarFooter className="p-3 border-t border-border/50">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton onClick={handleLogout} className="text-destructive hover:bg-destructive/10">
+            <SidebarMenuButton
+              onClick={handleLogout}
+              className="rounded-xl h-10 text-muted-foreground hover:bg-red-50 hover:text-red-500 font-medium transition-all"
+            >
               <LogOut className="h-4 w-4" />
-              <span>Disconnect</span>
+              <span>Sign Out</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

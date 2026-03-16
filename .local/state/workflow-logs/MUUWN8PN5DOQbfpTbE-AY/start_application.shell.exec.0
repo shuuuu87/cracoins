@@ -1,0 +1,54 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K4:45:46 PM [express] serving on port 5000
+4:46:10 PM [express] GET /api/auth/me 304 in 54ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"}
+4:46:15 PM [express] GET /api/logs/me 200 in 75ms :: [{"id":1,"userId":1,"date":"2026-03-14","aCoins":12,"credits":22834,"aCoinChange":12,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773506173985-579426685.jpeg","status":"approved","adminNotes":null,"createdAt":"2026-03-14T16:36:14.008Z"}]
+4:46:22 PM [express] GET /api/auth/me 304 in 48ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"}
+4:46:24 PM [express] GET /api/logs/me 304 in 64ms :: [{"id":1,"userId":1,"date":"2026-03-14","aCoins":12,"credits":22834,"aCoinChange":12,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773506173985-579426685.jpeg","status":"approved","adminNotes":null,"createdAt":"2026-03-14T16:36:14.008Z"}]
+4:49:09 PM [express] GET /api/leaderboard/credits 200 in 184ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"},"totalApprovedChange":1},{"user":{"id":2,"username":"we©gamerpro ","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar32","startACoins":11,"startCredits":392604,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T08:57:34.219Z"},"totalApprovedChange":0},{"user":{"id":4,"username":"Rataaa","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar13","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T09:25:04.875Z"},"totalApprovedChange":0}]
+4:49:09 PM [express] GET /api/leaderboard/a-coins 200 in 226ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"},"totalApprovedChange":12},{"user":{"id":2,"username":"we©gamerpro ","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar32","startACoins":11,"startCredits":392604,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T08:57:34.219Z"},"totalApprovedChange":0},{"user":{"id":4,"username":"Rataaa","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar13","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T09:25:04.875Z"},"totalApprovedChange":0}]
+4:49:22 PM [express] GET /api/leaderboard/a-coins 304 in 180ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"},"totalApprovedChange":12},{"user":{"id":2,"username":"we©gamerpro ","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar32","startACoins":11,"startCredits":392604,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T08:57:34.219Z"},"totalApprovedChange":0},{"user":{"id":4,"username":"Rataaa","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar13","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T09:25:04.875Z"},"totalApprovedChange":0}]
+4:49:22 PM [express] GET /api/leaderboard/credits 304 in 200ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"},"totalApprovedChange":1},{"user":{"id":2,"username":"we©gamerpro ","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar32","startACoins":11,"startCredits":392604,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T08:57:34.219Z"},"totalApprovedChange":0},{"user":{"id":4,"username":"Rataaa","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar13","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T09:25:04.875Z"},"totalApprovedChange":0}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m4:52:36 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/protocol-ended.tsx, /src/index.css[22m

@@ -172,7 +172,7 @@ Each task object:
 | `id` | str | No | Alias for this task within the batch. Used by other tasks' `dependsOn` to declare dependencies. Auto-generated if omitted. |
 | `title` | str | Yes | Short title for the task |
 | `filePath` | str | Yes | Path to the plan file (e.g. `.local/tasks/payment-integration.md`). The file content becomes the task description. |
-| `dependsOn` | array | No | List of `id` values from other tasks in this batch, or task refs (`"#1"`, `"#2"`) of already-existing tasks. |
+| `dependsOn` | array | No | List of `id` values from other tasks in this batch, or task refs (`"#1"`, `"#2"`) of already-existing accepted tasks. Never depend on existing PROPOSED tasks — only on tasks that are PENDING or later. Tasks within the same batch may depend on each other freely. |
 
 **Returns:** List of created task dicts with `taskRef`, `title`, `description`, `state`, `dependsOn`, `createdAt`, `updatedAt`
 
@@ -240,7 +240,9 @@ with `#`. Then include these sections:
   - WRONG: `src/api/billing.ts` — Billing API handlers (lines 12-85)
 
 Assume features build on each other. If a new task depends on another task,
-declare that dependency via `dependsOn` rather than in the plan body.
+declare that dependency via `dependsOn` rather than in the plan body. You
+may depend on existing tasks that are PENDING or later — never on existing
+PROPOSED tasks. Tasks within the same batch may depend on each other freely.
 
 Rules for the `## Tasks` section:
 

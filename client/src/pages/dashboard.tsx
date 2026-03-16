@@ -12,6 +12,7 @@ import { AlertCircle, Upload, CheckCircle2, XCircle, Clock, Lock } from "lucide-
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { getTimezoneForCountry } from "@/lib/timezones";
 import { WelcomeModal } from "@/components/welcome-modal";
+import { useProtocol } from "@/hooks/use-protocol";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -31,10 +32,7 @@ export default function Dashboard() {
     }
   }, [user]);
 
-  const challengeStart = new Date("2026-04-24T00:00:00Z");
-  const challengeEnd = new Date("2026-08-24T00:00:00Z");
-  const now = new Date();
-  const protocolStarted = now >= challengeStart;
+  const { challengeStart, challengeEnd, protocolStarted, now } = useProtocol();
   const countdownTarget = protocolStarted ? challengeEnd : challengeStart;
   const countdownLabel = protocolStarted ? "Protocol Ends In" : "Protocol Starts In";
 
@@ -226,17 +224,17 @@ export default function Dashboard() {
     <div className="space-y-6">
       <WelcomeModal open={showWelcome} onClose={handleWelcomeClose} />
 
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-2">
         <div>
-          <h1 className="text-3xl font-display font-bold uppercase tracking-widest text-primary text-shadow-glow">Command Center</h1>
-          <p className="text-muted-foreground mt-1">Welcome back, Pilot {user.username}.</p>
+          <h1 className="text-2xl font-display font-bold text-foreground">Dashboard</h1>
+          <p className="text-muted-foreground mt-1">Welcome back, <span className="font-semibold text-primary">{user.username}</span>.</p>
         </div>
       </div>
 
       {user.isDisqualified && (
         <Alert variant="destructive" className="border-2 glass-panel border-destructive">
           <AlertCircle className="h-5 w-5" />
-          <AlertTitle className="font-display uppercase tracking-widest">PROTOCOL BREACH DETECTED</AlertTitle>
+          <AlertTitle className="font-display font-bold">Challenge Violation Detected</AlertTitle>
           <AlertDescription>
             You have been disqualified from the challenge due to a violation of the spending rules.
           </AlertDescription>
@@ -246,7 +244,7 @@ export default function Dashboard() {
       {!protocolStarted && (
         <Alert variant="destructive" className="border-2 glass-panel border-destructive mb-6">
           <AlertCircle className="h-5 w-5" />
-          <AlertTitle className="font-display uppercase tracking-widest">PROTOCOL LOCKED</AlertTitle>
+          <AlertTitle className="font-display font-bold">Challenge Not Started Yet</AlertTitle>
           <AlertDescription>
             All dashboard sections are locked until the protocol starts on {getProtocolStartTimeInUserTimezone}
           </AlertDescription>
@@ -264,7 +262,7 @@ export default function Dashboard() {
           
           <Card className={`glass-panel border-accent/20 transition-all ${!protocolStarted ? 'blur-sm opacity-40 pointer-events-none' : ''}`}>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-muted-foreground uppercase tracking-widest">Net Approved Gains</CardTitle>
+              <CardTitle className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Net Approved Gains</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex justify-between items-end border-b border-border/50 pb-4 mb-4">
@@ -280,23 +278,37 @@ export default function Dashboard() {
 
           <Card className={`glass-panel border-muted ${!protocolStarted ? 'blur-sm' : ''}`}>
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-muted-foreground uppercase tracking-widest">End Prediction (Aug 24)</CardTitle>
+              <CardTitle className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">End Prediction (Aug 24)</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <p className="text-xs text-muted-foreground mb-1">A-Coins Projected</p>
-                <div className="text-3xl font-display font-bold text-accent">
+            <CardContent className="space-y-3">
+              <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-xs font-semibold text-accent uppercase tracking-wider">A-Coins by Aug 24</p>
+                  <span className="text-xs text-muted-foreground">+{Math.round(avgACoinsPerDay)}/day avg</span>
+                </div>
+                <div className="text-2xl font-display font-bold text-accent">
                   {Math.round(Math.max(user.startACoins, predictedACoins)).toLocaleString()}
                 </div>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  from {user.startACoins.toLocaleString()} starting
+                </p>
               </div>
-              <div>
-                <p className="text-xs text-muted-foreground mb-1">Credits Projected</p>
-                <div className="text-3xl font-display font-bold text-primary">
+
+              <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
+                <div className="flex items-center justify-between mb-1">
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">Credits by Aug 24</p>
+                  <span className="text-xs text-muted-foreground">+{Math.round(avgCreditsPerDay)}/day avg</span>
+                </div>
+                <div className="text-2xl font-display font-bold text-primary">
                   {Math.round(Math.max(user.startCredits, predictedCredits)).toLocaleString()}
                 </div>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  from {user.startCredits.toLocaleString()} starting
+                </p>
               </div>
-              <div className="text-xs text-muted-foreground pt-2 border-t border-border/30">
-                {daysRemaining} days remaining • Avg {Math.round(avgACoinsPerDay)}/day
+
+              <div className="text-xs text-muted-foreground pt-1 border-t border-border/30 text-center">
+                {daysRemaining} days remaining in challenge
               </div>
             </CardContent>
           </Card>
@@ -306,7 +318,7 @@ export default function Dashboard() {
         <div className="lg:col-span-2 space-y-6">
           <Card className={`glass-panel overflow-hidden border-border/50 transition-all ${!protocolStarted ? 'blur-sm opacity-40 pointer-events-none' : ''}`}>
             <CardHeader>
-              <CardTitle className="font-display tracking-widest uppercase">Resource Trajectory</CardTitle>
+              <CardTitle className="font-display text-base font-semibold">Resource Trajectory</CardTitle>
             </CardHeader>
             <CardContent>
               {chartData.length === 0 ? (
@@ -349,7 +361,7 @@ export default function Dashboard() {
               </div>
             )}
             <CardHeader>
-              <CardTitle className="font-display tracking-widest uppercase text-primary">Daily Submission</CardTitle>
+              <CardTitle className="font-display text-base font-semibold text-primary">Daily Submission</CardTitle>
               <CardDescription>Upload screenshot proof of your current resources.</CardDescription>
               {rejectedToday && (
                 <Alert className="mt-4 border-destructive/50 bg-destructive/10">
@@ -423,7 +435,7 @@ export default function Dashboard() {
 
       {/* Recent Submissions Log */}
       <div className={`transition-all ${!protocolStarted ? 'blur-sm opacity-40 pointer-events-none' : ''}`}>
-        <h2 className="text-xl font-display uppercase tracking-widest text-primary mt-12 mb-4">Submission History</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mt-12 mb-4">Submission History</h2>
         <div className="space-y-3">
         {loadingLogs ? (
           <div className="text-center p-8 text-muted-foreground">Loading logs...</div>

@@ -1,42 +1,36 @@
-import avatar1 from "@assets/WhatsApp_Image_2026-03-10_at_2.22.33_PM_(1)_1773132902868.jpeg";
-import avatar2 from "@assets/WhatsApp_Image_2026-03-10_at_2.22.33_PM_1773132902870.jpeg";
-import avatar3 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.49_PM_1773132902871.jpeg";
-import avatar4 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.48_PM_(2)_1773132902872.jpeg";
-import avatar5 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.48_PM_(1)_1773132902874.jpeg";
-import avatar6 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.48_PM_1773132902875.jpeg";
-import avatar7 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.47_PM_1773132902876.jpeg";
-import avatar8 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.45_PM_(1)_1773132902877.jpeg";
-import avatar9 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.45_PM_1773132902879.jpeg";
-import avatar10 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.44_PM_(1)_1773132902880.jpeg";
-import avatar11 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.44_PM_1773132902881.jpeg";
-import avatar12 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.43_PM_(2)_1773132902883.jpeg";
-import avatar13 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.43_PM_(1)_1773132902884.jpeg";
-import avatar14 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.43_PM_1773132902885.jpeg";
-import avatar15 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.42_PM_(1)_1773132902887.jpeg";
-import avatar16 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.42_PM_1773132902888.jpeg";
-import avatar17 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.41_PM_(1)_1773132902889.jpeg";
-import avatar18 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.41_PM_1773132902890.jpeg";
-import newAvatar1 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.43_PM_1773215125080.jpeg";
-import newAvatar2 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.47_PM_(1)_1773215141447.jpeg";
-import newAvatar3 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.47_PM_1773215141449.jpeg";
-import newAvatar4 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.46_PM_(1)_1773215141450.jpeg";
-import newAvatar5 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.46_PM_1773215141452.jpeg";
-import newAvatar6 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.45_PM_(1)_1773215141454.jpeg";
-import newAvatar7 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.45_PM_1773215141456.jpeg";
-import newAvatar8 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.44_PM_(1)_1773215141459.jpeg";
-import newAvatar9 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.44_PM_1773215141461.jpeg";
-import newAvatar10 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.54_PM_1773215158326.jpeg";
-import newAvatar11 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.53_PM_(1)_1773215158329.jpeg";
-import newAvatar12 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.53_PM_1773215158330.jpeg";
-import newAvatar13 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.52_PM_(1)_1773215158332.jpeg";
-import newAvatar14 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.52_PM_1773215158333.jpeg";
-import newAvatar15 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.51_PM_(1)_1773215158335.jpeg";
-import newAvatar16 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.51_PM_1773215158336.jpeg";
-import newAvatar17 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.50_PM_(1)_1773215158337.jpeg";
-import avatar36 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.50_PM_1773217612974.jpeg";
-import avatar37 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.49_PM_1773217612977.jpeg";
-import avatar38 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.48_PM_(1)_1773217612978.jpeg";
-import avatar39 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.48_PM_1773217612980.jpeg";
+import avatar1 from "@assets/WhatsApp_Image_2026-03-10_at_2.22.33_PM_(1)_1773132902868_1773566690065.jpeg";
+import avatar2 from "@assets/WhatsApp_Image_2026-03-10_at_2.22.33_PM_1773132902870_1773566690069.jpeg";
+import avatar3 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.49_PM_1773132902871_1773566677864.jpeg";
+import avatar4 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.48_PM_(2)_1773132902872_1773566665341.jpeg";
+import avatar5 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.48_PM_(1)_1773132902874_1773566665339.jpeg";
+import avatar6 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.48_PM_1773132902875_1773566677851.jpeg";
+import avatar7 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.47_PM_1773132902876_1773566653017.jpeg";
+import avatar8 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.45_PM_(1)_1773132902877_1773566639719.jpeg";
+import avatar9 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.45_PM_1773132902879_1773566653015.jpeg";
+import avatar10 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.44_PM_(1)_1773132902880_1773566639713.jpeg";
+import avatar11 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.44_PM_1773132902881_1773566639715.jpeg";
+import avatar12 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.43_PM_(2)_1773132902883_1773566639710.jpeg";
+import avatar13 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.43_PM_(1)_1773132902884_1773566639709.jpeg";
+import avatar14 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.43_PM_1773132902885_1773566639712.jpeg";
+import avatar15 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.42_PM_(1)_1773132902887_1773566639706.jpeg";
+import avatar16 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.42_PM_1773132902888_1773566639708.jpeg";
+import avatar17 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.41_PM_(1)_1773132902889_1773566627062.jpeg";
+import avatar18 from "@assets/WhatsApp_Image_2026-03-10_at_2.20.41_PM_1773132902890_1773566616806.jpeg";
+import avatar19 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.43_PM_1773215125080_1773566699962.jpeg";
+import avatar20 from "@assets/WhatsApp_Image_2026-03-11_at_1.11.44_PM_(1)_1773215141459_1773566699964.jpeg";
+
+const DICEBEAR_BASE = "https://api.dicebear.com/7.x/bottts/svg";
+const dicebearSeeds = [
+  "titan-02", "titan-03", "titan-04", "titan-05", "titan-06",
+  "titan-07", "titan-08", "titan-09", "titan-10", "titan-11",
+  "titan-12", "titan-13", "titan-14", "titan-15", "titan-16",
+  "titan-17", "titan-18", "titan-19", "titan-20",
+];
+
+const dicebearAvatars = dicebearSeeds.map((seed, i) => ({
+  id: `avatar${i + 21}`,
+  image: `${DICEBEAR_BASE}?seed=${seed}&backgroundColor=b6e3f4,c0aede,ffd5dc,ffdfbf&backgroundType=gradientLinear`,
+}));
 
 export const AVATAR_LIST = [
   { id: "avatar1", image: avatar1 },
@@ -57,27 +51,9 @@ export const AVATAR_LIST = [
   { id: "avatar16", image: avatar16 },
   { id: "avatar17", image: avatar17 },
   { id: "avatar18", image: avatar18 },
-  { id: "avatar19", image: newAvatar1 },
-  { id: "avatar20", image: newAvatar2 },
-  { id: "avatar21", image: newAvatar3 },
-  { id: "avatar22", image: newAvatar4 },
-  { id: "avatar23", image: newAvatar5 },
-  { id: "avatar24", image: newAvatar6 },
-  { id: "avatar25", image: newAvatar7 },
-  { id: "avatar26", image: newAvatar8 },
-  { id: "avatar27", image: newAvatar9 },
-  { id: "avatar28", image: newAvatar10 },
-  { id: "avatar29", image: newAvatar11 },
-  { id: "avatar30", image: newAvatar12 },
-  { id: "avatar31", image: newAvatar13 },
-  { id: "avatar32", image: newAvatar14 },
-  { id: "avatar33", image: newAvatar15 },
-  { id: "avatar34", image: newAvatar16 },
-  { id: "avatar35", image: newAvatar17 },
-  { id: "avatar36", image: avatar36 },
-  { id: "avatar37", image: avatar37 },
-  { id: "avatar38", image: avatar38 },
-  { id: "avatar39", image: avatar39 },
+  { id: "avatar19", image: avatar19 },
+  { id: "avatar20", image: avatar20 },
+  ...dicebearAvatars,
 ];
 
 export const getAvatarImage = (avatarId: string): string | undefined => {

@@ -1,0 +1,78 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K8:59:37 AM [express] serving on port 5000
+8:59:44 AM [express] GET /api/auth/me 401 in 3ms :: {"message":"Not authenticated"}
+8:59:53 AM [express] GET /api/auth/me 304 in 46ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"}
+8:59:54 AM [express] GET /api/logs/me 304 in 71ms :: []
+9:00:47 AM [express] GET /api/leaderboard/a-coins 200 in 199ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"},"totalApprovedChange":0},{"user":{"id":4,"username":"Rataaa","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar13","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T09:25:04.875Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"we©gamerpro ","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar32","startACoins":11,"startCredits":392604,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T08:57:34.219Z"},"totalApprovedChange":0}]
+9:00:47 AM [express] GET /api/leaderboard/credits 200 in 201ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"},"totalApprovedChange":0},{"user":{"id":4,"username":"Rataaa","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar13","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T09:25:04.875Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"we©gamerpro ","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar32","startACoins":11,"startCredits":392604,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T08:57:34.219Z"},"totalApprovedChange":0}]
+9:01:02 AM [express] GET /api/activities 304 in 154ms :: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m9:01:03 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m9:01:05 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "@/hooks/use-announce" from "client/src/pages/admin.tsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/client/src/pages/admin.tsx[39m:6:28
+[33m  21 |  import { useGlobalStats } from "@/hooks/use-stats";
+  22 |  import { useUsers, useUpdateUserRole, useReinstateUser, useUpdateStartingValues, useUserLogs } from "@/hooks/use-users";
+  23 |  import { useAnnounce } from "@/hooks/use-announce";
+     |                               ^
+  24 |  import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+  25 |  import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";[39m
+      at TransformPluginContext._formatLog (/home/runner/workspace/node_modules/vite/dist/node/chunks/config.js:28998:43)
+      at TransformPluginContext.error (/home/runner/workspace/node_modules/vite/dist/node/chunks/config.js:28995:14)
+      at normalizeUrl (/home/runner/workspace/node_modules/vite/dist/node/chunks/config.js:27118:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async <anonymous> (/home/runner/workspace/node_modules/vite/dist/node/chunks/config.js:27176:32)
+      at async Promise.all (index 8)
+      at async TransformPluginContext.transform (/home/runner/workspace/node_modules/vite/dist/node/chunks/config.js:27144:4)
+      at async EnvironmentPluginContainer.transform (/home/runner/workspace/node_modules/vite/dist/node/chunks/config.js:28796:14)
+      at async loadAndTransform (/home/runner/workspace/node_modules/vite/dist/node/chunks/config.js:22669:26)
+      at async viteTransformMiddleware (/home/runner/workspace/node_modules/vite/dist/node/chunks/config.js:24541:20)
+[1G[0K⠙[1G[0K

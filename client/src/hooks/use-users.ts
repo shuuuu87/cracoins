@@ -32,3 +32,71 @@ export function useUpdateUserRole() {
     },
   });
 }
+
+export function useReinstateUser() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (id: number) => {
+      const res = await fetch(`/api/admin/users/${id}/reinstate`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+      if (!res.ok) throw new Error("Failed to reinstate user");
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [api.users.list.path] });
+    },
+  });
+}
+
+export function useUpdateStartingValues() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ id, startACoins, startCredits }: { id: number; startACoins: number; startCredits: number }) => {
+      const res = await fetch(`/api/admin/users/${id}/starting-values`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ startACoins, startCredits }),
+        credentials: 'include',
+      });
+      if (!res.ok) throw new Error("Failed to update starting values");
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [api.users.list.path] });
+    },
+  });
+}
+
+export function useUserLogs(userId: number) {
+  return useQuery({
+    queryKey: ['/api/admin/users', userId, 'logs'],
+    queryFn: async () => {
+      const res = await fetch(`/api/admin/users/${userId}/logs`, { credentials: 'include' });
+      if (!res.ok) throw new Error("Failed to fetch user logs");
+      return res.json();
+    },
+    enabled: !!userId,
+  });
+}
+
+export function useMyStats() {
+  return useQuery({
+    queryKey: ['/api/users/me/stats'],
+    queryFn: async () => {
+      const res = await fetch('/api/users/me/stats', { credentials: 'include' });
+      if (!res.ok) throw new Error("Failed to fetch stats");
+      return res.json() as Promise<{
+        totalSubmissions: number;
+        approved: number;
+        rejected: number;
+        pending: number;
+        totalACoinsEarned: number;
+        totalCreditsEarned: number;
+      }>;
+    },
+  });
+}

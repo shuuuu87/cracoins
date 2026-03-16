@@ -156,13 +156,52 @@ export async function registerRoutes(
       const { status, adminNotes } = api.logs.updateStatus.input.parse(req.body);
       const id = parseInt(req.params.id);
       const log = await storage.updateLogStatus(id, status, adminNotes);
-      
-      // If approved, we might need to actually update the user's total tracking,
-      // but we compute dynamically for MVP.
-      
-      // If a-coins spent, disqualify?
-      // In MVP, we just do it via admin dashboard visually
-      
+
+      // Fetch the user who owns this log
+      const logOwner = await storage.getUser(log.userId);
+      const username = logOwner?.username || 'Unknown';
+
+      if (status === 'approved') {
+        await storage.createActivity({
+          type: 'approved',
+          message: `${username}'s daily submission was approved. +${log.aCoinChange} A-Coins, +${log.creditsChange} Credits.`,
+        });
+
+        // Check milestones on A-Coins
+        const allLogs = await storage.getUserLogs(log.userId);
+        const totalACoins = allLogs
+          .filter(l => l.status === 'approved')
+          .reduce((sum, l) => sum + l.aCoinChange, 0);
+        const totalCredits = allLogs
+          .filter(l => l.status === 'approved')
+          .reduce((sum, l) => sum + l.creditsChange, 0);
+
+        const acoinMilestones = [1000, 5000, 10000, 50000, 100000];
+        for (const m of acoinMilestones) {
+          if (totalACoins >= m && (totalACoins - log.aCoinChange) < m) {
+            await storage.createActivity({
+              type: 'milestone',
+              message: `🏅 ${username} reached ${m.toLocaleString()} A-Coins earned!`,
+            });
+          }
+        }
+
+        const creditMilestones = [10000, 50000, 100000, 500000, 1000000];
+        for (const m of creditMilestones) {
+          if (totalCredits >= m && (totalCredits - log.creditsChange) < m) {
+            await storage.createActivity({
+              type: 'milestone',
+              message: `🏅 ${username} reached ${m.toLocaleString()} Credits earned!`,
+            });
+          }
+        }
+      } else if (status === 'rejected') {
+        await storage.createActivity({
+          type: 'rejected',
+          message: `${username}'s submission was rejected${adminNotes ? ': ' + adminNotes : '.'}`,
+        });
+      }
+
       res.status(200).json(log);
     } catch(err: any) {
        res.status(400).json({ message: err.message });
@@ -217,6 +256,86 @@ export async function registerRoutes(
       res.status(200).json({ ...user, password: '' });
     } catch (err) {
       res.status(500).json({ message: 'Failed to update welcome status' });
+    }
+  });
+
+  // --- ADMIN EXTENDED ---
+
+  // Reinstate a disqualified user
+  app.post('/api/admin/users/:id/reinstate', isAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const target = await storage.getUser(id);
+      if (!target) return res.status(404).json({ message: 'User not found' });
+      const updated = await storage.updateUser(id, { isDisqualified: false });
+      await storage.createActivity({
+        type: 'reinstate',
+        message: `${target.username} has been reinstated by an admin.`,
+      });
+      const { password, ...safe } = updated;
+      res.status(200).json(safe);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  // Edit a user's starting resource values
+  app.patch('/api/admin/users/:id/starting-values', isAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const { startACoins, startCredits } = z.object({
+        startACoins: z.number().int().min(0),
+        startCredits: z.number().int().min(0),
+      }).parse(req.body);
+      const updated = await storage.updateUser(id, { startACoins, startCredits });
+      const { password, ...safe } = updated;
+      res.status(200).json(safe);
+    } catch (err: any) {
+      res.status(400).json({ message: err.message });
+    }
+  });
+
+  // Post a custom network announcement
+  app.post('/api/admin/announce', isAdmin, async (req, res) => {
+    try {
+      const { message } = z.object({ message: z.string().min(1) }).parse(req.body);
+      const activity = await storage.createActivity({ type: 'announcement', message });
+      res.status(201).json(activity);
+    } catch (err: any) {
+      res.status(400).json({ message: err.message });
+    }
+  });
+
+  // View any user's logs (admin)
+  app.get('/api/admin/users/:id/logs', isAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const logs = await storage.getUserLogs(id);
+      res.status(200).json(logs);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  // Get personal stats for profile
+  app.get('/api/users/me/stats', isAuthenticated, async (req, res) => {
+    try {
+      const logs = await storage.getUserLogs(req.user!.id);
+      const approved = logs.filter(l => l.status === 'approved');
+      const rejected = logs.filter(l => l.status === 'rejected');
+      const pending = logs.filter(l => l.status === 'pending');
+      const totalACoinsEarned = approved.reduce((s, l) => s + Math.max(0, l.aCoinChange), 0);
+      const totalCreditsEarned = approved.reduce((s, l) => s + Math.max(0, l.creditsChange), 0);
+      res.status(200).json({
+        totalSubmissions: logs.length,
+        approved: approved.length,
+        rejected: rejected.length,
+        pending: pending.length,
+        totalACoinsEarned,
+        totalCreditsEarned,
+      });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
     }
   });
 

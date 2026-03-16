@@ -58,19 +58,21 @@ export default function Leaderboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-display font-bold uppercase tracking-widest text-foreground text-shadow-glow flex items-center gap-3">
-          <Trophy className="h-8 w-8 text-primary" />
-          Global Rankings
+        <h1 className="text-2xl font-display font-bold text-foreground flex items-center gap-3">
+          <div className="h-9 w-9 rounded-xl gradient-primary flex items-center justify-center">
+            <Trophy className="h-5 w-5 text-white" />
+          </div>
+          Leaderboard
         </h1>
-        <p className="text-muted-foreground mt-1">Compare your performance against top pilots.</p>
+        <p className="text-muted-foreground mt-1">See how you rank against other challengers.</p>
       </div>
 
       <Tabs defaultValue="acoins" className="w-full">
-        <TabsList className="grid w-full max-w-md grid-cols-2 bg-card border border-border">
-          <TabsTrigger value="acoins" className="uppercase font-display tracking-wider data-[state=active]:bg-accent/20 data-[state=active]:text-accent">
+        <TabsList className="grid w-full max-w-md grid-cols-2 bg-muted/60 rounded-xl p-1">
+          <TabsTrigger value="acoins" className="rounded-lg font-semibold data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-accent">
             A-Coins Board
           </TabsTrigger>
-          <TabsTrigger value="credits" className="uppercase font-display tracking-wider data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
+          <TabsTrigger value="credits" className="rounded-lg font-semibold data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-primary">
             Credits Board
           </TabsTrigger>
         </TabsList>
