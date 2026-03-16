@@ -1,0 +1,19 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K9:32:09 PM [express] serving on port 5000
+9:32:28 PM [express] GET /api/auth/me 401 in 2ms :: {"message":"Not authenticated"}
+9:32:38 PM [express] GET /api/auth/google 302 in 1ms
+9:34:48 PM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+9:34:53 PM [express] GET /api/auth/google 302 in 1ms
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m9:36:08 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/auth.tsx, /src/pages/leaderboard.tsx, /src/pages/landing.tsx, /src/pages/profile.tsx, /src/pages/dashboard.tsx, /src/pages/admin.tsx, /src/components/layout/main-layout.tsx, /src/components/layout/app-sidebar.tsx, /src/pages/activity.tsx[22m

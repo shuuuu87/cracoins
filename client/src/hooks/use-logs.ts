@@ -21,6 +21,23 @@ export function usePendingLogs() {
       if (!res.ok) throw new Error("Failed to fetch pending logs");
       return api.logs.listPending.responses[200].parse(await res.json());
     },
+    refetchInterval: 30000,
+  });
+}
+
+export function useAllAdminLogs(filters?: { userId?: number; status?: string }) {
+  const params = new URLSearchParams();
+  if (filters?.userId) params.set('userId', String(filters.userId));
+  if (filters?.status) params.set('status', filters.status);
+  const queryString = params.toString();
+
+  return useQuery({
+    queryKey: ['/api/admin/logs', filters],
+    queryFn: async () => {
+      const res = await fetch(`/api/admin/logs${queryString ? '?' + queryString : ''}`, { credentials: "include" });
+      if (!res.ok) throw new Error("Failed to fetch logs");
+      return res.json() as Promise<any[]>;
+    },
   });
 }
 
@@ -67,9 +84,35 @@ export function useUpdateLogStatus() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [api.logs.listPending.path] });
+      queryClient.invalidateQueries({ queryKey: ['/api/admin/logs'] });
       queryClient.invalidateQueries({ queryKey: [api.leaderboard.aCoins.path] });
       queryClient.invalidateQueries({ queryKey: [api.leaderboard.credits.path] });
       queryClient.invalidateQueries({ queryKey: [api.stats.global.path] });
+    },
+  });
+}
+
+export function useBatchUpdateLogs() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ ids, status }: { ids: number[]; status: 'approved' | 'rejected' }) => {
+      const res = await fetch('/api/admin/logs/batch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids, status }),
+        credentials: 'include',
+      });
+      if (!res.ok) throw new Error("Failed to batch update logs");
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [api.logs.listPending.path] });
+      queryClient.invalidateQueries({ queryKey: ['/api/admin/logs'] });
+      queryClient.invalidateQueries({ queryKey: [api.leaderboard.aCoins.path] });
+      queryClient.invalidateQueries({ queryKey: [api.leaderboard.credits.path] });
+      queryClient.invalidateQueries({ queryKey: [api.stats.global.path] });
+      queryClient.invalidateQueries({ queryKey: [api.activities.list.path] });
     },
   });
 }

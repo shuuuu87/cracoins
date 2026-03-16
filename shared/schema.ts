@@ -3,9 +3,20 @@ import { relations } from "drizzle-orm";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-// NOTE: User tables are managed by Better Auth in the public schema
-// Do NOT modify the users/accounts/sessions tables directly
-// Better Auth schema is in public.users, public.accounts, public.sessions
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
+  username: text("username").notNull().unique(),
+  password: text("password").notNull(),
+  country: text("country").notNull().default(""),
+  timezone: text("timezone").notNull().default(""),
+  avatar: text("avatar").notNull().default("avatar1"),
+  startACoins: integer("start_a_coins").notNull().default(0),
+  startCredits: integer("start_credits").notNull().default(0),
+  role: text("role").notNull().default("user"),
+  isDisqualified: boolean("is_disqualified").notNull().default(false),
+  seenWelcome: boolean("seen_welcome").notNull().default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+});
 
 export const dailyLogs = pgTable("daily_logs", {
   id: serial("id").primaryKey(),
@@ -29,54 +40,26 @@ export const activities = pgTable("activities", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const usersMetadata = pgTable("users_metadata", {
-  id: serial("id").primaryKey(),
-  userId: text("user_id").notNull().unique(),
-  username: text("username").unique(),
-  country: text("country").notNull().default(""),
-  timezone: text("timezone").notNull().default(""),
-  avatar: text("avatar").notNull().default("avatar1"),
-  startACoins: integer("start_a_coins").notNull().default(0),
-  startCredits: integer("start_credits").notNull().default(0),
-  role: text("role").notNull().default("user"),
-  isDisqualified: boolean("is_disqualified").notNull().default(false),
-  seenWelcome: boolean("seen_welcome").notNull().default(false),
-  createdAt: timestamp("created_at").defaultNow(),
-});
+export const usersRelations = relations(users, ({ many }) => ({
+  dailyLogs: many(dailyLogs),
+}));
 
 export const dailyLogsRelations = relations(dailyLogs, ({ one }) => ({
-  user: one(usersMetadata, {
+  user: one(users, {
     fields: [dailyLogs.userId],
-    references: [usersMetadata.userId],
+    references: [users.id],
   }),
 }));
 
-// Base Schemas
+export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true });
 export const insertDailyLogSchema = createInsertSchema(dailyLogs).omit({ id: true, createdAt: true, aCoinChange: true, creditsChange: true, creditsSpent: true, status: true, adminNotes: true });
 export const insertActivitySchema = createInsertSchema(activities).omit({ id: true, createdAt: true });
-export const insertUserMetadataSchema = createInsertSchema(usersMetadata).omit({ id: true, createdAt: true });
 
-// Better Auth User type (from public.users table)
-export type BetterAuthUser = {
-  id: string;
-  email: string;
-  emailVerified: boolean;
-  name: string | null;
-  image: string | null;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-// CraCoins User Metadata
-export type UserMetadata = typeof usersMetadata.$inferSelect;
-export type InsertUserMetadata = z.infer<typeof insertUserMetadataSchema>;
-
-// Combined user type for application
-export type AppUser = BetterAuthUser & Partial<UserMetadata>;
-
+export type User = typeof users.$inferSelect;
+export type InsertUser = z.infer<typeof insertUserSchema>;
 export type DailyLog = typeof dailyLogs.$inferSelect;
 export type InsertDailyLog = z.infer<typeof insertDailyLogSchema>;
 export type Activity = typeof activities.$inferSelect;
 export type InsertActivity = z.infer<typeof insertActivitySchema>;
 
-export type LogWithUser = DailyLog & { user: UserMetadata };
+export type LogWithUser = DailyLog & { user: User };

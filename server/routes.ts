@@ -317,6 +317,112 @@ export async function registerRoutes(
     }
   });
 
+  // Manually disqualify a user (with reason)
+  app.post('/api/admin/users/:id/disqualify', isAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const { reason } = z.object({ reason: z.string().optional() }).parse(req.body);
+      const target = await storage.getUser(id);
+      if (!target) return res.status(404).json({ message: 'User not found' });
+      const updated = await storage.updateUser(id, { isDisqualified: true });
+      await storage.createActivity({
+        type: 'disqualification',
+        message: `${target.username} has been disqualified by admin${reason ? ': ' + reason : '.'}`,
+      });
+      const { password, ...safe } = updated;
+      res.status(200).json(safe);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  // Issue a warning to a user
+  app.post('/api/admin/users/:id/warn', isAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const { reason } = z.object({ reason: z.string().min(1) }).parse(req.body);
+      const target = await storage.getUser(id);
+      if (!target) return res.status(404).json({ message: 'User not found' });
+      await storage.createActivity({
+        type: 'warning',
+        message: `⚠️ ${target.username} received a warning: ${reason}`,
+      });
+      res.status(200).json({ message: 'Warning issued' });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  // Delete a user from the challenge
+  app.delete('/api/admin/users/:id', isAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const adminId = req.user!.id;
+      if (id === adminId) return res.status(400).json({ message: 'Cannot delete yourself' });
+      const target = await storage.getUser(id);
+      if (!target) return res.status(404).json({ message: 'User not found' });
+      await storage.deleteUser(id);
+      res.status(200).json({ message: 'User deleted' });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  // Batch approve or reject submissions
+  app.post('/api/admin/logs/batch', isAdmin, async (req, res) => {
+    try {
+      const { ids, status } = z.object({
+        ids: z.array(z.number()).min(1),
+        status: z.enum(['approved', 'rejected']),
+      }).parse(req.body);
+      const results = [];
+      for (const id of ids) {
+        const log = await storage.updateLogStatus(id, status);
+        const logOwner = await storage.getUser(log.userId);
+        const username = logOwner?.username || 'Unknown';
+        if (status === 'approved') {
+          await storage.createActivity({ type: 'approved', message: `${username}'s daily submission was approved.` });
+        } else {
+          await storage.createActivity({ type: 'rejected', message: `${username}'s submission was rejected.` });
+        }
+        results.push(log);
+      }
+      res.status(200).json(results);
+    } catch (err: any) {
+      res.status(400).json({ message: err.message });
+    }
+  });
+
+  // Get ALL logs (admin view) with optional filters
+  app.get('/api/admin/logs', isAdmin, async (req, res) => {
+    try {
+      const { userId, status } = req.query;
+      const logs = await storage.getAllLogs({
+        userId: userId ? parseInt(userId as string) : undefined,
+        status: status as string | undefined,
+      });
+      res.status(200).json(logs);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  // Get per-user stats (admin)
+  app.get('/api/admin/users/:id/stats', isAdmin, async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const logs = await storage.getUserLogs(id);
+      const approved = logs.filter(l => l.status === 'approved').length;
+      const rejected = logs.filter(l => l.status === 'rejected').length;
+      const pending = logs.filter(l => l.status === 'pending').length;
+      const total = logs.length;
+      const approvalRate = total > 0 ? Math.round((approved / total) * 100) : 0;
+      res.status(200).json({ total, approved, rejected, pending, approvalRate });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
   // Get personal stats for profile
   app.get('/api/users/me/stats', isAuthenticated, async (req, res) => {
     try {

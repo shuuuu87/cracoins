@@ -1,0 +1,183 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K9:57:14 PM [express] serving on port 5000
+9:57:19 PM [express] GET /api/auth/me 401 in 2ms :: {"message":"Not authenticated"}
+9:58:09 PM [express] GET /api/auth/me 200 in 4ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":2340,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:48:28.312Z"}
+9:58:11 PM [express] GET /api/logs/me 304 in 7ms :: []
+9:58:11 PM [express] GET /api/activities 304 in 6ms :: [{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:58:18 PM [express] GET /api/users 304 in 7ms :: [{"id":2,"username":"don_re2","country":"India","timezone":"Asia/Calcutta","avatar":"avatar3","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:52:17.893Z"},{"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":2340,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:48:28.312Z"}]
+9:58:18 PM [express] GET /api/stats/global 304 in 12ms :: {"totalPlayers":2,"activeToday":0,"totalACoinsGained":0,"totalCreditsGained":0}
+9:58:18 PM [express] GET /api/admin/logs/pending 304 in 10ms :: []
+9:58:23 PM [express] POST /api/admin/announce 201 in 10ms :: {"id":4,"type":"announcement","message":"yo","createdAt":"2026-03-16T21:58:23.905Z"}
+9:58:24 PM [express] GET /api/activities 200 in 6ms :: [{"id":4,"type":"announcement","message":"yo","createdAt":"2026-03-16T21:58:23.905Z"},{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:58:54 PM [express] GET /api/activities 304 in 87ms :: [{"id":4,"type":"announcement","message":"yo","createdAt":"2026-03-16T21:58:23.905Z"},{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:59:06 PM [express] POST /api/admin/announce 201 in 26ms :: {"id":5,"type":"announcement","message":"yo","createdAt":"2026-03-16T21:59:06.791Z"}
+9:59:07 PM [express] GET /api/activities 200 in 11ms :: [{"id":5,"type":"announcement","message":"yo","createdAt":"2026-03-16T21:59:06.791Z"},{"id":4,"type":"announcement","message":"yo","createdAt":"2026-03-16T21:58:23.905Z"},{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:59:37 PM [express] GET /api/activities 200 in 21ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:00:08 PM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:00:38 PM [express] GET /api/activities 304 in 48ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:01:08 PM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:01:39 PM [express] GET /api/activities 304 in 15ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:02:09 PM [express] GET /api/activities 304 in 53ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:02:40 PM [express] GET /api/activities 304 in 15ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:03:10 PM [express] GET /api/activities 304 in 15ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m10:03:35 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/profile.tsx, /src/pages/admin.tsx, /src/index.css[22m
+10:03:40 PM [express] GET /api/activities 304 in 5ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m10:03:48 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin.tsx, /src/pages/dashboard.tsx, /src/index.css[22m
+10:04:11 PM [express] GET /api/activities 304 in 34ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:04:17 PM [express] GET /api/users/me/stats 304 in 8ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+10:04:21 PM [express] GET /api/logs/me 304 in 5ms :: []
+10:04:41 PM [express] GET /api/activities 304 in 80ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:05:15 PM [express] GET /api/activities 304 in 14ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:05:45 PM [express] GET /api/activities 304 in 46ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+10:06:15 PM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m10:06:17 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin.tsx, /src/index.css[22m

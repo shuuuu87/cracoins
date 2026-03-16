@@ -1,0 +1,530 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K[2m9:36:35 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because lockfile has changed
+9:36:35 PM [express] serving on port 5000
+9:37:55 PM [express] GET /api/auth/me 200 in 8ms
+9:37:55 PM [express] GET /api/auth/me 200 in 5ms
+9:37:55 PM [express] GET /api/auth/me 200 in 4ms
+9:37:56 PM [express] GET /api/auth/me 200 in 5ms
+9:37:56 PM [express] GET /api/auth/me 200 in 3ms
+9:37:57 PM [express] GET /api/auth/me 200 in 3ms
+9:37:57 PM [express] GET /api/auth/me 200 in 4ms
+9:37:57 PM [express] GET /api/auth/me 200 in 4ms
+9:37:58 PM [express] GET /api/auth/me 200 in 4ms
+9:37:58 PM [express] GET /api/auth/me 200 in 3ms
+9:37:58 PM [express] GET /api/auth/me 200 in 5ms
+9:37:59 PM [express] GET /api/auth/me 200 in 13ms
+9:37:59 PM [express] GET /api/auth/me 200 in 3ms
+9:38:00 PM [express] GET /api/auth/me 200 in 7ms
+9:38:00 PM [express] GET /api/auth/me 200 in 6ms
+9:38:00 PM [express] GET /api/auth/me 200 in 6ms
+9:38:01 PM [express] GET /api/auth/me 200 in 6ms
+9:38:01 PM [express] GET /api/auth/me 200 in 4ms
+9:38:02 PM [express] GET /api/auth/me 200 in 4ms
+9:38:02 PM [express] GET /api/auth/me 200 in 4ms
+9:38:02 PM [express] GET /api/auth/me 200 in 3ms
+9:38:03 PM [express] GET /api/auth/me 200 in 4ms
+9:38:03 PM [express] GET /api/auth/me 200 in 3ms
+9:38:04 PM [express] GET /api/auth/me 200 in 4ms
+9:38:04 PM [express] GET /api/auth/me 200 in 4ms
+9:38:04 PM [express] GET /api/auth/me 200 in 3ms
+9:38:05 PM [express] GET /api/auth/me 200 in 4ms
+9:38:05 PM [express] GET /api/auth/me 200 in 5ms
+9:38:05 PM [express] GET /api/auth/me 200 in 3ms
+9:38:06 PM [express] GET /api/auth/me 200 in 3ms
+9:38:06 PM [express] GET /api/auth/me 200 in 4ms
+9:38:07 PM [express] GET /api/auth/me 200 in 3ms
+9:38:07 PM [express] GET /api/auth/me 200 in 4ms
+9:38:07 PM [express] GET /api/auth/me 200 in 4ms
+9:38:08 PM [express] GET /api/auth/me 200 in 3ms
+9:38:08 PM [express] GET /api/auth/me 200 in 3ms
+9:38:08 PM [express] GET /api/auth/me 200 in 4ms
+9:38:09 PM [express] GET /api/auth/me 200 in 3ms
+9:38:12 PM [express] GET /api/auth/me 200 in 3ms
+9:38:12 PM [express] GET /api/auth/me 200 in 5ms
+9:38:13 PM [express] GET /api/auth/me 200 in 4ms
+9:38:14 PM [express] GET /api/auth/me 200 in 3ms
+9:38:14 PM [express] GET /api/auth/me 200 in 4ms
+9:38:14 PM [express] GET /api/auth/me 200 in 4ms
+9:38:15 PM [express] GET /api/auth/me 200 in 5ms
+9:38:15 PM [express] GET /api/auth/me 200 in 3ms
+9:38:15 PM [express] GET /api/auth/me 200 in 4ms
+9:38:16 PM [express] GET /api/auth/me 200 in 4ms
+9:38:16 PM [express] GET /api/auth/me 200 in 4ms
+9:38:17 PM [express] GET /api/auth/me 200 in 4ms
+9:38:17 PM [express] GET /api/auth/me 200 in 4ms
+9:38:17 PM [express] GET /api/auth/me 200 in 4ms
+9:38:18 PM [express] GET /api/auth/me 200 in 3ms
+9:38:18 PM [express] GET /api/auth/me 200 in 4ms
+9:38:19 PM [express] GET /api/auth/me 200 in 3ms
+9:38:19 PM [express] GET /api/auth/me 200 in 3ms
+9:38:20 PM [express] GET /api/auth/me 200 in 3ms
+9:38:21 PM [express] GET /api/auth/me 200 in 4ms
+9:38:21 PM [express] GET /api/auth/me 200 in 3ms
+9:38:22 PM [express] GET /api/auth/me 200 in 3ms
+9:38:22 PM [express] GET /api/auth/me 200 in 4ms
+9:38:23 PM [express] GET /api/auth/me 200 in 3ms
+9:38:23 PM [express] GET /api/auth/me 200 in 3ms
+9:38:23 PM [express] GET /api/auth/me 200 in 3ms
+9:38:24 PM [express] GET /api/auth/me 200 in 4ms
+9:38:24 PM [express] GET /api/auth/me 200 in 5ms
+9:38:25 PM [express] GET /api/auth/me 200 in 4ms
+9:38:25 PM [express] GET /api/auth/me 200 in 4ms
+9:38:25 PM [express] GET /api/auth/me 200 in 3ms
+9:38:26 PM [express] GET /api/auth/me 200 in 3ms
+9:38:26 PM [express] GET /api/auth/me 200 in 4ms
+9:38:26 PM [express] GET /api/auth/me 200 in 3ms
+9:38:27 PM [express] GET /api/auth/me 200 in 3ms
+9:38:27 PM [express] GET /api/auth/me 200 in 2ms
+9:38:28 PM [express] GET /api/auth/me 200 in 3ms
+9:38:28 PM [express] GET /api/auth/me 200 in 3ms
+9:38:28 PM [express] GET /api/auth/me 200 in 4ms
+9:38:29 PM [express] GET /api/auth/me 200 in 3ms
+9:38:29 PM [express] GET /api/auth/me 200 in 3ms
+9:38:29 PM [express] GET /api/auth/me 200 in 3ms
+9:38:30 PM [express] GET /api/auth/me 200 in 3ms
+9:38:30 PM [express] GET /api/auth/me 200 in 3ms
+9:38:31 PM [express] GET /api/auth/me 200 in 3ms
+9:38:31 PM [express] GET /api/auth/me 200 in 3ms
+9:38:31 PM [express] GET /api/auth/me 200 in 3ms
+9:38:32 PM [express] GET /api/auth/me 200 in 3ms
+9:38:32 PM [express] GET /api/auth/me 200 in 4ms
+9:38:32 PM [express] GET /api/auth/me 200 in 4ms
+9:38:33 PM [express] GET /api/auth/me 200 in 4ms
+9:38:33 PM [express] GET /api/auth/me 200 in 3ms
+9:38:33 PM [express] GET /api/auth/me 200 in 4ms
+9:38:34 PM [express] GET /api/auth/me 200 in 5ms
+9:38:34 PM [express] GET /api/auth/me 200 in 3ms
+9:38:35 PM [express] GET /api/auth/me 200 in 4ms
+9:38:35 PM [express] GET /api/auth/me 200 in 3ms
+9:38:36 PM [express] GET /api/auth/me 200 in 3ms
+9:38:36 PM [express] GET /api/auth/me 200 in 3ms
+9:38:36 PM [express] GET /api/auth/me 200 in 3ms
+9:38:37 PM [express] GET /api/auth/me 200 in 3ms
+9:38:37 PM [express] GET /api/auth/me 200 in 3ms
+9:38:38 PM [express] GET /api/auth/me 200 in 3ms
+9:38:38 PM [express] GET /api/auth/me 200 in 3ms
+9:38:38 PM [express] GET /api/auth/me 200 in 2ms
+9:38:39 PM [express] GET /api/auth/me 200 in 3ms
+9:38:39 PM [express] GET /api/auth/me 200 in 3ms
+9:38:40 PM [express] GET /api/auth/me 200 in 3ms
+9:38:40 PM [express] GET /api/auth/me 200 in 3ms
+9:38:40 PM [express] GET /api/auth/me 200 in 4ms
+9:38:41 PM [express] GET /api/auth/me 200 in 3ms
+9:38:41 PM [express] GET /api/auth/me 200 in 4ms
+9:38:41 PM [express] GET /api/auth/me 200 in 3ms
+9:38:42 PM [express] GET /api/auth/me 200 in 3ms
+9:38:42 PM [express] GET /api/auth/me 200 in 3ms
+9:38:43 PM [express] GET /api/auth/me 200 in 3ms
+9:38:43 PM [express] GET /api/auth/me 200 in 3ms
+9:38:43 PM [express] GET /api/auth/me 200 in 3ms
+9:38:44 PM [express] GET /api/auth/me 200 in 3ms
+9:38:44 PM [express] GET /api/auth/me 200 in 3ms
+9:38:45 PM [express] GET /api/auth/me 200 in 4ms
+9:38:45 PM [express] GET /api/auth/me 200 in 3ms
+9:38:45 PM [express] GET /api/auth/me 200 in 3ms
+9:38:46 PM [express] GET /api/auth/me 200 in 3ms
+9:38:46 PM [express] GET /api/auth/me 200 in 3ms
+9:38:46 PM [express] GET /api/auth/me 200 in 2ms
+9:38:47 PM [express] GET /api/auth/me 200 in 3ms
+9:38:47 PM [express] GET /api/auth/me 200 in 2ms
+9:38:48 PM [express] GET /api/auth/me 200 in 3ms
+9:38:48 PM [express] GET /api/auth/me 200 in 4ms
+9:38:48 PM [express] GET /api/auth/me 200 in 4ms
+9:38:49 PM [express] GET /api/auth/me 200 in 3ms
+9:38:49 PM [express] GET /api/auth/me 200 in 4ms
+9:38:49 PM [express] GET /api/auth/me 200 in 3ms
+9:38:50 PM [express] GET /api/auth/me 200 in 2ms
+9:38:50 PM [express] GET /api/auth/me 200 in 3ms
+9:38:51 PM [express] GET /api/auth/me 200 in 4ms
+9:38:51 PM [express] GET /api/auth/me 200 in 3ms
+9:38:51 PM [express] GET /api/auth/me 200 in 3ms
+9:38:52 PM [express] GET /api/auth/me 200 in 3ms
+9:38:52 PM [express] GET /api/auth/me 200 in 3ms
+9:38:52 PM [express] GET /api/auth/me 200 in 4ms
+9:38:53 PM [express] GET /api/auth/me 200 in 3ms
+9:38:53 PM [express] GET /api/auth/me 200 in 3ms
+9:38:54 PM [express] GET /api/auth/me 200 in 2ms
+9:38:54 PM [express] GET /api/auth/me 200 in 3ms
+9:38:55 PM [express] GET /api/auth/me 200 in 3ms
+9:38:55 PM [express] GET /api/auth/me 200 in 4ms
+9:38:55 PM [express] GET /api/auth/me 200 in 4ms
+9:38:56 PM [express] GET /api/auth/me 200 in 3ms
+9:38:56 PM [express] GET /api/auth/me 200 in 4ms
+9:38:57 PM [express] GET /api/auth/me 200 in 3ms
+9:38:57 PM [express] GET /api/auth/me 200 in 3ms
+9:38:57 PM [express] GET /api/auth/me 200 in 5ms
+9:38:58 PM [express] GET /api/auth/me 200 in 4ms
+9:38:58 PM [express] GET /api/auth/me 200 in 3ms
+9:38:59 PM [express] GET /api/auth/me 200 in 2ms
+9:38:59 PM [express] GET /api/auth/me 200 in 3ms
+9:38:59 PM [express] GET /api/auth/me 200 in 2ms
+9:39:00 PM [express] GET /api/auth/me 200 in 3ms
+9:39:00 PM [express] GET /api/auth/me 200 in 2ms
+9:39:00 PM [express] GET /api/auth/me 200 in 3ms
+9:39:01 PM [express] GET /api/auth/me 200 in 4ms
+9:39:01 PM [express] GET /api/auth/me 200 in 3ms
+9:39:02 PM [express] GET /api/auth/me 200 in 4ms
+9:39:02 PM [express] GET /api/auth/me 200 in 5ms
+9:39:02 PM [express] GET /api/auth/me 200 in 3ms
+9:39:03 PM [express] GET /api/auth/me 200 in 3ms
+9:39:03 PM [express] GET /api/auth/me 200 in 3ms
+9:39:04 PM [express] GET /api/auth/me 200 in 3ms
+9:39:04 PM [express] GET /api/auth/me 200 in 3ms
+9:39:05 PM [express] GET /api/auth/me 200 in 3ms
+9:39:05 PM [express] GET /api/auth/me 200 in 3ms
+9:39:05 PM [express] GET /api/auth/me 200 in 3ms
+9:39:06 PM [express] GET /api/auth/me 200 in 3ms
+9:39:06 PM [express] GET /api/auth/me 200 in 3ms
+9:39:06 PM [express] GET /api/auth/me 200 in 3ms
+9:39:07 PM [express] GET /api/auth/me 200 in 3ms
+9:39:07 PM [express] GET /api/auth/me 200 in 2ms
+9:39:08 PM [express] GET /api/auth/me 200 in 2ms
+9:39:08 PM [express] GET /api/auth/me 200 in 3ms
+9:39:08 PM [express] GET /api/auth/me 200 in 3ms
+9:39:09 PM [express] GET /api/auth/me 200 in 3ms
+9:39:09 PM [express] GET /api/auth/me 200 in 3ms
+9:39:10 PM [express] GET /api/auth/me 200 in 3ms
+9:39:10 PM [express] GET /api/auth/me 200 in 3ms
+9:39:10 PM [express] GET /api/auth/me 200 in 3ms
+9:39:11 PM [express] GET /api/auth/me 200 in 3ms
+9:39:11 PM [express] GET /api/auth/me 200 in 3ms
+9:39:12 PM [express] GET /api/auth/me 200 in 3ms
+9:39:12 PM [express] GET /api/auth/me 200 in 3ms
+9:39:12 PM [express] GET /api/auth/me 200 in 3ms
+9:39:13 PM [express] GET /api/auth/me 200 in 4ms
+9:39:13 PM [express] GET /api/auth/me 200 in 3ms
+9:39:13 PM [express] GET /api/auth/me 200 in 3ms
+9:39:14 PM [express] GET /api/auth/me 200 in 3ms
+9:39:14 PM [express] GET /api/auth/me 200 in 3ms
+9:39:15 PM [express] GET /api/auth/me 200 in 3ms
+9:39:15 PM [express] GET /api/auth/me 200 in 3ms
+9:39:15 PM [express] GET /api/auth/me 200 in 3ms
+9:39:16 PM [express] GET /api/auth/me 200 in 2ms
+9:39:16 PM [express] GET /api/auth/me 200 in 3ms
+9:39:17 PM [express] GET /api/auth/me 200 in 3ms
+9:39:17 PM [express] GET /api/auth/me 200 in 3ms
+9:39:18 PM [express] GET /api/auth/me 200 in 3ms
+9:39:18 PM [express] GET /api/auth/me 200 in 3ms
+9:39:18 PM [express] GET /api/auth/me 200 in 3ms
+9:39:19 PM [express] GET /api/auth/me 200 in 2ms
+9:39:19 PM [express] GET /api/auth/me 200 in 3ms
+9:39:19 PM [express] GET /api/auth/me 200 in 3ms
+9:39:20 PM [express] GET /api/auth/me 200 in 3ms
+9:39:20 PM [express] GET /api/auth/me 200 in 2ms
+9:39:21 PM [express] GET /api/auth/me 200 in 3ms
+9:39:21 PM [express] GET /api/auth/me 200 in 3ms
+9:39:21 PM [express] GET /api/auth/me 200 in 4ms
+9:39:22 PM [express] GET /api/auth/me 200 in 2ms
+9:39:22 PM [express] GET /api/auth/me 200 in 3ms
+9:39:23 PM [express] GET /api/auth/me 200 in 3ms
+9:39:23 PM [express] GET /api/auth/me 200 in 3ms
+9:39:23 PM [express] GET /api/auth/me 200 in 3ms
+9:39:24 PM [express] GET /api/auth/me 200 in 3ms
+9:39:24 PM [express] GET /api/auth/me 200 in 3ms
+9:39:24 PM [express] GET /api/auth/me 200 in 3ms
+9:39:25 PM [express] GET /api/auth/me 200 in 3ms
+9:39:25 PM [express] GET /api/auth/me 200 in 3ms
+9:39:26 PM [express] GET /api/auth/me 200 in 3ms
+9:39:26 PM [express] GET /api/auth/me 200 in 2ms
+9:39:27 PM [express] GET /api/auth/me 200 in 3ms
+9:39:27 PM [express] GET /api/auth/me 200 in 3ms
+9:39:27 PM [express] GET /api/auth/me 200 in 3ms
+9:39:28 PM [express] GET /api/auth/me 200 in 3ms
+9:39:28 PM [express] GET /api/auth/me 200 in 3ms
+9:39:28 PM [express] GET /api/auth/me 200 in 3ms
+9:39:29 PM [express] GET /api/auth/me 200 in 3ms
+9:39:29 PM [express] GET /api/auth/me 200 in 3ms
+9:39:30 PM [express] GET /api/auth/me 200 in 3ms
+9:39:30 PM [express] GET /api/auth/me 200 in 3ms
+9:39:30 PM [express] GET /api/auth/me 200 in 3ms
+9:39:31 PM [express] GET /api/auth/me 200 in 2ms
+9:39:31 PM [express] GET /api/auth/me 200 in 5ms
+9:39:31 PM [express] GET /api/auth/me 200 in 3ms
+9:39:32 PM [express] GET /api/auth/me 200 in 3ms
+9:39:32 PM [express] GET /api/auth/me 200 in 3ms
+9:39:33 PM [express] GET /api/auth/me 200 in 3ms
+9:39:35 PM [express] GET /api/auth/me 200 in 3ms
+9:39:36 PM [express] GET /api/auth/me 200 in 3ms
+9:39:36 PM [express] GET /api/auth/me 200 in 3ms
+9:39:37 PM [express] GET /api/auth/me 200 in 3ms
+9:39:37 PM [express] GET /api/auth/me 200 in 3ms
+9:39:37 PM [express] GET /api/auth/me 200 in 3ms
+9:39:38 PM [express] GET /api/auth/me 200 in 3ms
+9:39:38 PM [express] GET /api/auth/me 200 in 5ms
+9:39:38 PM [express] GET /api/auth/me 200 in 3ms
+9:39:39 PM [express] GET /api/auth/me 200 in 3ms
+9:39:39 PM [express] GET /api/auth/me 200 in 2ms
+9:39:39 PM [express] GET /api/auth/me 200 in 3ms
+9:39:40 PM [express] GET /api/auth/me 200 in 3ms
+9:39:40 PM [express] GET /api/auth/me 200 in 2ms
+9:39:41 PM [express] GET /api/auth/me 200 in 3ms
+9:39:41 PM [express] GET /api/auth/me 200 in 3ms
+9:39:41 PM [express] GET /api/auth/me 200 in 4ms
+9:39:42 PM [express] GET /api/auth/me 200 in 4ms
+9:39:42 PM [express] GET /api/auth/me 200 in 4ms
+9:39:42 PM [express] GET /api/auth/me 200 in 3ms
+9:39:43 PM [express] GET /api/auth/me 200 in 2ms
+9:39:43 PM [express] GET /api/auth/me 200 in 2ms
+9:39:44 PM [express] GET /api/auth/me 200 in 3ms
+9:39:44 PM [express] GET /api/auth/me 200 in 2ms
+9:39:44 PM [express] GET /api/auth/me 200 in 2ms
+9:39:45 PM [express] GET /api/auth/me 200 in 3ms
+9:39:45 PM [express] GET /api/auth/me 200 in 3ms
+9:39:45 PM [express] GET /api/auth/me 200 in 3ms
+9:39:46 PM [express] GET /api/auth/me 200 in 2ms
+9:39:46 PM [express] GET /api/auth/me 200 in 3ms
+9:39:47 PM [express] GET /api/auth/me 200 in 3ms
+9:39:47 PM [express] GET /api/auth/me 200 in 2ms
+9:39:47 PM [express] GET /api/auth/me 200 in 3ms
+9:39:48 PM [express] GET /api/auth/me 200 in 2ms
+9:39:48 PM [express] GET /api/auth/me 200 in 3ms
+9:39:49 PM [express] GET /api/auth/me 200 in 3ms
+9:39:49 PM [express] GET /api/auth/me 200 in 2ms
+9:39:49 PM [express] GET /api/auth/me 200 in 3ms
+9:39:50 PM [express] GET /api/auth/me 200 in 3ms
+9:39:50 PM [express] GET /api/auth/me 200 in 2ms
+9:39:50 PM [express] GET /api/auth/me 200 in 2ms
+9:39:51 PM [express] GET /api/auth/me 200 in 3ms
+9:39:51 PM [express] GET /api/auth/me 200 in 3ms
+9:39:51 PM [express] GET /api/auth/me 200 in 2ms
+9:39:52 PM [express] GET /api/auth/me 200 in 3ms
+9:39:52 PM [express] GET /api/auth/me 200 in 3ms
+9:39:52 PM [express] GET /api/auth/me 200 in 3ms
+9:39:53 PM [express] GET /api/auth/me 200 in 3ms
+9:39:53 PM [express] GET /api/auth/me 200 in 2ms
+9:39:54 PM [express] GET /api/auth/me 200 in 3ms
+9:39:54 PM [express] GET /api/auth/me 200 in 3ms
+9:39:54 PM [express] GET /api/auth/me 200 in 3ms
+9:39:55 PM [express] GET /api/auth/me 200 in 4ms
+9:39:55 PM [express] GET /api/auth/me 200 in 2ms
+9:39:56 PM [express] GET /api/auth/me 200 in 3ms
+9:39:56 PM [express] GET /api/auth/me 200 in 4ms
+9:39:57 PM [express] GET /api/auth/me 200 in 2ms
+9:39:57 PM [express] GET /api/auth/me 200 in 3ms
+9:39:58 PM [express] GET /api/auth/me 200 in 2ms
+9:39:59 PM [express] GET /api/auth/me 200 in 3ms
+9:39:59 PM [express] GET /api/auth/me 200 in 3ms
+9:40:00 PM [express] GET /api/auth/me 200 in 2ms
+9:40:00 PM [express] GET /api/auth/me 200 in 2ms
+9:40:00 PM [express] GET /api/auth/me 200 in 3ms
+9:40:01 PM [express] GET /api/auth/me 200 in 3ms
+9:40:01 PM [express] GET /api/auth/me 200 in 3ms
+9:40:01 PM [express] GET /api/auth/me 200 in 3ms
+9:40:02 PM [express] GET /api/auth/me 200 in 4ms
+9:40:02 PM [express] GET /api/auth/me 200 in 3ms
+9:40:02 PM [express] GET /api/auth/me 200 in 2ms
+9:40:03 PM [express] GET /api/auth/me 200 in 3ms
+9:40:03 PM [express] GET /api/auth/me 200 in 3ms
+9:40:04 PM [express] GET /api/auth/me 200 in 2ms
+9:40:04 PM [express] GET /api/auth/me 200 in 3ms
+9:40:04 PM [express] GET /api/auth/me 200 in 6ms
+9:40:05 PM [express] GET /api/auth/me 200 in 7ms
+9:40:05 PM [express] GET /api/auth/me 200 in 5ms
+9:40:05 PM [express] GET /api/auth/me 200 in 5ms
+9:40:06 PM [express] GET /api/auth/me 200 in 4ms
+9:40:06 PM [express] GET /api/auth/me 200 in 4ms
+9:40:07 PM [express] GET /api/auth/me 200 in 3ms
+9:40:07 PM [express] GET /api/auth/me 200 in 3ms
+9:40:07 PM [express] GET /api/auth/me 200 in 5ms
+9:40:08 PM [express] GET /api/auth/me 200 in 3ms
+9:40:08 PM [express] GET /api/auth/me 200 in 3ms
+9:40:08 PM [express] GET /api/auth/me 200 in 3ms
+9:40:09 PM [express] GET /api/auth/me 200 in 3ms
+9:40:09 PM [express] GET /api/auth/me 200 in 3ms
+9:40:09 PM [express] GET /api/auth/me 200 in 4ms
+9:40:10 PM [express] GET /api/auth/me 200 in 3ms
+9:40:10 PM [express] GET /api/auth/me 200 in 4ms
+9:40:10 PM [express] GET /api/auth/me 200 in 3ms
+9:40:11 PM [express] GET /api/auth/me 200 in 4ms
+9:40:11 PM [express] GET /api/auth/me 200 in 4ms
+9:40:11 PM [express] GET /api/auth/me 200 in 4ms
+9:40:12 PM [express] GET /api/auth/me 200 in 3ms
+9:40:12 PM [express] GET /api/auth/me 200 in 6ms
+9:40:13 PM [express] GET /api/auth/me 200 in 3ms
+9:40:13 PM [express] GET /api/auth/me 200 in 3ms
+9:40:13 PM [express] GET /api/auth/me 200 in 4ms
+9:40:14 PM [express] GET /api/auth/me 200 in 3ms
+9:40:14 PM [express] GET /api/auth/me 200 in 3ms
+9:40:14 PM [express] GET /api/auth/me 200 in 4ms
+9:40:15 PM [express] GET /api/auth/me 200 in 3ms
+9:40:15 PM [express] GET /api/auth/me 200 in 3ms
+9:40:15 PM [express] GET /api/auth/me 200 in 3ms
+9:40:16 PM [express] GET /api/auth/me 200 in 3ms
+9:40:16 PM [express] GET /api/auth/me 200 in 3ms
+9:40:17 PM [express] GET /api/auth/me 200 in 4ms
+9:40:17 PM [express] GET /api/auth/me 200 in 3ms
+9:40:17 PM [express] GET /api/auth/me 200 in 3ms
+9:40:18 PM [express] GET /api/auth/me 200 in 5ms
+9:40:18 PM [express] GET /api/auth/me 200 in 3ms
+9:40:18 PM [express] GET /api/auth/me 200 in 3ms
+9:40:19 PM [express] GET /api/auth/me 200 in 3ms
+9:40:19 PM [express] GET /api/auth/me 200 in 3ms
+9:40:19 PM [express] GET /api/auth/me 200 in 3ms
+9:40:20 PM [express] GET /api/auth/me 200 in 3ms
+9:40:20 PM [express] GET /api/auth/me 200 in 3ms
+9:40:20 PM [express] GET /api/auth/me 200 in 2ms
+9:40:21 PM [express] GET /api/auth/me 200 in 4ms
+9:40:21 PM [express] GET /api/auth/me 200 in 3ms
+9:40:21 PM [express] GET /api/auth/me 200 in 3ms
+9:40:22 PM [express] GET /api/auth/me 200 in 3ms
+9:40:22 PM [express] GET /api/auth/me 200 in 3ms
+9:40:22 PM [express] GET /api/auth/me 200 in 4ms
+9:40:23 PM [express] GET /api/auth/me 200 in 3ms
+9:40:23 PM [express] GET /api/auth/me 200 in 2ms
+9:40:23 PM [express] GET /api/auth/me 200 in 3ms
+9:40:24 PM [express] GET /api/auth/me 200 in 3ms
+9:40:24 PM [express] GET /api/auth/me 200 in 3ms
+9:40:25 PM [express] GET /api/auth/me 200 in 4ms
+9:40:25 PM [express] GET /api/auth/me 200 in 3ms
+9:40:25 PM [express] GET /api/auth/me 200 in 3ms
+9:40:26 PM [express] GET /api/auth/me 200 in 3ms
+9:40:26 PM [express] GET /api/auth/me 200 in 3ms
+9:40:27 PM [express] GET /api/auth/me 200 in 3ms
+9:40:30 PM [express] GET /api/auth/me 200 in 3ms
+9:40:31 PM [express] GET /api/auth/me 200 in 3ms
+9:40:32 PM [express] GET /api/auth/me 200 in 3ms
+9:40:32 PM [express] GET /api/auth/me 200 in 4ms
+9:40:32 PM [express] GET /api/auth/me 200 in 3ms
+9:40:33 PM [express] GET /api/auth/me 200 in 3ms
+9:40:33 PM [express] GET /api/auth/me 200 in 3ms
+9:40:33 PM [express] GET /api/auth/me 200 in 4ms
+9:40:34 PM [express] GET /api/auth/me 200 in 3ms
+9:40:34 PM [express] GET /api/auth/me 200 in 3ms
+9:40:34 PM [express] GET /api/auth/me 200 in 4ms
+9:40:35 PM [express] GET /api/auth/me 200 in 3ms
+9:40:35 PM [express] GET /api/auth/me 200 in 3ms
+9:40:35 PM [express] GET /api/auth/me 200 in 3ms
+9:40:36 PM [express] GET /api/auth/me 200 in 3ms
+9:40:36 PM [express] GET /api/auth/me 200 in 2ms
+9:40:36 PM [express] GET /api/auth/me 200 in 4ms
+9:40:37 PM [express] GET /api/auth/me 200 in 3ms
+9:40:37 PM [express] GET /api/auth/me 200 in 3ms
+9:40:38 PM [express] GET /api/auth/me 200 in 4ms
+9:40:38 PM [express] GET /api/auth/me 200 in 3ms
+9:40:38 PM [express] GET /api/auth/me 200 in 4ms
+9:40:39 PM [express] GET /api/auth/me 200 in 4ms
+9:40:39 PM [express] GET /api/auth/me 200 in 2ms
+9:40:39 PM [express] GET /api/auth/me 200 in 3ms
+9:40:40 PM [express] GET /api/auth/me 200 in 3ms
+9:40:40 PM [express] GET /api/auth/me 200 in 3ms
+9:40:40 PM [express] GET /api/auth/me 200 in 3ms
+9:40:41 PM [express] GET /api/auth/me 200 in 3ms
+9:40:41 PM [express] GET /api/auth/me 200 in 3ms
+9:40:42 PM [express] GET /api/auth/me 200 in 3ms
+9:40:42 PM [express] GET /api/auth/me 200 in 3ms
+9:40:42 PM [express] GET /api/auth/me 200 in 3ms
+9:40:43 PM [express] GET /api/auth/me 200 in 2ms
+9:40:43 PM [express] GET /api/auth/me 200 in 3ms
+9:40:43 PM [express] GET /api/auth/me 200 in 2ms
+9:40:44 PM [express] GET /api/auth/me 200 in 3ms
+9:40:44 PM [express] GET /api/auth/me 200 in 3ms
+9:40:44 PM [express] GET /api/auth/me 200 in 3ms
+9:40:45 PM [express] GET /api/auth/me 200 in 3ms
+9:40:45 PM [express] GET /api/auth/me 200 in 5ms
+9:40:45 PM [express] GET /api/auth/me 200 in 3ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m9:40:45 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/auth.tsx, /src/pages/activity.tsx, /src/pages/landing.tsx, /src/pages/dashboard.tsx, /src/pages/profile.tsx, /src/pages/admin.tsx, /src/components/layout/main-layout.tsx, /src/components/layout/app-sidebar.tsx, /src/pages/leaderboard.tsx[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m9:40:45 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+9:40:46 PM [express] GET /api/auth/me 200 in 3ms
+[2m9:40:46 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /@fs/home/runner/workspace/shared/models/auth.ts (resolved id: /home/runner/workspace/shared/models/auth.ts) in /home/runner/workspace/shared/schema.ts. Does the file exist?
+[1G[0K⠙[1G[0K

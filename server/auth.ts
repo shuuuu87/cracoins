@@ -63,6 +63,7 @@ export function setupAuth(app: Express) {
     })
   );
 
+
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
@@ -130,4 +131,5 @@ export function setupAuth(app: Express) {
     const { password, ...safeUser } = req.user as Express.User;
     res.status(200).json(safeUser);
   });
+
 }

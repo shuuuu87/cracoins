@@ -1,0 +1,133 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K9:51:10 PM [express] serving on port 5000
+9:51:59 PM [express] GET /api/auth/me 401 in 3ms :: {"message":"Not authenticated"}
+9:52:17 PM [express] POST /api/auth/register 201 in 72ms :: {"id":2,"username":"don_re2","country":"India","timezone":"Asia/Calcutta","avatar":"avatar3","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":false,"createdAt":"2026-03-16T21:52:17.893Z"}
+9:52:18 PM [express] GET /api/logs/me 200 in 11ms :: []
+9:52:18 PM [express] GET /api/auth/me 200 in 14ms :: {"id":2,"username":"don_re2","country":"India","timezone":"Asia/Calcutta","avatar":"avatar3","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":false,"createdAt":"2026-03-16T21:52:17.893Z"}
+9:52:21 PM [express] POST /api/users/mark-welcome-seen 200 in 10ms :: {"id":2,"username":"don_re2","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar3","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:52:17.893Z"}
+9:52:24 PM [express] GET /api/leaderboard/a-coins 200 in 11ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":2340,"role":"admin","isDisqualified":false,"seenWelcome":false,"createdAt":"2026-03-16T21:48:28.312Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"don_re2","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar3","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:52:17.893Z"},"totalApprovedChange":0}]
+9:52:24 PM [express] GET /api/leaderboard/credits 200 in 11ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":2340,"role":"admin","isDisqualified":false,"seenWelcome":false,"createdAt":"2026-03-16T21:48:28.312Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"don_re2","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar3","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:52:17.893Z"},"totalApprovedChange":0}]
+9:52:36 PM [express] GET /api/activities 200 in 18ms :: [{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:52:46 PM [express] POST /api/users/mark-welcome-seen 200 in 19ms :: {"id":2,"username":"don_re2","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar3","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:52:17.893Z"}
+9:52:48 PM [express] GET /api/users/me/stats 200 in 9ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+9:52:54 PM [express] POST /api/auth/logout 200 in 13ms
+9:52:54 PM [express] GET /api/auth/me 401 in 171ms :: {"message":"Not authenticated"}
+9:52:54 PM [express] GET /api/users/me/stats 401 in 171ms :: {"message":"Unauthorized"}
+9:53:14 PM [express] POST /api/auth/login 200 in 73ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":2340,"role":"admin","isDisqualified":false,"seenWelcome":false,"createdAt":"2026-03-16T21:48:28.312Z"}
+9:53:14 PM [express] GET /api/auth/me 200 in 6ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":2340,"role":"admin","isDisqualified":false,"seenWelcome":false,"createdAt":"2026-03-16T21:48:28.312Z"}
+9:53:14 PM [express] GET /api/logs/me 304 in 20ms :: []
+9:53:18 PM [express] POST /api/users/mark-welcome-seen 200 in 9ms :: {"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":2340,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:48:28.312Z"}
+9:53:20 PM [express] GET /api/stats/global 200 in 16ms :: {"totalPlayers":2,"activeToday":0,"totalACoinsGained":0,"totalCreditsGained":0}
+9:53:20 PM [express] GET /api/admin/logs/pending 200 in 14ms :: []
+9:53:20 PM [express] GET /api/users 200 in 23ms :: [{"id":2,"username":"don_re2","country":"India","timezone":"Asia/Calcutta","avatar":"avatar3","startACoins":0,"startCredits":0,"role":"user","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:52:17.893Z"},{"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":2340,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:48:28.312Z"}]
+9:53:43 PM [express] POST /api/admin/announce 201 in 96ms :: {"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"}
+9:53:46 PM [express] GET /api/activities 200 in 6ms :: [{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:54:17 PM [express] GET /api/activities 304 in 16ms :: [{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:54:47 PM [express] GET /api/activities 304 in 17ms :: [{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:55:18 PM [express] GET /api/activities 304 in 55ms :: [{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:55:48 PM [express] GET /api/activities 304 in 14ms :: [{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:56:18 PM [express] GET /api/activities 304 in 18ms :: [{"id":3,"type":"announcement","message":"hi","createdAt":"2026-03-16T21:53:43.665Z"},{"id":2,"type":"join","message":"don_re2 joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:52:17.897Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-16T21:48:28.517Z"}]
+9:56:24 PM [express] POST /api/users/mark-welcome-seen 200 in 51ms :: {"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":234,"startCredits":2340,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-16T21:48:28.312Z"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m9:56:49 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/layout/app-sidebar.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m9:57:12 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/layout/main-layout.tsx, /src/index.css[22m

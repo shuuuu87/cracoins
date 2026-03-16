@@ -6,7 +6,7 @@ import {
   type Activity, type InsertActivity,
   type LogWithUser
 } from "@shared/schema";
-import { eq, desc, sum, and, gte, lte } from "drizzle-orm";
+import { eq, desc, sum, and, gte, lte, inArray } from "drizzle-orm";
 import session from "express-session";
 import connectPg from "connect-pg-simple";
 import { pool } from "./db";
@@ -31,6 +31,9 @@ export interface IStorage {
   
   createActivity(activity: InsertActivity): Promise<Activity>;
   getActivities(): Promise<Activity[]>;
+  
+  deleteUser(id: number): Promise<void>;
+  getAllLogs(filters?: { userId?: number; status?: string }): Promise<(DailyLog & { user: User })[]>;
   
   getLeaderboardData(type: 'aCoins' | 'credits'): Promise<{user: User, totalApprovedChange: number}[]>;
   getGlobalStats(): Promise<{totalPlayers: number, activeToday: number, totalACoinsGained: number, totalCreditsGained: number}>;
@@ -98,6 +101,25 @@ export class DatabaseStorage implements IStorage {
 
   async getActivities(): Promise<Activity[]> {
     return await db.select().from(activities).orderBy(desc(activities.createdAt)).limit(50);
+  }
+
+  async deleteUser(id: number): Promise<void> {
+    await db.delete(dailyLogs).where(eq(dailyLogs.userId, id));
+    await db.delete(users).where(eq(users.id, id));
+  }
+
+  async getAllLogs(filters?: { userId?: number; status?: string }): Promise<(DailyLog & { user: User })[]> {
+    const conditions = [];
+    if (filters?.userId) conditions.push(eq(dailyLogs.userId, filters.userId));
+    if (filters?.status) conditions.push(eq(dailyLogs.status, filters.status));
+
+    const rows = await db.query.dailyLogs.findMany({
+      where: conditions.length > 0 ? and(...conditions) : undefined,
+      with: { user: true },
+      orderBy: desc(dailyLogs.createdAt),
+      limit: 200,
+    });
+    return rows as (DailyLog & { user: User })[];
   }
   
   async getLeaderboardData(type: 'aCoins' | 'credits'): Promise<{user: User, totalApprovedChange: number}[]> {

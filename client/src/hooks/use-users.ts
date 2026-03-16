@@ -47,6 +47,7 @@ export function useReinstateUser() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [api.users.list.path] });
+      queryClient.invalidateQueries({ queryKey: [api.activities.list.path] });
     },
   });
 }
@@ -71,6 +72,65 @@ export function useUpdateStartingValues() {
   });
 }
 
+export function useDisqualifyUser() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ id, reason }: { id: number; reason?: string }) => {
+      const res = await fetch(`/api/admin/users/${id}/disqualify`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reason }),
+        credentials: 'include',
+      });
+      if (!res.ok) throw new Error("Failed to disqualify user");
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [api.users.list.path] });
+      queryClient.invalidateQueries({ queryKey: [api.activities.list.path] });
+    },
+  });
+}
+
+export function useWarnUser() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ id, reason }: { id: number; reason: string }) => {
+      const res = await fetch(`/api/admin/users/${id}/warn`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reason }),
+        credentials: 'include',
+      });
+      if (!res.ok) throw new Error("Failed to warn user");
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [api.activities.list.path] });
+    },
+  });
+}
+
+export function useDeleteUser() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (id: number) => {
+      const res = await fetch(`/api/admin/users/${id}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+      if (!res.ok) throw new Error("Failed to delete user");
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [api.users.list.path] });
+    },
+  });
+}
+
 export function useUserLogs(userId: number) {
   return useQuery({
     queryKey: ['/api/admin/users', userId, 'logs'],
@@ -78,6 +138,18 @@ export function useUserLogs(userId: number) {
       const res = await fetch(`/api/admin/users/${userId}/logs`, { credentials: 'include' });
       if (!res.ok) throw new Error("Failed to fetch user logs");
       return res.json();
+    },
+    enabled: !!userId,
+  });
+}
+
+export function useUserAdminStats(userId: number) {
+  return useQuery({
+    queryKey: ['/api/admin/users', userId, 'stats'],
+    queryFn: async () => {
+      const res = await fetch(`/api/admin/users/${userId}/stats`, { credentials: 'include' });
+      if (!res.ok) throw new Error("Failed to fetch user stats");
+      return res.json() as Promise<{ total: number; approved: number; rejected: number; pending: number; approvalRate: number }>;
     },
     enabled: !!userId,
   });

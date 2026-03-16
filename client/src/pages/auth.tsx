@@ -176,6 +176,7 @@ export default function Auth() {
                 >
                   {isLoggingIn ? "Signing in..." : "Sign In"}
                 </Button>
+
                 <p className="text-center text-sm text-muted-foreground">
                   Don't have an account?{" "}
                   <button type="button" onClick={() => setActiveTab("register")} className="text-primary font-semibold hover:underline">
@@ -323,6 +324,7 @@ export default function Auth() {
                 >
                   {isRegistering ? "Creating account..." : "Create Account"}
                 </Button>
+
                 <p className="text-center text-sm text-muted-foreground">
                   Already have an account?{" "}
                   <button type="button" onClick={() => setActiveTab("login")} className="text-primary font-semibold hover:underline">

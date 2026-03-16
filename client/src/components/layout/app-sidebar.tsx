@@ -13,10 +13,13 @@ import {
 import { useAuth } from "@/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getAvatarImage } from "@/lib/avatars";
+import { useUnreadActivities } from "@/hooks/use-unread-activities";
+import { getActivityBadgeColor } from "@/lib/activity-colors";
 
 export function AppSidebar() {
   const [location, setLocation] = useLocation();
   const { user, logout } = useAuth();
+  const { unreadCount, primaryType, markAllAsRead } = useUnreadActivities();
 
   const handleLogout = async () => {
     await logout();
@@ -26,12 +29,20 @@ export function AppSidebar() {
   const menuItems = [
     { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
     { title: "Leaderboard", url: "/leaderboard", icon: Trophy },
-    { title: "Activity Feed", url: "/activity", icon: Activity },
+    { title: "Activity Feed", url: "/activity", icon: Activity, badge: unreadCount > 0 ? unreadCount : null, badgeType: primaryType },
     { title: "Profile", url: "/profile", icon: User },
   ];
 
+  const colors = getActivityBadgeColor(primaryType);
+
+  const handleActivityClick = () => {
+    if (unreadCount > 0) {
+      markAllAsRead();
+    }
+  };
+
   return (
-    <Sidebar variant="sidebar" className="border-r border-border/60 bg-white">
+    <Sidebar variant="sidebar" className="border-r border-border/60 bg-white dark:bg-slate-950">
       <SidebarContent>
         {/* Brand Header */}
         <div className="p-5 pb-4 border-b border-border/50">
@@ -70,21 +81,35 @@ export function AppSidebar() {
             <SidebarMenu className="gap-0.5">
               {menuItems.map((item) => {
                 const isActive = location === item.url;
+                const isActivityFeed = item.url === "/activity";
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
                       asChild
                       isActive={isActive}
                       tooltip={item.title}
-                      className={`rounded-xl h-10 font-medium transition-all ${
+                      className={`rounded-xl h-10 font-medium transition-all relative group ${
                         isActive
                           ? 'bg-primary text-white shadow-sm hover:bg-primary/90'
                           : 'text-muted-foreground hover:bg-background hover:text-foreground'
                       }`}
+                      onClick={() => {
+                        if (isActivityFeed) {
+                          handleActivityClick();
+                        }
+                      }}
                     >
-                      <Link href={item.url}>
+                      <Link href={item.url} className="flex items-center gap-2 w-full">
                         <item.icon className="h-4 w-4" />
                         <span>{item.title}</span>
+                        {isActivityFeed && item.badge && (
+                          <div
+                            className={`ml-auto flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-semibold ${colors.bg}`}
+                          >
+                            <div className={`h-1.5 w-1.5 rounded-full ${colors.dot}`}></div>
+                            <span className="text-foreground">{item.badge}</span>
+                          </div>
+                        )}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -120,7 +145,7 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton
               onClick={handleLogout}
-              className="rounded-xl h-10 text-muted-foreground hover:bg-red-50 hover:text-red-500 font-medium transition-all"
+              className="rounded-xl h-10 text-muted-foreground hover:bg-red-50 dark:hover:bg-red-950 hover:text-red-500 font-medium transition-all"
             >
               <LogOut className="h-4 w-4" />
               <span>Sign Out</span>
