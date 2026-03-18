@@ -9,5 +9,6 @@ export function useGlobalStats() {
       if (!res.ok) throw new Error("Failed to fetch global stats");
       return api.stats.global.responses[200].parse(await res.json());
     },
+    refetchInterval: 60_000,
   });
 }

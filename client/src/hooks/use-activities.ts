@@ -9,6 +9,6 @@ export function useActivities() {
       if (!res.ok) throw new Error("Failed to fetch activities");
       return api.activities.list.responses[200].parse(await res.json());
     },
-    refetchInterval: 30000, // Refresh every 30s
+    refetchInterval: 15_000,
   });
 }

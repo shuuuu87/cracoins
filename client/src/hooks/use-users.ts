@@ -9,6 +9,7 @@ export function useUsers() {
       if (!res.ok) throw new Error("Failed to fetch users");
       return api.users.list.responses[200].parse(await res.json());
     },
+    refetchInterval: 60_000,
   });
 }
 
@@ -170,5 +171,6 @@ export function useMyStats() {
         totalCreditsEarned: number;
       }>;
     },
+    refetchInterval: 30_000,
   });
 }

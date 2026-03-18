@@ -10,6 +10,7 @@ export function useMyLogs() {
       if (!res.ok) throw new Error("Failed to fetch logs");
       return api.logs.listMyLogs.responses[200].parse(await res.json());
     },
+    refetchInterval: 20_000,
   });
 }
 
@@ -38,6 +39,7 @@ export function useAllAdminLogs(filters?: { userId?: number; status?: string }) 
       if (!res.ok) throw new Error("Failed to fetch logs");
       return res.json() as Promise<any[]>;
     },
+    refetchInterval: 30_000,
   });
 }
 
@@ -88,6 +90,8 @@ export function useUpdateLogStatus() {
       queryClient.invalidateQueries({ queryKey: [api.leaderboard.aCoins.path] });
       queryClient.invalidateQueries({ queryKey: [api.leaderboard.credits.path] });
       queryClient.invalidateQueries({ queryKey: [api.stats.global.path] });
+      queryClient.invalidateQueries({ queryKey: [api.activities.list.path] });
+      queryClient.invalidateQueries({ queryKey: [api.logs.listMyLogs.path] });
     },
   });
 }

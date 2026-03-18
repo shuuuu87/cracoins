@@ -4,17 +4,12 @@ kind: web
 priority: 10
 
 access:
-  type: all_of
+  type: any_of
   conditions:
-    - type: flag
-      name: flag-everything-everywhere
-      variation: "true"
-    - type: any_of
-      conditions:
-        - type: stack
-          name: PNPM_WORKSPACE
-        - type: dot_replit_version
-          version: "2.0.0"
+    - type: stack
+      name: PNPM_WORKSPACE
+    - type: dot_replit_version
+      version: "2.0.0"
 
 example: |
   ```javascript

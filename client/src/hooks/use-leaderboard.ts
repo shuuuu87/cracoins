@@ -9,6 +9,7 @@ export function useACoinsLeaderboard() {
       if (!res.ok) throw new Error("Failed to fetch A-Coins leaderboard");
       return api.leaderboard.aCoins.responses[200].parse(await res.json());
     },
+    refetchInterval: 60_000,
   });
 }
 
@@ -20,5 +21,6 @@ export function useCreditsLeaderboard() {
       if (!res.ok) throw new Error("Failed to fetch Credits leaderboard");
       return api.leaderboard.credits.responses[200].parse(await res.json());
     },
+    refetchInterval: 60_000,
   });
 }

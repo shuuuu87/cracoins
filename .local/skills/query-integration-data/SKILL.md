@@ -59,7 +59,7 @@ This is the main way to get credentials. It's a pre-registered function in the `
 
 ```javascript
 const conns = await listConnections('linear');
-console.log(conns);
+console.log(conns.map(c => ({ id: c.id, displayName: c.displayName, status: c.status })));
 ```
 
 Each connection object has:
@@ -340,9 +340,9 @@ console.log(`Deleted message ID abc123`);
 - **Use `listConnections(connectorName)`** as the primary way to get credentials
 - **Fall back to search → propose → add** when no connections exist (see `integrations` skill)
 - **All code runs in the `code_execution` sandbox** — no script files needed
-- **Use `console.log()`** to see output — functions execute silently without it
+- **Use `console.log()`** to see output — functions execute silently without it (but never log credentials)
 - **Use `await import(...)`** for packages (dynamic imports only)
-- **State persists** across `code_execution` calls (notebook-style)
+- **State persists** across `code_execution` calls — reuse `conns`, clients, and extracted credentials instead of re-fetching (unless expired).
 - **Browse `public_documentation_link`** to understand the API before coding
 - **Ask clarifying questions** before write operations that need specific IDs or values
 - **Fetch options first** when the user references something by name (users, projects, etc.)
