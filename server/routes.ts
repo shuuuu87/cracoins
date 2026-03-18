@@ -5,24 +5,74 @@ import { setupAuth } from "./auth";
 import { api } from "@shared/routes";
 import { z } from "zod";
 import multer from "multer";
+import { v2 as cloudinary } from "cloudinary";
 import path from "path";
 import fs from "fs";
 
-// Set up file uploads
-const uploadDir = path.join(process.cwd(), 'uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+// Configure Cloudinary — supports CLOUDINARY_URL or individual vars
+const cloudinaryConfigured = !!(
+  process.env.CLOUDINARY_URL ||
+  (process.env.CLOUDINARY_CLOUD_NAME &&
+    process.env.CLOUDINARY_API_KEY &&
+    process.env.CLOUDINARY_API_SECRET)
+);
+
+if (cloudinaryConfigured) {
+  if (process.env.CLOUDINARY_URL) {
+    cloudinary.config({ cloudinary_url: process.env.CLOUDINARY_URL });
+  } else {
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+    });
+  }
+  console.log("[cloudinary] configured ✓");
 }
 
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: uploadDir,
-    filename: (req, file, cb) => {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-      cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+// Upload to Cloudinary with a 30s timeout
+function uploadToCloudinary(buffer: Buffer, filename: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error("Cloudinary upload timed out")), 30000);
+    const stream = cloudinary.uploader.upload_stream(
+      { folder: "cracoins", resource_type: "image", public_id: filename },
+      (error, result) => {
+        clearTimeout(timer);
+        if (error || !result) {
+          console.error("[cloudinary] upload error:", error);
+          return reject(error ?? new Error("Upload failed"));
+        }
+        console.log("[cloudinary] upload success:", result.secure_url);
+        resolve(result.secure_url);
+      }
+    );
+    stream.end(buffer);
+  });
+}
+
+// Save buffer to local disk and return a /uploads URL
+function saveLocally(buffer: Buffer, filename: string): string {
+  const filePath = path.join(uploadDir, filename);
+  fs.writeFileSync(filePath, buffer);
+  return `/uploads/${filename}`;
+}
+
+// Upload to Cloudinary if configured, otherwise save locally
+async function storeScreenshot(buffer: Buffer, originalname: string): Promise<string> {
+  const ext = path.extname(originalname) || ".jpg";
+  const basename = `screenshot-${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+  if (cloudinaryConfigured) {
+    try {
+      return await uploadToCloudinary(buffer, basename);
+    } catch (err) {
+      console.error("[cloudinary] falling back to local storage due to error:", err);
     }
-  })
-});
+  }
+  return saveLocally(buffer, basename + ext);
+}
+
+// Use memory storage so we can handle the buffer ourselves
+const upload = multer({ storage: multer.memoryStorage() });
 
 // Middleware to check if user is authenticated
 function isAuthenticated(req: Request, res: Response, next: NextFunction) {
@@ -36,6 +86,9 @@ function isAdmin(req: Request, res: Response, next: NextFunction) {
   res.status(401).json({ message: "Unauthorized admin access" });
 }
 
+const uploadDir = path.join(process.cwd(), "uploads");
+if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express
@@ -43,8 +96,8 @@ export async function registerRoutes(
   // 1. Setup Auth (Passport)
   setupAuth(app);
 
-  // Serve uploaded files statically
-  app.use('/uploads', express.static(uploadDir));
+  // Serve old locally-uploaded files (fallback for pre-Cloudinary submissions)
+  app.use("/uploads", express.static(uploadDir));
 
   // --- LOGS ---
   app.post(api.logs.create.path, isAuthenticated, upload.single('screenshot'), async (req, res) => {
@@ -107,12 +160,14 @@ export async function registerRoutes(
         });
       }
 
+      const screenshotUrl = await storeScreenshot(req.file.buffer, req.file.originalname);
+
       const log = await storage.createDailyLog({
         userId: user.id,
         date: date || new Date().toISOString().split('T')[0],
         aCoins: parsedACoins,
         credits: parsedCredits,
-        screenshotUrl: `/uploads/${req.file.filename}`
+        screenshotUrl,
       });
 
       // Update log with calculated changes and credit spent tracking

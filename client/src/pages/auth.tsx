@@ -356,13 +356,13 @@ export default function Auth() {
           </div>
           <h2 className="text-4xl font-display font-bold mb-4 drop-shadow-lg">CraCoins</h2>
           <p className="text-lg font-medium text-white/90 max-w-xs mx-auto leading-relaxed drop-shadow">
-            Track your Mech Arena resources through the ultimate 4-month no-spend challenge.
+            Track your Mech Arena resources through the ultimate 1-day no-spend challenge.
           </p>
           <div className="mt-10 grid grid-cols-3 gap-4 text-center">
             {[
-              { label: "Challenge", value: "4 Months" },
-              { label: "Start", value: "Apr 24" },
-              { label: "End", value: "Aug 24" },
+              { label: "Challenge", value: "1 Day" },
+              { label: "Start", value: "10:12 UTC" },
+              { label: "End", value: "11:12 UTC" },
             ].map((item) => (
               <div key={item.label} className="bg-white/15 backdrop-blur-sm rounded-2xl py-4 px-3">
                 <div className="text-xl font-display font-bold text-white">{item.value}</div>

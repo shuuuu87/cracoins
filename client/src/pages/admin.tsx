@@ -371,7 +371,22 @@ export default function Admin() {
                           <DialogTitle className="font-display uppercase tracking-widest text-accent">Evidence: {log.user.username}</DialogTitle>
                         </DialogHeader>
                         <div className="relative aspect-video rounded-lg overflow-hidden border border-border/50 bg-black flex items-center justify-center">
-                          <img src={log.screenshotUrl} alt="Proof" className="max-h-full object-contain" />
+                          <img
+                            src={log.screenshotUrl}
+                            alt="Proof"
+                            className="max-h-full object-contain"
+                            onError={(e) => {
+                              const t = e.currentTarget;
+                              t.style.display = "none";
+                              const p = t.parentElement;
+                              if (p && !p.querySelector(".img-error-msg")) {
+                                const msg = document.createElement("p");
+                                msg.className = "img-error-msg text-muted-foreground text-sm";
+                                msg.textContent = "Image unavailable — file was stored locally before cloud storage was set up.";
+                                p.appendChild(msg);
+                              }
+                            }}
+                          />
                         </div>
                         <div className="grid grid-cols-2 gap-4 text-sm mt-2">
                           <div className="bg-muted/50 rounded-lg p-3">
@@ -493,7 +508,22 @@ export default function Admin() {
                             <DialogHeader>
                               <DialogTitle className="font-display uppercase text-accent">{log.user?.username} — {new Date(log.date).toLocaleDateString()}</DialogTitle>
                             </DialogHeader>
-                            <img src={log.screenshotUrl} alt="Proof" className="rounded-lg max-h-96 object-contain mx-auto" />
+                            <img
+                              src={log.screenshotUrl}
+                              alt="Proof"
+                              className="rounded-lg max-h-96 object-contain mx-auto"
+                              onError={(e) => {
+                                const t = e.currentTarget;
+                                t.style.display = "none";
+                                const p = t.parentElement;
+                                if (p && !p.querySelector(".img-error-msg")) {
+                                  const msg = document.createElement("p");
+                                  msg.className = "img-error-msg text-muted-foreground text-sm text-center py-4";
+                                  msg.textContent = "Image unavailable — file was stored locally before cloud storage was set up.";
+                                  p.appendChild(msg);
+                                }
+                              }}
+                            />
                           </DialogContent>
                         </Dialog>
                       </td>

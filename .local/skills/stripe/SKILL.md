@@ -346,6 +346,10 @@ To remove the Stripe integration from the project:
 2. Go to "Stripe" and click "Manage"
 3. Select "Edit" then "Delete"
 
+## Secrets and Environment Variables
+
+**NEVER write secrets or environment variables directly to the `.replit` file.** This includes Stripe API keys, webhook signing secrets, database URLs, and any other sensitive configuration. Instead, reference the `environment-secrets` skill for the correct way to manage secrets and environment variables.
+
 ## Key Rules
 
 **DO:**

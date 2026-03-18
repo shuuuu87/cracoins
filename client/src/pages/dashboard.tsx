@@ -154,8 +154,8 @@ export default function Dashboard() {
   const daysRemaining = Math.max(0, Math.floor((challengeEnd.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)));
   const avgACoinsPerDay = approvedLogs.length > 0 ? totalGainedACoins / approvedLogs.length : 0;
   const avgCreditsPerDay = approvedLogs.length > 0 ? totalGainedCredits / approvedLogs.length : 0;
-  const predictedACoins = user!.startACoins + totalGainedACoins + (avgACoinsPerDay * daysRemaining);
-  const predictedCredits = user!.startCredits + totalGainedCredits + (avgCreditsPerDay * daysRemaining);
+  const predictedACoins = (user?.startACoins ?? 0) + totalGainedACoins + (avgACoinsPerDay * daysRemaining);
+  const predictedCredits = (user?.startCredits ?? 0) + totalGainedCredits + (avgCreditsPerDay * daysRemaining);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

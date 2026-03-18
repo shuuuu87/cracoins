@@ -130,7 +130,7 @@ export default function ProtocolEnded() {
             Greetings to all Mech Arena Warriors! 🎉
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            You survived 4 months without spending a single coin. That takes real discipline.
+            You survived the challenge without spending a single coin. That takes real discipline.
             Whether you topped the board or just made it through — you earned it.
           </p>
           <p className="text-primary font-semibold text-lg font-display tracking-wider mt-2">

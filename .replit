@@ -41,6 +41,7 @@ waitForPort = 5000
 [userenv]
 
 [userenv.shared]
+CLOUDINARY_URL = "cloudinary://725921748236537:HkDf0lN_BQ9xHWtQdBz3BtVoH_4@dghsl9jsg"
 
 [agent]
 integrations = ["javascript_log_in_with_replit:2.0.0", "javascript_database:1.0.0"]

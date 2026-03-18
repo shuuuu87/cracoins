@@ -8,7 +8,7 @@ export default function Landing() {
   const [_, setLocation] = useLocation();
   const { user, isLoading } = useAuth();
 
-  const challengeStart = new Date("2026-04-24T00:00:00Z");
+  const challengeStart = new Date("2026-03-18T10:12:00Z");
   const isStarted = new Date() > challengeStart;
 
   if (isLoading) return null;
@@ -37,10 +37,10 @@ export default function Landing() {
         <div className="text-center max-w-3xl mb-16 space-y-5">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold text-sm px-4 py-1.5 rounded-full mb-2">
             <span className="h-2 w-2 rounded-full bg-primary" />
-            April 24 – August 24, 2026
+            Mar 18, 2026
           </div>
           <h2 className="text-5xl md:text-6xl font-display font-bold leading-tight text-foreground">
-            The 4-Month<br />
+            The 1-Day<br />
             <span className="text-primary">No-Spend Challenge</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -51,7 +51,7 @@ export default function Landing() {
         {/* Countdown */}
         <div className="w-full max-w-3xl mb-14">
           <CountdownTimer
-            targetDate={isStarted ? new Date("2026-08-24T00:00:00Z") : challengeStart}
+            targetDate={isStarted ? new Date("2026-03-18T11:12:00Z") : challengeStart}
             label={isStarted ? "Challenge Ends In" : "Challenge Starts In"}
           />
         </div>

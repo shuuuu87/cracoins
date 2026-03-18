@@ -38,7 +38,7 @@ export function WelcomeModal({ open, onClose }: WelcomeModalProps) {
                 <div className="space-y-3">
                   <h3 className="font-display font-bold text-lg uppercase tracking-wider">Challenge Duration</h3>
                   <p className="text-sm text-muted-foreground">
-                    April 24, 2026 – August 24, 2026 (4 Months)
+                    Mar 18, 2026 — 10:12 UTC to 11:12 UTC
                   </p>
                 </div>
 
@@ -90,7 +90,7 @@ export function WelcomeModal({ open, onClose }: WelcomeModalProps) {
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex gap-2">
                       <span className="text-primary font-bold">•</span>
-                      <span>Challenge runs from April 24 – August 24, 2026</span>
+                      <span>Challenge runs on Mar 18, 2026 (10:12 UTC – 11:12 UTC)</span>
                     </li>
                     <li className="flex gap-2">
                       <span className="text-primary font-bold">•</span>
