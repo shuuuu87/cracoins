@@ -3,13 +3,16 @@ import { CountdownTimer } from "@/components/countdown-timer";
 import { Button } from "@/components/ui/button";
 import { Shield, Target, TrendingUp, Coins } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
+import { CHALLENGE_START, CHALLENGE_END, REGISTRATION_CUTOFF } from "@/lib/protocol";
 
 export default function Landing() {
   const [_, setLocation] = useLocation();
   const { user, isLoading } = useAuth();
 
-  const challengeStart = new Date("2026-03-18T10:12:00Z");
-  const isStarted = new Date() > challengeStart;
+  const challengeStart = CHALLENGE_START;
+  const now = new Date();
+  const isStarted = now > challengeStart;
+  const registrationClosed = now > REGISTRATION_CUTOFF;
 
   if (isLoading) return null;
   if (user) {
@@ -37,10 +40,10 @@ export default function Landing() {
         <div className="text-center max-w-3xl mb-16 space-y-5">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold text-sm px-4 py-1.5 rounded-full mb-2">
             <span className="h-2 w-2 rounded-full bg-primary" />
-            Mar 18, 2026
+            Apr 15 – Aug 15, 2026
           </div>
           <h2 className="text-5xl md:text-6xl font-display font-bold leading-tight text-foreground">
-            The 1-Day<br />
+            The 4-Month<br />
             <span className="text-primary">No-Spend Challenge</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -51,7 +54,7 @@ export default function Landing() {
         {/* Countdown */}
         <div className="w-full max-w-3xl mb-14">
           <CountdownTimer
-            targetDate={isStarted ? new Date("2026-03-18T11:12:00Z") : challengeStart}
+            targetDate={isStarted ? new Date("2026-08-15T12:00:00Z") : challengeStart}
             label={isStarted ? "Challenge Ends In" : "Challenge Starts In"}
           />
         </div>
@@ -60,10 +63,17 @@ export default function Landing() {
           <Button asChild size="lg" className="h-13 px-12 text-base font-bold rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105">
             <Link href="/auth">Join the Challenge</Link>
           </Button>
-        ) : (
-          <div className="text-accent font-semibold bg-accent/10 border border-accent/30 px-6 py-3 rounded-xl">
-            Registration Closed — Protocol is Active
+        ) : registrationClosed ? (
+          <div className="flex flex-col items-center gap-2">
+            <div className="text-destructive font-semibold bg-destructive/10 border border-destructive/30 px-6 py-3 rounded-xl">
+              Registration Closed — Challenge Already Started
+            </div>
+            <p className="text-xs text-muted-foreground">The 2-day registration window has passed (closed Apr 17, 2026)</p>
           </div>
+        ) : (
+          <Button asChild size="lg" className="h-13 px-12 text-base font-bold rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-105">
+            <Link href="/auth">Join the Challenge</Link>
+          </Button>
         )}
 
         {/* Feature Cards */}

@@ -38,5 +38,15 @@ A full-stack web application for tracking the "4-Month No-Spend Challenge" for M
 - Leaderboards (A-Coins and Credits)
 - Activity feed / announcements
 - Anti-cheat: auto-disqualification for spending A-Coins
-- User profile management
-- Welcome screen for new users
+- User profile management with custom profile image upload
+- Welcome screen for new users (with Support chat tab)
+- Support/Feedback messaging system (user ↔ admin private chat)
+  - Users: `/support` page + Welcome modal Support tab
+  - Admins: Support tab in Admin panel with thread view + reply
+  - Unread badge on sidebar Support link
+- Custom profile photo upload (Profile page, hover overlay)
+- Sidebar avatar shows custom profile image if set
+
+## Schema
+- `users` table: includes `profileImageUrl` for custom photos
+- `messages` table: userId, content, fromAdmin, isRead, createdAt

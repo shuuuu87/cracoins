@@ -88,7 +88,7 @@ export default function ProtocolEnded() {
       {winner ? (
         <>
           <img
-            src={getAvatarImage(winner.avatar) || ""}
+            src={winner.profileImageUrl || getAvatarImage(winner.avatar) || ""}
             alt={winner.username}
             className="h-20 w-20 rounded-full object-cover border-4 border-current shadow-lg"
           />
@@ -186,7 +186,7 @@ export default function ProtocolEnded() {
                   </div>
 
                   <img
-                    src={getAvatarImage(p.avatar) || ""}
+                    src={p.profileImageUrl || getAvatarImage(p.avatar) || ""}
                     alt={p.username}
                     className="h-12 w-12 rounded-full object-cover border-2 border-border/50 shrink-0"
                   />

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "@/hooks/use-auth";
+import { useQueryClient } from "@tanstack/react-query";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -12,7 +13,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { AvatarSelector } from "@/components/avatar-selector";
 import { insertUserSchema } from "@shared/schema";
-import { Eye, EyeOff, Coins } from "lucide-react";
+import { Eye, EyeOff, Coins, Lock, Camera, X } from "lucide-react";
+import { REGISTRATION_CUTOFF } from "@/lib/protocol";
+import { api } from "@shared/routes";
 
 const COUNTRIES = [
   "United States", "United Kingdom", "Canada", "Australia", "India", "Germany", "France", "Spain",
@@ -33,9 +36,29 @@ export default function Auth() {
   const [_, setLocation] = useLocation();
   const { login, register, isLoggingIn, isRegistering } = useAuth();
   const { toast } = useToast();
+  const qc = useQueryClient();
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
   const [activeTab, setActiveTab] = useState("login");
+  const registrationClosed = new Date() > REGISTRATION_CUTOFF;
+  const [profileImageFile, setProfileImageFile] = useState<File | null>(null);
+  const [profileImagePreview, setProfileImagePreview] = useState<string | null>(null);
+  const photoInputRef = useRef<HTMLInputElement>(null);
+
+  const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setProfileImageFile(file);
+    const url = URL.createObjectURL(file);
+    setProfileImagePreview(url);
+  };
+
+  const removePhoto = () => {
+    setProfileImageFile(null);
+    if (profileImagePreview) URL.revokeObjectURL(profileImagePreview);
+    setProfileImagePreview(null);
+    if (photoInputRef.current) photoInputRef.current.value = "";
+  };
 
   const loginForm = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -68,6 +91,21 @@ export default function Auth() {
   const onRegister = async (data: z.infer<typeof registerSchema>) => {
     try {
       await register(data);
+      if (profileImageFile) {
+        try {
+          const fd = new FormData();
+          fd.append("image", profileImageFile);
+          const res = await fetch("/api/users/me/profile-image", {
+            method: "POST",
+            body: fd,
+            credentials: "include",
+          });
+          if (res.ok) {
+            const updatedUser = await res.json();
+            qc.setQueryData([api.auth.me.path], updatedUser);
+          }
+        } catch (_) {}
+      }
       toast({ title: "Account created!", description: "Welcome to the CraCoins challenge." });
       setLocation("/dashboard");
     } catch (err: any) {
@@ -111,7 +149,8 @@ export default function Auth() {
             </TabsTrigger>
             <TabsTrigger
               value="register"
-              className="rounded-lg font-semibold data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-foreground"
+              disabled={registrationClosed}
+              className="rounded-lg font-semibold data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:text-foreground disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Register
             </TabsTrigger>
@@ -189,8 +228,76 @@ export default function Auth() {
 
           {/* Register Tab */}
           <TabsContent value="register">
+            {registrationClosed ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+                <div className="h-16 w-16 rounded-2xl bg-destructive/10 flex items-center justify-center">
+                  <Lock className="h-8 w-8 text-destructive" />
+                </div>
+                <h3 className="text-xl font-display font-bold text-foreground">Registration Closed</h3>
+                <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
+                  The challenge has already started and the 2-day registration window has passed. You can no longer join this challenge.
+                </p>
+                <p className="text-xs text-muted-foreground border border-border/60 rounded-xl px-4 py-2 bg-muted/30">
+                  Registration closed on <span className="font-semibold text-foreground">Apr 17, 2026 at 12:00 UTC</span>
+                </p>
+                <button type="button" onClick={() => setActiveTab("login")} className="text-primary font-semibold text-sm hover:underline">
+                  Already have an account? Sign In
+                </button>
+              </div>
+            ) : (
             <Form {...registerForm}>
               <form onSubmit={registerForm.handleSubmit(onRegister)} className="space-y-4">
+
+                {/* Profile Photo Picker */}
+                <div className="flex items-center gap-4 p-3 rounded-xl border border-dashed border-border/80 bg-muted/20">
+                  <div className="relative shrink-0">
+                    {profileImagePreview ? (
+                      <img
+                        src={profileImagePreview}
+                        alt="Profile preview"
+                        className="h-16 w-16 rounded-full object-cover border-2 border-primary/40"
+                      />
+                    ) : (
+                      <div className="h-16 w-16 rounded-full bg-muted border-2 border-dashed border-border flex items-center justify-center">
+                        <Camera className="h-6 w-6 text-muted-foreground" />
+                      </div>
+                    )}
+                    {profileImagePreview && (
+                      <button
+                        type="button"
+                        onClick={removePhoto}
+                        className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-destructive text-white flex items-center justify-center hover:bg-destructive/80 transition-colors"
+                        data-testid="button-remove-photo"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold text-foreground mb-0.5">Profile Photo <span className="font-normal text-muted-foreground">(optional)</span></p>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      {profileImagePreview ? "Looking good! You can remove it and choose again." : "Upload a custom photo or keep the avatar you choose below."}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => photoInputRef.current?.click()}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-primary/40 bg-primary/5 text-primary text-xs font-medium hover:bg-primary/10 hover:border-primary transition-colors"
+                      data-testid="button-select-photo"
+                    >
+                      <Camera className="h-3.5 w-3.5" />
+                      {profileImagePreview ? "Change Photo" : "Upload Photo"}
+                    </button>
+                    <input
+                      ref={photoInputRef}
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handlePhotoSelect}
+                      data-testid="input-register-photo"
+                    />
+                  </div>
+                </div>
+
                 <FormField
                   control={registerForm.control}
                   name="username"
@@ -333,6 +440,7 @@ export default function Auth() {
                 </p>
               </form>
             </Form>
+            )}
           </TabsContent>
         </Tabs>
       </div>
@@ -356,13 +464,13 @@ export default function Auth() {
           </div>
           <h2 className="text-4xl font-display font-bold mb-4 drop-shadow-lg">CraCoins</h2>
           <p className="text-lg font-medium text-white/90 max-w-xs mx-auto leading-relaxed drop-shadow">
-            Track your Mech Arena resources through the ultimate 1-day no-spend challenge.
+            Track your Mech Arena resources through the ultimate 4-month no-spend challenge.
           </p>
           <div className="mt-10 grid grid-cols-3 gap-4 text-center">
             {[
-              { label: "Challenge", value: "1 Day" },
-              { label: "Start", value: "10:12 UTC" },
-              { label: "End", value: "11:12 UTC" },
+              { label: "Duration", value: "4 Months" },
+              { label: "Starts", value: "Apr 15" },
+              { label: "Ends", value: "Aug 15" },
             ].map((item) => (
               <div key={item.label} className="bg-white/15 backdrop-blur-sm rounded-2xl py-4 px-3">
                 <div className="text-xl font-display font-bold text-white">{item.value}</div>

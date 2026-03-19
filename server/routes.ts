@@ -512,5 +512,98 @@ export async function registerRoutes(
     res.status(200).json(activities);
   });
 
+  // --- PROFILE IMAGE UPLOAD ---
+  app.post('/api/users/me/profile-image', isAuthenticated, upload.single('image'), async (req, res) => {
+    try {
+      if (!req.file) return res.status(400).json({ message: 'No image file provided' });
+      const url = await storeScreenshot(req.file.buffer, req.file.originalname);
+      const user = await storage.updateUser(req.user!.id, { profileImageUrl: url });
+      const { password, ...safe } = user;
+      res.status(200).json(safe);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  // --- MESSAGES (User side) ---
+  app.get('/api/messages', isAuthenticated, async (req, res) => {
+    try {
+      const msgs = await storage.getMessagesForUser(req.user!.id);
+      res.status(200).json(msgs);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  app.post('/api/messages', isAuthenticated, async (req, res) => {
+    try {
+      const { content } = z.object({ content: z.string().min(1).max(2000) }).parse(req.body);
+      const msg = await storage.createMessage({ userId: req.user!.id, content, fromAdmin: false });
+      res.status(201).json(msg);
+    } catch (err: any) {
+      res.status(400).json({ message: err.message });
+    }
+  });
+
+  app.patch('/api/messages/read', isAuthenticated, async (req, res) => {
+    try {
+      await storage.markMessagesRead(req.user!.id, true);
+      res.status(200).json({ ok: true });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  app.get('/api/messages/unread-count', isAuthenticated, async (req, res) => {
+    try {
+      const count = await storage.getUnreadCountFromAdmin(req.user!.id);
+      res.status(200).json({ count });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  // --- MESSAGES (Admin side) ---
+  app.get('/api/admin/messages', isAdmin, async (req, res) => {
+    try {
+      const conversations = await storage.getAllConversations();
+      const safe = conversations.map(c => ({ ...c, user: { ...c.user, password: '' } }));
+      res.status(200).json(safe);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  app.get('/api/admin/messages/:userId', isAdmin, async (req, res) => {
+    try {
+      const userId = parseInt(req.params.userId);
+      const msgs = await storage.getMessagesForUser(userId);
+      res.status(200).json(msgs);
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+  app.post('/api/admin/messages/:userId', isAdmin, async (req, res) => {
+    try {
+      const userId = parseInt(req.params.userId);
+      const { content } = z.object({ content: z.string().min(1).max(2000) }).parse(req.body);
+      const msg = await storage.createMessage({ userId, content, fromAdmin: true });
+      res.status(201).json(msg);
+    } catch (err: any) {
+      res.status(400).json({ message: err.message });
+    }
+  });
+
+  app.patch('/api/admin/messages/:userId/read', isAdmin, async (req, res) => {
+    try {
+      const userId = parseInt(req.params.userId);
+      await storage.markMessagesRead(userId, false);
+      res.status(200).json({ ok: true });
+    } catch (err: any) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
   return httpServer;
 }

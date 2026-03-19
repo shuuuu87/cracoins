@@ -292,13 +292,13 @@ export default function Dashboard() {
           <Card className={`glass-panel border-muted ${!protocolStarted ? 'blur-sm' : ''}`}>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-semibold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
-                <TrendingUp className="h-3.5 w-3.5" /> End Prediction (Aug 24)
+                <TrendingUp className="h-3.5 w-3.5" /> End Prediction (Aug 15)
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
                 <div className="flex items-center justify-between mb-1">
-                  <p className="text-xs font-semibold text-accent uppercase tracking-wider">A-Coins by Aug 24</p>
+                  <p className="text-xs font-semibold text-accent uppercase tracking-wider">A-Coins by Aug 15</p>
                   <span className="text-xs text-muted-foreground">+{Math.round(avgACoinsPerDay)}/day avg</span>
                 </div>
                 <div className="text-2xl font-display font-bold text-accent">
@@ -308,7 +308,7 @@ export default function Dashboard() {
               </div>
               <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
                 <div className="flex items-center justify-between mb-1">
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">Credits by Aug 24</p>
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">Credits by Aug 15</p>
                   <span className="text-xs text-muted-foreground">+{Math.round(avgCreditsPerDay)}/day avg</span>
                 </div>
                 <div className="text-2xl font-display font-bold text-primary">

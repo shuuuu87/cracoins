@@ -13,6 +13,7 @@ import Admin from "./pages/admin";
 import Leaderboard from "./pages/leaderboard";
 import ActivityFeed from "./pages/activity";
 import Profile from "./pages/profile";
+import Support from "./pages/support";
 
 function Router() {
   return (
@@ -25,6 +26,7 @@ function Router() {
         <Route path="/leaderboard" component={Leaderboard} />
         <Route path="/activity" component={ActivityFeed} />
         <Route path="/profile" component={Profile} />
+        <Route path="/support" component={Support} />
         <Route component={NotFound} />
       </Switch>
     </MainLayout>

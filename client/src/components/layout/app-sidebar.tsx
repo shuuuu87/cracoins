@@ -1,4 +1,4 @@
-import { LayoutDashboard, Trophy, Activity, User, ShieldAlert, LogOut, Coins } from "lucide-react";
+import { LayoutDashboard, Trophy, Activity, User, ShieldAlert, LogOut, Coins, MessageSquare } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import {
   Sidebar,
@@ -14,12 +14,15 @@ import { useAuth } from "@/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getAvatarImage } from "@/lib/avatars";
 import { useUnreadActivities } from "@/hooks/use-unread-activities";
+import { useUnreadMessageCount } from "@/hooks/use-messages";
 import { getActivityBadgeColor } from "@/lib/activity-colors";
 
 export function AppSidebar() {
   const [location, setLocation] = useLocation();
   const { user, logout } = useAuth();
   const { unreadCount, primaryType, markAllAsRead } = useUnreadActivities();
+  const { data: msgUnread } = useUnreadMessageCount();
+  const unreadMsgCount = msgUnread?.count ?? 0;
 
   const handleLogout = async () => {
     await logout();
@@ -31,6 +34,7 @@ export function AppSidebar() {
     { title: "Leaderboard", url: "/leaderboard", icon: Trophy },
     { title: "Activity Feed", url: "/activity", icon: Activity, badge: unreadCount > 0 ? unreadCount : null, badgeType: primaryType },
     { title: "Profile", url: "/profile", icon: User },
+    { title: "Support", url: "/support", icon: MessageSquare, badge: unreadMsgCount > 0 ? unreadMsgCount : null, badgeType: 'support' as const },
   ];
 
   const colors = getActivityBadgeColor(primaryType);
@@ -40,6 +44,8 @@ export function AppSidebar() {
       markAllAsRead();
     }
   };
+
+  const avatarSrc = user?.profileImageUrl || getAvatarImage(user?.avatar ?? "avatar1") || undefined;
 
   return (
     <Sidebar variant="sidebar" className="border-r border-border/60 bg-white dark:bg-slate-950">
@@ -63,7 +69,7 @@ export function AppSidebar() {
         {user && (
           <div className="px-4 py-3 mx-3 mt-4 mb-2 bg-background rounded-xl flex items-center gap-3">
             <Avatar className="h-10 w-10 border-2 border-primary/20">
-              <AvatarImage src={getAvatarImage(user.avatar) || undefined} alt={user.username} />
+              <AvatarImage src={avatarSrc} alt={user.username} />
               <AvatarFallback className="bg-primary/10 text-primary font-semibold text-sm">
                 {user.username.charAt(0).toUpperCase()}
               </AvatarFallback>
@@ -82,6 +88,12 @@ export function AppSidebar() {
               {menuItems.map((item) => {
                 const isActive = location === item.url;
                 const isActivityFeed = item.url === "/activity";
+                const isSupport = item.url === "/support";
+                const itemBadge = item.badge;
+                const badgeColor = isSupport
+                  ? "bg-primary/10 text-primary"
+                  : colors.bg;
+
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
@@ -94,20 +106,16 @@ export function AppSidebar() {
                           : 'text-muted-foreground hover:bg-background hover:text-foreground'
                       }`}
                       onClick={() => {
-                        if (isActivityFeed) {
-                          handleActivityClick();
-                        }
+                        if (isActivityFeed) handleActivityClick();
                       }}
                     >
                       <Link href={item.url} className="flex items-center gap-2 w-full">
                         <item.icon className="h-4 w-4" />
                         <span>{item.title}</span>
-                        {isActivityFeed && item.badge && (
-                          <div
-                            className={`ml-auto flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-semibold ${colors.bg}`}
-                          >
-                            <div className={`h-1.5 w-1.5 rounded-full ${colors.dot}`}></div>
-                            <span className="text-foreground">{item.badge}</span>
+                        {itemBadge && (
+                          <div className={`ml-auto flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-semibold ${badgeColor}`}>
+                            {!isSupport && <div className={`h-1.5 w-1.5 rounded-full ${colors.dot}`}></div>}
+                            <span className={isActive ? "text-white" : "text-foreground"}>{itemBadge}</span>
                           </div>
                         )}
                       </Link>

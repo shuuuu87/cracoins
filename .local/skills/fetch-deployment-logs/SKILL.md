@@ -1,6 +1,6 @@
 ---
 name: fetch-deployment-logs
-description: Fetch and analyze deployment logs for the current Repl. Use this skill to debug deployment issues, monitor application behavior, and troubleshoot errors in production.
+description: Fetch and analyze deployment logs for the current Repl. Use when the user's published/deployed app isn't working, the live site is down or showing errors, or they ask to check production logs. Covers requests like "my app isn't loading", "my site is broken after publishing", "why isn't my deployed app working", or "check what's happening in production".
 ---
 
 # Deployment Logs Skill

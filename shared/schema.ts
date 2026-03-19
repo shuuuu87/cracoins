@@ -10,6 +10,7 @@ export const users = pgTable("users", {
   country: text("country").notNull().default(""),
   timezone: text("timezone").notNull().default(""),
   avatar: text("avatar").notNull().default("avatar1"),
+  profileImageUrl: text("profile_image_url"),
   startACoins: integer("start_a_coins").notNull().default(0),
   startCredits: integer("start_credits").notNull().default(0),
   role: text("role").notNull().default("user"),
@@ -40,8 +41,18 @@ export const activities = pgTable("activities", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const messages = pgTable("messages", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull(),
+  content: text("content").notNull(),
+  fromAdmin: boolean("from_admin").notNull().default(false),
+  isRead: boolean("is_read").notNull().default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const usersRelations = relations(users, ({ many }) => ({
   dailyLogs: many(dailyLogs),
+  messages: many(messages),
 }));
 
 export const dailyLogsRelations = relations(dailyLogs, ({ one }) => ({
@@ -51,9 +62,17 @@ export const dailyLogsRelations = relations(dailyLogs, ({ one }) => ({
   }),
 }));
 
+export const messagesRelations = relations(messages, ({ one }) => ({
+  user: one(users, {
+    fields: [messages.userId],
+    references: [users.id],
+  }),
+}));
+
 export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true });
 export const insertDailyLogSchema = createInsertSchema(dailyLogs).omit({ id: true, createdAt: true, aCoinChange: true, creditsChange: true, creditsSpent: true, status: true, adminNotes: true });
 export const insertActivitySchema = createInsertSchema(activities).omit({ id: true, createdAt: true });
+export const insertMessageSchema = createInsertSchema(messages).omit({ id: true, createdAt: true });
 
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
@@ -61,5 +80,7 @@ export type DailyLog = typeof dailyLogs.$inferSelect;
 export type InsertDailyLog = z.infer<typeof insertDailyLogSchema>;
 export type Activity = typeof activities.$inferSelect;
 export type InsertActivity = z.infer<typeof insertActivitySchema>;
+export type Message = typeof messages.$inferSelect;
+export type InsertMessage = z.infer<typeof insertMessageSchema>;
 
 export type LogWithUser = DailyLog & { user: User };

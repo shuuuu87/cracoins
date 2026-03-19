@@ -1,0 +1,323 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K[cloudinary] configured ✓
+12:25:12 PM [express] serving on port 5000
+12:25:21 PM [express] GET /api/auth/me 401 in 3ms :: {"message":"Not authenticated"}
+12:25:26 PM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m12:35:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/auth.tsx, /src/pages/leaderboard.tsx, /src/pages/activity.tsx, /src/components/layout/app-sidebar.tsx, /src/pages/landing.tsx, /src/pages/profile.tsx, /src/components/layout/main-layout.tsx, /src/pages/dashboard.tsx, /src/pages/admin.tsx[22m
+12:35:44 PM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m12:37:56 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/welcome-modal.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m12:38:51 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/layout/app-sidebar.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m12:39:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+12:39:15 PM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m12:39:18 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m12:39:31 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/profile.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m12:39:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/profile.tsx, /src/index.css[22m [33m(x2)[39m
+[replit-cartographer] Error processing /home/runner/workspace/client/src/pages/profile.tsx: SyntaxError: Identifier 'toast' has already been declared. (77:10)
+    at toParseError [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parse-error.ts:95:45[90m)[39m
+    at raise [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/tokenizer/index.ts:1503:19[90m)[39m
+    at checkRedeclarationInScope [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/util/scope.ts:164:19[90m)[39m
+    at declareName [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/util/scope.ts:118:12[90m)[39m
+    at declareName [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/plugins/typescript/scope.ts:89:11[90m)[39m
+    at declareNameFromIdentifier [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/lval.ts:818:16[90m)[39m
+    at checkIdentifier [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/lval.ts:813:12[90m)[39m
+    at checkLVal [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/lval.ts:713:12[90m)[39m
+    at checkLVal [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/lval.ts:777:12[90m)[39m
+    at checkLVal [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/lval.ts:766:16[90m)[39m
+    at parseVarId [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1628:10[90m)[39m
+    at parseVarId [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/plugins/typescript/index.ts:3663:13[90m)[39m
+    at parseVar [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1577:12[90m)[39m
+    at parseVarStatement [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1246:10[90m)[39m
+    at parseVarStatement [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/plugins/typescript/index.ts:3126:33[90m)[39m
+    at parseStatementContent [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:607:21[90m)[39m
+    at parseStatementContent [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/plugins/typescript/index.ts:3185:20[90m)[39m
+    at parseStatementLike [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:477:17[90m)[39m
+    at parseStatementListItem [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:426:17[90m)[39m
+    at parseBlockOrModuleBlockBody [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1439:16[90m)[39m
+    at parseBlockBody [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1412:10[90m)[39m
+    at parseBlock [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1380:10[90m)[39m
+    at parseFunctionBody [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/expression.ts:2616:24[90m)[39m
+    at parseFunctionBodyAndFinish [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/expression.ts:2585:10[90m)[39m
+    at parseFunctionBodyAndFinish [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/plugins/typescript/index.ts:2646:20[90m)[39m
+    at callback [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1690:12[90m)[39m
+    at withSmartMixTopicForbiddingContext [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/expression.ts:3166:14[90m)[39m
+    at parseFunction [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1688:10[90m)[39m
+    at parseExportDefaultExpression [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:2565:19[90m)[39m
+    at parseExportDefaultExpression [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/plugins/typescript/index.ts:3117:20[90m)[39m
+    at parseExport [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:2447:25[90m)[39m
+    at parseExport [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/plugins/typescript/index.ts:3087:22[90m)[39m
+    at parseStatementContent [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:644:25[90m)[39m
+    at parseStatementContent [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/plugins/typescript/index.ts:3185:20[90m)[39m
+    at parseStatementLike [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:477:17[90m)[39m
+    at parseModuleItem [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:414:17[90m)[39m
+    at parseBlockOrModuleBlockBody [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1438:16[90m)[39m
+    at parseBlockBody [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:1412:10[90m)[39m
+    at parseProgram [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:229:10[90m)[39m
+    at parseTopLevel [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/statement.ts:203:25[90m)[39m
+    at parse [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/parser/index.ts:93:10[90m)[39m
+    at parse [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/plugins/typescript/index.ts:4309:20[90m)[39m
+    at parse [90m(/home/runner/workspace/[39mnode_modules/[4m@babel/parser[24m/src/index.ts:92:38[90m)[39m
+    at TransformPluginContext.handler [90m(/home/runner/workspace/[39mnode_modules/[4m@replit/vite-plugin-cartographer[24m/dist/index.mjs:74:23[90m)[39m
+    at EnvironmentPluginContainer.transform [90m(/home/runner/workspace/[39mnode_modules/[4mvite[24m/dist/node/chunks/config.js:28797:51[90m)[39m
+    at loadAndTransform [90m(/home/runner/workspace/[39mnode_modules/[4mvite[24m/dist/node/chunks/config.js:22670:48[90m)[39m
+    at async viteTransformMiddleware [90m(/home/runner/workspace/[39mnode_modules/[4mvite[24m/dist/node/chunks/config.js:24542:20[90m)[39m {
+  code: [32m'BABEL_PARSER_SYNTAX_ERROR'[39m,
+  reasonCode: [32m'VarRedeclaration'[39m,
+  loc: Position { line: [33m77[39m, column: [33m10[39m, index: [33m3320[39m },
+  pos: [33m3320[39m,
+  syntaxPlugin: [90mundefined[39m
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m12:39:41 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: /home/runner/workspace/client/src/pages/profile.tsx: Identifier 'toast' has already been declared. (77:10)
+
+[0m [90m 75 |[31m     enabled[33m:[31m user[33m?[31m[33m.[31mrole [33m===[31m [32m'admin'[31m[33m,[31m
+ [90m 76 |[31m   })[33m;[31m
+[31m[1m>[22m[31m[90m 77 |[31m   [36mconst[31m { toast } [33m=[31m useToast()[33m;[31m
+ [90m    |[31m           [31m[1m^[22m[31m
+ [90m 78 |[31m   [36mconst[31m [_[33m,[31m setLocation] [33m=[31m useLocation()[33m;[31m
+ [90m 79 |[31m
+ [90m 80 |[31m   [36mconst[31m form [33m=[31m useForm[33m<[31m[33mz[31m[33m.[31minfer[33m<[31m[36mtypeof[31m updateSchema[33m>>[31m({[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36m/home/runner/workspace/client/src/pages/profile.tsx[39m:77:10
+[33m  75 |      enabled: user?.role === 'admin',
+  76 |    });
+  77 |    const { toast } = useToast();
+     |            ^
+  78 |    const [_, setLocation] = useLocation();
+  79 |  [39m
+      at toParseError (/home/runner/workspace/node_modules/@babel/parser/src/parse-error.ts:95:45)
+      at raise (/home/runner/workspace/node_modules/@babel/parser/src/tokenizer/index.ts:1503:19)
+      at checkRedeclarationInScope (/home/runner/workspace/node_modules/@babel/parser/src/util/scope.ts:164:19)
+      at declareName (/home/runner/workspace/node_modules/@babel/parser/src/util/scope.ts:118:12)
+      at declareName (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/scope.ts:89:11)
+      at declareNameFromIdentifier (/home/runner/workspace/node_modules/@babel/parser/src/parser/lval.ts:818:16)
+      at checkIdentifier (/home/runner/workspace/node_modules/@babel/parser/src/parser/lval.ts:813:12)
+      at checkLVal (/home/runner/workspace/node_modules/@babel/parser/src/parser/lval.ts:713:12)
+      at checkLVal (/home/runner/workspace/node_modules/@babel/parser/src/parser/lval.ts:777:12)
+      at checkLVal (/home/runner/workspace/node_modules/@babel/parser/src/parser/lval.ts:766:16)
+      at parseVarId (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1628:10)
+      at parseVarId (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3663:13)
+      at parseVar (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1577:12)
+      at parseVarStatement (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1246:10)
+      at parseVarStatement (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3126:33)
+      at parseStatementContent (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:607:21)
+      at parseStatementContent (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3185:20)
+      at parseStatementLike (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:477:17)
+      at parseStatementListItem (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:426:17)
+      at parseBlockOrModuleBlockBody (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1439:16)
+      at parseBlockBody (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1412:10)
+      at parseBlock (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1380:10)
+      at parseFunctionBody (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:2616:24)
+      at parseFunctionBodyAndFinish (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:2585:10)
+      at parseFunctionBodyAndFinish (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:2646:20)
+      at callback (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1690:12)
+      at withSmartMixTopicForbiddingContext (/home/runner/workspace/node_modules/@babel/parser/src/parser/expression.ts:3166:14)
+      at parseFunction (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1688:10)
+      at parseExportDefaultExpression (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:2565:19)
+      at parseExportDefaultExpression (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3117:20)
+      at parseExport (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:2447:25)
+      at parseExport (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3087:22)
+      at parseStatementContent (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:644:25)
+      at parseStatementContent (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:3185:20)
+      at parseStatementLike (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:477:17)
+      at parseModuleItem (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:414:17)
+      at parseBlockOrModuleBlockBody (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1438:16)
+      at parseBlockBody (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:1412:10)
+      at parseProgram (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:229:10)
+      at parseTopLevel (/home/runner/workspace/node_modules/@babel/parser/src/parser/statement.ts:203:25)
+      at parse (/home/runner/workspace/node_modules/@babel/parser/src/parser/index.ts:93:10)
+      at parse (/home/runner/workspace/node_modules/@babel/parser/src/plugins/typescript/index.ts:4309:20)
+      at parse (/home/runner/workspace/node_modules/@babel/parser/src/index.ts:92:38)
+      at parser (/home/runner/workspace/node_modules/@babel/core/src/parser/index.ts:28:19)
+      at parser.next (<anonymous>)
+      at normalizeFile (/home/runner/workspace/node_modules/@babel/core/src/transformation/normalize-file.ts:49:24)
+      at normalizeFile.next (<anonymous>)
+      at run (/home/runner/workspace/node_modules/@babel/core/src/transformation/index.ts:40:36)
+      at run.next (<anonymous>)
+      at transform (/home/runner/workspace/node_modules/@babel/core/src/transform.ts:29:20)
+[1G[0K⠙[1G[0K

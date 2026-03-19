@@ -3,7 +3,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, Trophy, Upload, AlertCircle } from "lucide-react";
+import { CheckCircle2, Trophy, Upload, AlertCircle, MessageSquare } from "lucide-react";
+import { SupportChat } from "@/components/support-chat";
 
 interface WelcomeModalProps {
   open: boolean;
@@ -26,10 +27,14 @@ export function WelcomeModal({ open, onClose }: WelcomeModalProps) {
         </DialogHeader>
 
         <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="rules">Rules</TabsTrigger>
             <TabsTrigger value="howto">How to Use</TabsTrigger>
+            <TabsTrigger value="support" className="flex items-center gap-1.5">
+              <MessageSquare className="h-3.5 w-3.5" />
+              Support
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-4">
@@ -38,7 +43,7 @@ export function WelcomeModal({ open, onClose }: WelcomeModalProps) {
                 <div className="space-y-3">
                   <h3 className="font-display font-bold text-lg uppercase tracking-wider">Challenge Duration</h3>
                   <p className="text-sm text-muted-foreground">
-                    Mar 18, 2026 — 10:12 UTC to 11:12 UTC
+                    Apr 15, 2026 — 12:00 UTC to Aug 15, 2026 — 12:00 UTC
                   </p>
                 </div>
 
@@ -90,7 +95,7 @@ export function WelcomeModal({ open, onClose }: WelcomeModalProps) {
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex gap-2">
                       <span className="text-primary font-bold">•</span>
-                      <span>Challenge runs on Mar 18, 2026 (10:12 UTC – 11:12 UTC)</span>
+                      <span>Challenge runs Apr 15, 2026 (12:00 UTC) to Aug 15, 2026 (12:00 UTC)</span>
                     </li>
                     <li className="flex gap-2">
                       <span className="text-primary font-bold">•</span>
@@ -214,6 +219,23 @@ export function WelcomeModal({ open, onClose }: WelcomeModalProps) {
                     </li>
                   </ul>
                 </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="support" className="space-y-2">
+            <Card className="glass-panel border-primary/20">
+              <CardContent className="pt-4">
+                <div className="mb-3">
+                  <h3 className="font-display font-bold text-base uppercase tracking-wider flex items-center gap-2">
+                    <MessageSquare className="h-4 w-4 text-primary" />
+                    Support & Feedback
+                  </h3>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Send a complaint, question, or feedback to the admin team. They'll respond directly here.
+                  </p>
+                </div>
+                <SupportChat />
               </CardContent>
             </Card>
           </TabsContent>

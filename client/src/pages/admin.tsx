@@ -4,6 +4,7 @@ import { usePendingLogs, useUpdateLogStatus, useBatchUpdateLogs, useAllAdminLogs
 import { useGlobalStats } from "@/hooks/use-stats";
 import { useUsers, useUpdateUserRole, useReinstateUser, useUpdateStartingValues, useUserLogs, useDisqualifyUser, useWarnUser, useDeleteUser } from "@/hooks/use-users";
 import { useAnnounce } from "@/hooks/use-announce";
+import { useAdminConversations, useAdminUserMessages, useAdminReply, useAdminMarkRead } from "@/hooks/use-messages";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -20,7 +21,7 @@ import {
   ShieldAlert, Users, TrendingUp, Check, X, Gavel, Activity, RotateCcw,
   Sliders, Megaphone, FileText, ChevronDown, ChevronRight, Search,
   AlertTriangle, Trash2, Filter, CheckSquare, XSquare, Eye, Database,
-  Clock, UserX, BarChart2,
+  Clock, UserX, BarChart2, MessageSquare, Send, Loader2,
 } from "lucide-react";
 import { useLocation } from "wouter";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -58,6 +59,13 @@ export default function Admin() {
   const [warnReason, setWarnReason] = useState("");
   const [allLogsStatusFilter, setAllLogsStatusFilter] = useState<string>("all");
   const [allLogsUserFilter, setAllLogsUserFilter] = useState<string>("all");
+  const [selectedConvUserId, setSelectedConvUserId] = useState<number | null>(null);
+  const [adminReplyText, setAdminReplyText] = useState("");
+
+  const { data: allConversations, isLoading: convsLoading } = useAdminConversations();
+  const { data: activeThread, isLoading: threadLoading } = useAdminUserMessages(selectedConvUserId);
+  const adminReply = useAdminReply(selectedConvUserId);
+  const adminMarkRead = useAdminMarkRead(selectedConvUserId);
 
   const { data: allLogs, isLoading: allLogsLoading } = useAllAdminLogs({
     status: allLogsStatusFilter !== "all" ? allLogsStatusFilter : undefined,
@@ -276,6 +284,14 @@ export default function Admin() {
           </TabsTrigger>
           <TabsTrigger value="announce" className="uppercase font-display tracking-wider text-xs data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
             <Megaphone className="h-3.5 w-3.5 mr-1.5" /> Announce
+          </TabsTrigger>
+          <TabsTrigger value="messages" className="uppercase font-display tracking-wider text-xs data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
+            <MessageSquare className="h-3.5 w-3.5 mr-1.5" /> Support
+            {allConversations && allConversations.reduce((acc: number, c: any) => acc + c.unreadFromUser, 0) > 0 && (
+              <span className="ml-1.5 bg-primary text-white text-[10px] rounded-full px-1.5 py-0.5">
+                {allConversations.reduce((acc: number, c: any) => acc + c.unreadFromUser, 0)}
+              </span>
+            )}
           </TabsTrigger>
         </TabsList>
 
@@ -586,7 +602,7 @@ export default function Admin() {
                           >
                             {expandedUserId === u.id ? <ChevronDown className="h-3.5 w-3.5" /> : <ChevronRight className="h-3.5 w-3.5" />}
                             <Avatar className="h-7 w-7">
-                              <AvatarImage src={getAvatarImage(u.avatar) || undefined} />
+                              <AvatarImage src={u.profileImageUrl || getAvatarImage(u.avatar) || undefined} />
                               <AvatarFallback className="text-[10px] bg-primary/10 text-primary">{u.username[0].toUpperCase()}</AvatarFallback>
                             </Avatar>
                             <span>{u.username}</span>
@@ -811,6 +827,131 @@ export default function Admin() {
               </Button>
             </CardContent>
           </Card>
+        </TabsContent>
+
+        {/* ===== SUPPORT MESSAGES ===== */}
+        <TabsContent value="messages">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-[600px]">
+            {/* Conversation List */}
+            <div className="md:col-span-1 flex flex-col gap-2 overflow-y-auto">
+              <h3 className="text-xs font-display uppercase tracking-wider text-muted-foreground px-1 mb-1">User Conversations</h3>
+              {convsLoading ? (
+                <div className="text-xs text-muted-foreground py-4 text-center">Loading...</div>
+              ) : !allConversations || allConversations.length === 0 ? (
+                <div className="text-xs text-muted-foreground py-4 text-center">No messages yet.</div>
+              ) : (
+                allConversations.map((conv: any) => (
+                  <button
+                    key={conv.userId}
+                    onClick={() => {
+                      setSelectedConvUserId(conv.userId);
+                      adminMarkRead.mutate();
+                    }}
+                    className={`w-full text-left p-3 rounded-xl border transition-all ${
+                      selectedConvUserId === conv.userId
+                        ? 'bg-primary/10 border-primary/30'
+                        : 'bg-card border-border/50 hover:border-primary/20'
+                    }`}
+                    data-testid={`button-conv-${conv.userId}`}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-2">
+                        <Avatar className="h-6 w-6">
+                          <AvatarImage src={conv.user?.profileImageUrl || getAvatarImage(conv.user?.avatar || 'avatar1') || undefined} />
+                          <AvatarFallback className="text-[10px]">{conv.user?.username?.charAt(0)}</AvatarFallback>
+                        </Avatar>
+                        <span className="font-semibold text-sm text-foreground">{conv.user?.username}</span>
+                      </div>
+                      {conv.unreadFromUser > 0 && (
+                        <span className="bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">{conv.unreadFromUser}</span>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground truncate">
+                      {conv.lastMessage?.fromAdmin ? "You: " : ""}{conv.lastMessage?.content}
+                    </p>
+                    <p className="text-[10px] text-muted-foreground/60 mt-0.5">
+                      {conv.lastMessage?.createdAt ? new Date(conv.lastMessage.createdAt).toLocaleDateString() : ""}
+                    </p>
+                  </button>
+                ))
+              )}
+            </div>
+
+            {/* Thread View */}
+            <div className="md:col-span-2 flex flex-col border border-border/50 rounded-xl overflow-hidden">
+              {!selectedConvUserId ? (
+                <div className="flex-1 flex items-center justify-center text-muted-foreground text-sm">
+                  <div className="text-center">
+                    <MessageSquare className="h-10 w-10 mx-auto mb-3 opacity-30" />
+                    <p>Select a conversation to view</p>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="px-4 py-3 border-b border-border/50 bg-muted/20">
+                    <p className="font-semibold text-sm">
+                      {allConversations?.find((c: any) => c.userId === selectedConvUserId)?.user?.username}
+                    </p>
+                  </div>
+                  <div className="flex-1 overflow-y-auto p-3 space-y-2 max-h-[420px]">
+                    {threadLoading ? (
+                      <div className="flex items-center justify-center h-full"><Loader2 className="h-5 w-5 animate-spin text-muted-foreground" /></div>
+                    ) : !activeThread || activeThread.length === 0 ? (
+                      <div className="text-xs text-muted-foreground text-center py-4">No messages in this thread.</div>
+                    ) : (
+                      activeThread.map((msg: any) => (
+                        <div key={msg.id} className={`flex ${msg.fromAdmin ? 'justify-end' : 'justify-start'}`}>
+                          <div className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${
+                            msg.fromAdmin
+                              ? 'bg-primary text-white rounded-tr-sm'
+                              : 'bg-muted/50 border border-border/50 rounded-tl-sm'
+                          }`}>
+                            <p className="whitespace-pre-wrap break-words">{msg.content}</p>
+                            <p className={`text-[10px] mt-0.5 ${msg.fromAdmin ? 'text-white/60' : 'text-muted-foreground'}`}>
+                              {new Date(msg.createdAt).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                            </p>
+                          </div>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                  <div className="p-3 border-t border-border/50 space-y-2">
+                    <Textarea
+                      value={adminReplyText}
+                      onChange={e => setAdminReplyText(e.target.value)}
+                      placeholder="Type your reply... (Enter to send)"
+                      className="resize-none min-h-[60px] text-sm"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          if (!adminReplyText.trim()) return;
+                          adminReply.mutate(adminReplyText.trim(), {
+                            onSuccess: () => setAdminReplyText(""),
+                          });
+                        }
+                      }}
+                      data-testid="input-admin-reply"
+                    />
+                    <Button
+                      size="sm"
+                      className="gap-1.5 w-full"
+                      disabled={!adminReplyText.trim() || adminReply.isPending}
+                      onClick={() => {
+                        if (!adminReplyText.trim()) return;
+                        adminReply.mutate(adminReplyText.trim(), {
+                          onSuccess: () => setAdminReplyText(""),
+                        });
+                      }}
+                      data-testid="button-admin-send-reply"
+                    >
+                      {adminReply.isPending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />}
+                      Send Reply
+                    </Button>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
         </TabsContent>
       </Tabs>
     </div>

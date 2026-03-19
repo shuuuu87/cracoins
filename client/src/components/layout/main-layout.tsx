@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./app-sidebar";
+import { MobileBottomNav } from "./mobile-bottom-nav";
 import { useAuth } from "@/hooks/use-auth";
 import { useProtocol } from "@/hooks/use-protocol";
 import { Loader2, Coins } from "lucide-react";
@@ -43,26 +44,45 @@ export function MainLayout({ children }: { children: ReactNode }) {
   return (
     <SidebarProvider style={style}>
       <div className="flex min-h-screen w-full bg-background overflow-hidden">
-        <AppSidebar />
+        {/* Sidebar — desktop only */}
+        <div className="hidden md:block">
+          <AppSidebar />
+        </div>
 
         <div className="flex flex-col flex-1 w-full overflow-hidden">
-          <header className="flex items-center justify-between px-6 py-3.5 border-b border-border/60 bg-white sticky top-0 z-20 shadow-sm">
-            <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
+          <header className="flex items-center justify-between px-4 md:px-6 py-3.5 border-b border-border/60 bg-white dark:bg-slate-950 sticky top-0 z-20 shadow-sm">
+            {/* Sidebar toggle — desktop only */}
+            <div className="hidden md:block">
+              <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
+            </div>
+
+            {/* App brand — mobile only */}
+            <div className="flex md:hidden items-center gap-2">
+              <div className="h-7 w-7 rounded-lg gradient-primary flex items-center justify-center shadow-sm">
+                <Coins className="h-4 w-4 text-white" />
+              </div>
+              <span className="text-base font-display font-bold text-foreground">CraCoins</span>
+            </div>
+
             <div className="flex items-center gap-2">
               <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm font-medium text-muted-foreground">
+              <span className="text-xs md:text-sm font-medium text-muted-foreground">
                 Challenge Active
               </span>
             </div>
           </header>
 
-          <main className="flex-1 overflow-y-auto p-5 md:p-8">
+          {/* Main content — extra bottom padding on mobile for the bottom nav */}
+          <main className="flex-1 overflow-y-auto p-4 md:p-8 pb-20 md:pb-8">
             <div className="max-w-6xl mx-auto">
               {children}
             </div>
           </main>
         </div>
       </div>
+
+      {/* Bottom navigation — mobile only */}
+      <MobileBottomNav />
     </SidebarProvider>
   );
 }

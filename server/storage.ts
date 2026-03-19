@@ -1,9 +1,10 @@
 import { db } from "./db";
 import { 
-  users, dailyLogs, activities, 
+  users, dailyLogs, activities, messages,
   type User, type InsertUser, 
   type DailyLog, type InsertDailyLog, 
   type Activity, type InsertActivity,
+  type Message, type InsertMessage,
   type LogWithUser
 } from "@shared/schema";
 import { eq, desc, sum, and, gte, lte, inArray } from "drizzle-orm";
@@ -37,6 +38,13 @@ export interface IStorage {
   
   getLeaderboardData(type: 'aCoins' | 'credits'): Promise<{user: User, totalApprovedChange: number}[]>;
   getGlobalStats(): Promise<{totalPlayers: number, activeToday: number, totalACoinsGained: number, totalCreditsGained: number}>;
+
+  // Messages
+  createMessage(data: { userId: number; content: string; fromAdmin: boolean }): Promise<Message>;
+  getMessagesForUser(userId: number): Promise<Message[]>;
+  getAllConversations(): Promise<{ userId: number; user: User; lastMessage: Message; unreadFromUser: number }[]>;
+  markMessagesRead(userId: number, fromAdmin: boolean): Promise<void>;
+  getUnreadCountFromAdmin(userId: number): Promise<number>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -104,6 +112,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async deleteUser(id: number): Promise<void> {
+    await db.delete(messages).where(eq(messages.userId, id));
     await db.delete(dailyLogs).where(eq(dailyLogs.userId, id));
     await db.delete(users).where(eq(users.id, id));
   }
@@ -123,8 +132,6 @@ export class DatabaseStorage implements IStorage {
   }
   
   async getLeaderboardData(type: 'aCoins' | 'credits'): Promise<{user: User, totalApprovedChange: number}[]> {
-    // For MVP, fetch all approved logs and aggregate in memory to keep it simple
-    // In production, use SQL grouping
     const allUsers = await this.getAllUsers();
     const result = [];
     for (const u of allUsers) {
@@ -155,7 +162,6 @@ export class DatabaseStorage implements IStorage {
     const allUsers = await this.getAllUsers();
     const activeUsers = allUsers.filter(u => !u.isDisqualified);
     
-    // Get logs for today (simplified - using current date)
     const today = new Date().toISOString().split('T')[0];
     const todaysLogs = await db.select().from(dailyLogs).where(eq(dailyLogs.date, today));
     const activeToday = new Set(todaysLogs.map(l => l.userId)).size;
@@ -170,6 +176,53 @@ export class DatabaseStorage implements IStorage {
       totalACoinsGained,
       totalCreditsGained
     };
+  }
+
+  // ── Messages ──────────────────────────────────────────────────────────────
+
+  async createMessage(data: { userId: number; content: string; fromAdmin: boolean }): Promise<Message> {
+    const [msg] = await db.insert(messages).values(data).returning();
+    return msg;
+  }
+
+  async getMessagesForUser(userId: number): Promise<Message[]> {
+    return await db.select().from(messages)
+      .where(eq(messages.userId, userId))
+      .orderBy(messages.createdAt);
+  }
+
+  async getAllConversations(): Promise<{ userId: number; user: User; lastMessage: Message; unreadFromUser: number }[]> {
+    const allMsgs = await db.select().from(messages).orderBy(desc(messages.createdAt));
+    const allUsers = await this.getAllUsers();
+    const userMap = new Map(allUsers.map(u => [u.id, u]));
+
+    const seenUserIds = new Set<number>();
+    const conversations: { userId: number; user: User; lastMessage: Message; unreadFromUser: number }[] = [];
+
+    for (const msg of allMsgs) {
+      if (!seenUserIds.has(msg.userId)) {
+        seenUserIds.add(msg.userId);
+        const user = userMap.get(msg.userId);
+        if (!user) continue;
+        const unreadFromUser = allMsgs.filter(m => m.userId === msg.userId && !m.fromAdmin && !m.isRead).length;
+        conversations.push({ userId: msg.userId, user, lastMessage: msg, unreadFromUser });
+      }
+    }
+
+    return conversations;
+  }
+
+  async markMessagesRead(userId: number, fromAdmin: boolean): Promise<void> {
+    await db.update(messages)
+      .set({ isRead: true })
+      .where(and(eq(messages.userId, userId), eq(messages.fromAdmin, fromAdmin)));
+  }
+
+  async getUnreadCountFromAdmin(userId: number): Promise<number> {
+    const unread = await db.select().from(messages).where(
+      and(eq(messages.userId, userId), eq(messages.fromAdmin, true), eq(messages.isRead, false))
+    );
+    return unread.length;
   }
 }
 

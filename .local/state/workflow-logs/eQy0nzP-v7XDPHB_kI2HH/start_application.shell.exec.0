@@ -1,7 +1,0 @@
-
-> rest-express@1.0.0 dev
-> NODE_ENV=development tsx server/index.ts
-
-[1G[0K4:57:01 PM [express] serving on port 5000
-4:57:24 PM [express] GET /api/auth/me 304 in 48ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","startACoins":0,"startCredits":22833,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-12T07:58:09.775Z"}
-4:57:28 PM [express] GET /api/logs/me 304 in 61ms :: [{"id":1,"userId":1,"date":"2026-03-14","aCoins":12,"credits":22834,"aCoinChange":12,"creditsChange":1,"creditsSpent":0,"screenshotUrl":"/uploads/screenshot-1773506173985-579426685.jpeg","status":"approved","adminNotes":null,"createdAt":"2026-03-14T16:36:14.008Z"}]

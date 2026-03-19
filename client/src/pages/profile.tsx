@@ -13,8 +13,11 @@ import { useToast } from "@/hooks/use-toast";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AvatarSelector } from "@/components/avatar-selector";
 import { getAvatarImage } from "@/lib/avatars";
-import { UserCog, CheckCircle2, XCircle, Clock, Coins, CreditCard, ShieldAlert, ArrowRight } from "lucide-react";
+import { UserCog, CheckCircle2, XCircle, Clock, Coins, CreditCard, ShieldAlert, ArrowRight, Camera, Loader2 } from "lucide-react";
 import { useLocation } from "wouter";
+import { useRef, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { api } from "@shared/routes";
 
 const COUNTRIES = [
   "United States", "United Kingdom", "Canada", "Australia", "India", "Germany", "France", "Spain",
@@ -33,6 +36,36 @@ const updateSchema = z.object({
 export default function Profile() {
   const { user, updateProfile, isUpdatingProfile } = useAuth();
   const { data: myStats, isLoading: statsLoading } = useMyStats();
+  const qc = useQueryClient();
+  const { toast } = useToast();
+  const [_, setLocation] = useLocation();
+  const [uploadingImg, setUploadingImg] = useState(false);
+  const imgInputRef = useRef<HTMLInputElement>(null);
+
+  const handleProfileImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingImg(true);
+    try {
+      const fd = new FormData();
+      fd.append("image", file);
+      const res = await fetch("/api/users/me/profile-image", {
+        method: "POST",
+        body: fd,
+        credentials: "include",
+      });
+      if (!res.ok) throw new Error("Upload failed");
+      const updatedUser = await res.json();
+      qc.setQueryData([api.auth.me.path], updatedUser);
+      toast({ title: "Profile Image Updated", description: "Your custom avatar has been saved." });
+    } catch (err: any) {
+      toast({ title: "Upload Failed", description: err.message, variant: "destructive" });
+    } finally {
+      setUploadingImg(false);
+      if (imgInputRef.current) imgInputRef.current.value = "";
+    }
+  };
+
   const { data: pendingLogs } = useQuery({
     queryKey: ['/api/admin/logs/pending'],
     queryFn: async () => {
@@ -42,9 +75,6 @@ export default function Profile() {
     },
     enabled: user?.role === 'admin',
   });
-  const { toast } = useToast();
-  const [_, setLocation] = useLocation();
-
   const form = useForm<z.infer<typeof updateSchema>>({
     resolver: zodResolver(updateSchema),
     defaultValues: {
@@ -167,18 +197,63 @@ export default function Profile() {
           <CardTitle className="font-display font-semibold text-base">Profile Settings</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-6 mb-8 p-5 bg-muted/20 rounded-xl border border-border/50">
-            <Avatar className="h-20 w-20 border-2 border-primary/50 shadow-[0_0_15px_hsl(var(--primary)/0.2)]">
-              <AvatarImage src={getAvatarImage(form.watch('avatar') || user.avatar) || undefined} alt={user.username} />
-              <AvatarFallback>{user.username.charAt(0)}</AvatarFallback>
-            </Avatar>
-            <div>
-              <h2 className="text-xl font-display font-bold">{user.username}</h2>
+          {/* Profile photo + info row */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-8 p-5 bg-muted/20 rounded-xl border border-border/50">
+            {/* Avatar with permanent camera badge */}
+            <div className="relative shrink-0">
+              <Avatar className="h-24 w-24 border-2 border-primary/50 shadow-[0_0_20px_hsl(var(--primary)/0.15)]">
+                <AvatarImage src={user.profileImageUrl || getAvatarImage(form.watch('avatar') || user.avatar) || undefined} alt={user.username} />
+                <AvatarFallback className="text-2xl font-bold">{user.username.charAt(0).toUpperCase()}</AvatarFallback>
+              </Avatar>
+              {/* Always-visible camera badge */}
+              <button
+                type="button"
+                onClick={() => imgInputRef.current?.click()}
+                disabled={uploadingImg}
+                className="absolute -bottom-1 -right-1 h-8 w-8 rounded-full bg-primary border-2 border-background flex items-center justify-center shadow-md hover:bg-primary/80 transition-colors cursor-pointer"
+                title="Upload custom profile photo"
+                data-testid="button-upload-profile-image"
+              >
+                {uploadingImg
+                  ? <Loader2 className="h-3.5 w-3.5 text-white animate-spin" />
+                  : <Camera className="h-3.5 w-3.5 text-white" />
+                }
+              </button>
+              <input
+                ref={imgInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleProfileImageChange}
+                data-testid="input-profile-image"
+              />
+            </div>
+
+            {/* User info + upload button */}
+            <div className="flex-1 min-w-0">
+              <h2 className="text-xl font-display font-bold truncate">{user.username}</h2>
               <div className={`text-xs uppercase mt-1 font-medium ${user.isDisqualified ? 'text-destructive' : 'text-green-500'}`}>
                 {user.isDisqualified ? '⛔ Disqualified' : '✅ Active Pilot'}
               </div>
               <div className="text-xs text-muted-foreground uppercase mt-0.5">Role: {user.role}</div>
               {user.country && <div className="text-xs text-muted-foreground mt-0.5">{user.country}</div>}
+
+              {/* Prominent upload button */}
+              <button
+                type="button"
+                onClick={() => imgInputRef.current?.click()}
+                disabled={uploadingImg}
+                className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-dashed border-primary/50 bg-primary/5 text-primary text-xs font-medium hover:bg-primary/10 hover:border-primary transition-colors cursor-pointer disabled:opacity-50"
+                data-testid="button-upload-photo-label"
+              >
+                {uploadingImg
+                  ? <><Loader2 className="h-3.5 w-3.5 animate-spin" /> Uploading…</>
+                  : <><Camera className="h-3.5 w-3.5" /> {user.profileImageUrl ? "Change Profile Photo" : "Upload Profile Photo"}</>
+                }
+              </button>
+              {user.profileImageUrl && (
+                <p className="text-[10px] text-muted-foreground mt-1">Custom photo active · Select an avatar below to switch back</p>
+              )}
             </div>
           </div>
 

@@ -1,0 +1,581 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K[cloudinary] configured ✓
+1:52:51 AM [express] serving on port 5000
+1:53:13 AM [express] GET /api/auth/me 304 in 6ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+1:53:13 AM [express] GET /api/messages/unread-count 304 in 6ms :: {"count":0}
+1:53:13 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:53:14 AM [express] GET /api/logs/me 304 in 7ms :: []
+1:53:31 AM [express] GET /api/activities 304 in 18ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:53:35 AM [express] GET /api/auth/me 304 in 5ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+1:53:37 AM [express] GET /api/logs/me 304 in 8ms :: []
+1:53:46 AM [express] GET /api/messages/unread-count 304 in 57ms :: {"count":0}
+1:53:46 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:53:48 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/profile.tsx, /src/index.css[22m
+1:53:58 AM [express] GET /api/logs/me 304 in 7ms :: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:53:59 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/profile.tsx, /src/index.css[22m [33m(x2)[39m
+1:54:02 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:54:17 AM [express] GET /api/messages/unread-count 304 in 15ms :: {"count":0}
+1:54:17 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:54:18 AM [express] GET /api/logs/me 304 in 5ms :: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:54:26 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/profile.tsx, /src/index.css[22m [33m(x3)[39m
+1:54:33 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:54:39 AM [express] GET /api/logs/me 304 in 7ms :: []
+1:54:43 AM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+1:54:43 AM [express] GET /api/users/me/stats 401 in 1ms :: {"message":"Unauthorized"}
+1:54:47 AM [express] GET /api/messages/unread-count 304 in 86ms :: {"count":0}
+1:54:48 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:54:59 AM [express] GET /api/logs/me 304 in 15ms :: []
+1:55:04 AM [express] GET /api/activities 304 in 34ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:55:17 AM [express] GET /api/messages/unread-count 304 in 15ms :: {"count":0}
+1:55:19 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:55:20 AM [express] GET /api/auth/me 304 in 7ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+1:55:20 AM [express] GET /api/users/me/stats 304 in 142ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+1:55:20 AM [express] GET /api/admin/logs/pending 304 in 149ms :: []
+1:55:35 AM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:55:48 AM [express] GET /api/messages/unread-count 304 in 15ms :: {"count":0}
+1:55:50 AM [express] GET /api/users/me/stats 304 in 5ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+1:55:51 AM [express] GET /api/activities 304 in 5ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:55:57 AM [express] GET /api/leaderboard/credits 200 in 8ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+1:55:57 AM [express] GET /api/leaderboard/a-coins 200 in 17ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+1:56:06 AM [express] GET /api/activities 304 in 51ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:56:12 AM [express] GET /api/users/me/stats 304 in 11ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+1:56:12 AM [express] GET /api/auth/me 304 in 24ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+1:56:12 AM [express] GET /api/admin/logs/pending 304 in 13ms :: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:56:17 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/auth.tsx, /src/index.css[22m
+1:56:18 AM [express] GET /api/messages/unread-count 304 in 7ms :: {"count":0}
+1:56:21 AM [express] GET /api/activities 304 in 9ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:56:28 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/auth.tsx, /src/index.css[22m [33m(x2)[39m
+1:56:37 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:56:37 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/auth.tsx, /src/index.css[22m [33m(x3)[39m
+1:56:42 AM [express] GET /api/users/me/stats 304 in 6ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+1:56:48 AM [express] GET /api/messages/unread-count 304 in 6ms :: {"count":0}
+1:56:52 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:56:54 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/auth.tsx, /src/index.css[22m [33m(x4)[39m
+1:57:07 AM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+1:57:07 AM [express] GET /api/activities 304 in 15ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:57:12 AM [express] GET /api/users/me/stats 304 in 6ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+1:57:19 AM [express] GET /api/messages/unread-count 304 in 6ms :: {"count":0}
+1:57:24 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:57:39 AM [express] GET /api/activities 304 in 42ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:57:43 AM [express] GET /api/users/me/stats 304 in 7ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+1:57:49 AM [express] GET /api/messages/unread-count 304 in 6ms :: {"count":0}
+1:57:54 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:57:59 AM [express] GET /api/leaderboard/a-coins 304 in 7ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+1:57:59 AM [express] GET /api/leaderboard/credits 304 in 5ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+1:58:10 AM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:58:11 AM [express] GET /api/auth/me 304 in 5ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+1:58:11 AM [express] GET /api/admin/logs/pending 304 in 18ms :: []
+1:58:11 AM [express] GET /api/admin/logs 304 in 7ms :: []
+1:58:11 AM [express] GET /api/stats/global 200 in 11ms :: {"totalPlayers":2,"activeToday":0,"totalACoinsGained":0,"totalCreditsGained":0}
+1:58:11 AM [express] GET /api/users 200 in 9ms :: [{"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},{"id":2,"username":"We","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"}]
+1:58:11 AM [express] GET /api/admin/messages 200 in 18ms :: [{"userId":2,"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"lastMessage":{"id":3,"userId":2,"content":"Hi","fromAdmin":false,"isRead":true,"createdAt":"2026-03-18T19:58:44.093Z"},"unreadFromUser":0},{"userId":1,"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"lastMessage":{"id":2,"userId":1,"content":"we can totally understand but can you tell me reason for saying this","fromAdmin":true,"isRead":true,"createdAt":"2026-03-18T19:33:43.184Z"},"unreadFromUser":0}]
+1:58:20 AM [express] GET /api/messages/unread-count 304 in 6ms :: {"count":0}
+1:58:25 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:58:30 AM [express] POST /api/auth/logout 200 in 12ms
+1:58:31 AM [express] GET /api/auth/me 401 in 5ms :: {"message":"Not authenticated"}
+1:58:31 AM [express] GET /api/activities 304 in 4ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:58:31 AM [express] GET /api/messages/unread-count 401 in 12ms :: {"message":"Unauthorized"}
+1:58:31 AM [express] GET /api/admin/logs/pending 401 in 3ms :: {"message":"Unauthorized admin access"}
+1:58:31 AM [express] GET /api/users 304 in 4ms :: [{"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},{"id":2,"username":"We","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"}]
+1:58:31 AM [express] GET /api/stats/global 304 in 7ms :: {"totalPlayers":2,"activeToday":0,"totalACoinsGained":0,"totalCreditsGained":0}
+1:58:31 AM [express] GET /api/admin/messages 401 in 5ms :: {"message":"Unauthorized admin access"}
+1:58:31 AM [express] GET /api/admin/logs 401 in 4ms :: {"message":"Unauthorized admin access"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:59:00 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/leaderboard.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:59:01 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/admin.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:59:02 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/protocol-ended.tsx, /src/index.css[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:59:07 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/pages/protocol-ended.tsx, /src/index.css[22m [33m(x2)[39m
+1:59:22 AM [express] POST /api/auth/login 200 in 69ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+1:59:22 AM [express] GET /api/logs/me 304 in 7ms :: []
+1:59:22 AM [express] GET /api/auth/me 304 in 14ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+1:59:23 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:59:23 AM [express] GET /api/messages/unread-count 304 in 5ms :: {"count":0}
+1:59:26 AM [express] GET /api/leaderboard/a-coins 304 in 34ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+1:59:26 AM [express] GET /api/leaderboard/credits 304 in 31ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+1:59:29 AM [express] GET /api/users/me/stats 304 in 6ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+1:59:29 AM [express] GET /api/admin/logs/pending 304 in 7ms :: []
+1:59:33 AM [express] PATCH /api/messages/read 200 in 9ms :: {"ok":true}
+1:59:33 AM [express] GET /api/messages 304 in 5ms :: [{"id":1,"userId":1,"content":"bad app","fromAdmin":false,"isRead":true,"createdAt":"2026-03-18T19:33:00.234Z"},{"id":2,"userId":1,"content":"we can totally understand but can you tell me reason for saying this","fromAdmin":true,"isRead":true,"createdAt":"2026-03-18T19:33:43.184Z"}]
+1:59:33 AM [express] GET /api/messages/unread-count 304 in 4ms :: {"count":0}
+1:59:34 AM [express] GET /api/stats/global 304 in 6ms :: {"totalPlayers":2,"activeToday":0,"totalACoinsGained":0,"totalCreditsGained":0}
+1:59:34 AM [express] GET /api/users 304 in 5ms :: [{"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},{"id":2,"username":"We","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"}]
+1:59:34 AM [express] GET /api/admin/messages 304 in 6ms :: [{"userId":2,"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"lastMessage":{"id":3,"userId":2,"content":"Hi","fromAdmin":false,"isRead":true,"createdAt":"2026-03-18T19:58:44.093Z"},"unreadFromUser":0},{"userId":1,"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"lastMessage":{"id":2,"userId":1,"content":"we can totally understand but can you tell me reason for saying this","fromAdmin":true,"isRead":true,"createdAt":"2026-03-18T19:33:43.184Z"},"unreadFromUser":0}]
+1:59:34 AM [express] GET /api/admin/logs 304 in 6ms :: []
+1:59:38 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+1:59:39 AM [express] PATCH /api/messages/read 200 in 8ms :: {"ok":true}
+1:59:40 AM [express] GET /api/messages/unread-count 304 in 6ms :: {"count":0}
+1:59:40 AM [express] GET /api/messages 304 in 7ms :: [{"id":1,"userId":1,"content":"bad app","fromAdmin":false,"isRead":true,"createdAt":"2026-03-18T19:33:00.234Z"},{"id":2,"userId":1,"content":"we can totally understand but can you tell me reason for saying this","fromAdmin":true,"isRead":true,"createdAt":"2026-03-18T19:33:43.184Z"}]
+1:59:48 AM [express] GET /api/logs/me 304 in 7ms :: []
+1:59:48 AM [express] GET /api/auth/me 304 in 4ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+1:59:50 AM [express] GET /api/leaderboard/a-coins 304 in 7ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+1:59:50 AM [express] GET /api/leaderboard/credits 304 in 6ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+1:59:54 AM [express] GET /api/activities 304 in 5ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:00:09 AM [express] GET /api/activities 304 in 14ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:00:10 AM [express] GET /api/messages/unread-count 304 in 6ms :: {"count":0}
+2:00:26 AM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:00:40 AM [express] GET /api/messages/unread-count 304 in 51ms :: {"count":0}
+2:00:41 AM [express] GET /api/activities 304 in 5ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:00:50 AM [express] GET /api/leaderboard/a-coins 304 in 7ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+2:00:50 AM [express] GET /api/leaderboard/credits 304 in 16ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+2:00:56 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:01:11 AM [express] GET /api/messages/unread-count 304 in 16ms :: {"count":0}
+2:01:12 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:01:27 AM [express] GET /api/activities 304 in 15ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:01:41 AM [express] GET /api/messages/unread-count 304 in 15ms :: {"count":0}
+2:01:43 AM [express] GET /api/activities 304 in 37ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:01:51 AM [express] GET /api/leaderboard/credits 304 in 10ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+2:01:51 AM [express] GET /api/leaderboard/a-coins 304 in 17ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+2:01:58 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:02:12 AM [express] GET /api/messages/unread-count 304 in 16ms :: {"count":0}
+2:02:13 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:02:29 AM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:02:42 AM [express] GET /api/messages/unread-count 304 in 16ms :: {"count":0}
+2:02:44 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:02:51 AM [express] GET /api/leaderboard/credits 304 in 8ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+2:02:51 AM [express] GET /api/leaderboard/a-coins 304 in 17ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+2:02:59 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:03:12 AM [express] GET /api/messages/unread-count 304 in 42ms :: {"count":0}
+2:03:15 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:03:30 AM [express] GET /api/activities 304 in 17ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:03:43 AM [express] GET /api/messages/unread-count 304 in 19ms :: {"count":0}
+2:03:45 AM [express] GET /api/activities 304 in 8ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:03:51 AM [express] GET /api/leaderboard/credits 304 in 7ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+2:03:51 AM [express] GET /api/leaderboard/a-coins 304 in 7ms :: [{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0},{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0}]
+2:04:01 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:04:02 AM [express] GET /api/auth/me 304 in 5ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+2:04:02 AM [express] GET /api/users/me/stats 304 in 6ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+2:04:02 AM [express] GET /api/admin/logs/pending 304 in 14ms :: []
+2:04:13 AM [express] GET /api/messages/unread-count 304 in 5ms :: {"count":0}
+2:04:16 AM [express] GET /api/activities 304 in 5ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:04:32 AM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:04:33 AM [express] GET /api/users/me/stats 304 in 6ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+2:04:44 AM [express] GET /api/messages/unread-count 304 in 16ms :: {"count":0}
+2:04:47 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:05:02 AM [express] GET /api/activities 304 in 18ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:05:03 AM [express] GET /api/users/me/stats 304 in 6ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+2:05:08 AM [express] PATCH /api/users/me 200 in 9ms :: {"id":1,"username":"don_re","password":"55454454907ad553707ae5d0d7bd3a939886bc2d39bc973b92cca3025e13cc6e058a967453f14675405a89ff67e05cbeeb12f0aa312c9702f673f06018393151.25dbb9cd43f360132803f51168340fe4","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+2:05:14 AM [express] GET /api/messages/unread-count 304 in 6ms :: {"count":0}
+2:05:18 AM [express] GET /api/activities 304 in 34ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:05:33 AM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:05:34 AM [express] GET /api/users/me/stats 304 in 7ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+2:05:44 AM [express] GET /api/messages/unread-count 304 in 14ms :: {"count":0}
+2:05:49 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:06:02 AM [express] GET /api/auth/me 304 in 16ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+2:06:02 AM [express] GET /api/admin/logs/pending 304 in 20ms :: []
+2:06:02 AM [express] GET /api/users/me/stats 304 in 25ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+2:06:04 AM [express] GET /api/logs/me 304 in 5ms :: []
+2:06:04 AM [express] GET /api/activities 304 in 5ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:06:15 AM [express] GET /api/messages/unread-count 304 in 17ms :: {"count":0}
+2:06:20 AM [express] GET /api/activities 304 in 7ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m2:06:21 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/layout/main-layout.tsx, /src/index.css[22m
+2:06:26 AM [express] GET /api/auth/me 304 in 5ms :: {"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}
+2:06:37 AM [express] GET /api/auth/me 401 in 1ms :: {"message":"Not authenticated"}
+2:06:37 AM [express] GET /api/logs/me 401 in 1ms :: {"message":"Unauthorized"}
+2:06:38 AM [express] GET /api/activities 304 in 18ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:06:40 AM [express] PATCH /api/messages/read 200 in 9ms :: {"ok":true}
+2:06:40 AM [express] GET /api/messages 304 in 6ms :: [{"id":1,"userId":1,"content":"bad app","fromAdmin":false,"isRead":true,"createdAt":"2026-03-18T19:33:00.234Z"},{"id":2,"userId":1,"content":"we can totally understand but can you tell me reason for saying this","fromAdmin":true,"isRead":true,"createdAt":"2026-03-18T19:33:43.184Z"}]
+2:06:40 AM [express] GET /api/messages/unread-count 304 in 6ms :: {"count":0}
+2:06:42 AM [express] GET /api/leaderboard/a-coins 200 in 6ms :: [{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0},{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0}]
+2:06:42 AM [express] GET /api/leaderboard/credits 200 in 7ms :: [{"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"totalApprovedChange":0},{"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"totalApprovedChange":0}]
+2:06:43 AM [express] GET /api/logs/me 304 in 6ms :: []
+2:06:45 AM [express] GET /api/stats/global 304 in 8ms :: {"totalPlayers":2,"activeToday":0,"totalACoinsGained":0,"totalCreditsGained":0}
+2:06:45 AM [express] GET /api/admin/logs/pending 304 in 8ms :: []
+2:06:45 AM [express] GET /api/users 200 in 5ms :: [{"id":2,"username":"We","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},{"id":1,"username":"don_re","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"}]
+2:06:45 AM [express] GET /api/admin/messages 304 in 6ms :: [{"userId":2,"user":{"id":2,"username":"We","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar36","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863961/cracoins/screenshot-1773863960899-591499434.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:57:52.047Z"},"lastMessage":{"id":3,"userId":2,"content":"Hi","fromAdmin":false,"isRead":true,"createdAt":"2026-03-18T19:58:44.093Z"},"unreadFromUser":0},{"userId":1,"user":{"id":1,"username":"don_re","password":"","country":"India","timezone":"Asia/Calcutta","avatar":"avatar2","profileImageUrl":"https://res.cloudinary.com/dghsl9jsg/image/upload/v1773863323/cracoins/screenshot-1773863323247-264234410.jpg","startACoins":0,"startCredits":0,"role":"admin","isDisqualified":false,"seenWelcome":true,"createdAt":"2026-03-18T19:32:05.179Z"},"lastMessage":{"id":2,"userId":1,"content":"we can totally understand but can you tell me reason for saying this","fromAdmin":true,"isRead":true,"createdAt":"2026-03-18T19:33:43.184Z"},"unreadFromUser":0}]
+2:06:45 AM [express] GET /api/admin/logs 304 in 8ms :: []
+2:06:47 AM [express] GET /api/users/me/stats 304 in 5ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}
+2:06:54 AM [express] GET /api/activities 304 in 6ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:07:10 AM [express] GET /api/activities 304 in 16ms :: [{"id":2,"type":"join","message":"We joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:57:52.050Z"},{"id":1,"type":"join","message":"don_re joined the No-Spend Challenge! Welcome, Pilot!","createdAt":"2026-03-18T19:32:05.214Z"}]
+2:07:11 AM [express] GET /api/messages/unread-count 304 in 9ms :: {"count":0}
+2:07:19 AM [express] GET /api/users/me/stats 304 in 6ms :: {"totalSubmissions":0,"approved":0,"rejected":0,"pending":0,"totalACoinsEarned":0,"totalCreditsEarned":0}

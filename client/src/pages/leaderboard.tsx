@@ -77,7 +77,7 @@ export default function Leaderboard() {
               </div>
 
               <Avatar className="h-12 w-12 border-2 border-primary/20 group-hover:border-primary/60 transition-colors flex-shrink-0">
-                <AvatarImage src={getAvatarImage(item.user.avatar) || undefined} alt={item.user.username} />
+                <AvatarImage src={item.user.profileImageUrl || getAvatarImage(item.user.avatar) || undefined} alt={item.user.username} />
                 <AvatarFallback>{item.user.username.charAt(0)}</AvatarFallback>
               </Avatar>
 
